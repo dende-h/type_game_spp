@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // components/Timer.tsx
 import React, { useEffect, useState } from "react";
 import { Text, useColorModeValue } from "@chakra-ui/react";
@@ -31,7 +32,13 @@ const Timer: React.FC<TimerProps> = ({ isActive, onTimeUp, duration }) => {
 
 	return (
 		<Text fontSize="xl" color={timeLeft <= 10 ? warningTextColor : textColor}>
-			Time left: <strong>{timeLeft}</strong> seconds
+			{timeLeft === 0 ? (
+				<strong>Time's up!</strong>
+			) : (
+				<>
+					Time left: <strong>{timeLeft}</strong> seconds
+				</>
+			)}
 		</Text>
 	);
 };

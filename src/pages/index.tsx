@@ -4,7 +4,7 @@ import WordToType from "../components/WordToType";
 import TypingInput from "../components/TypingInput";
 import Timer from "../components/Timer";
 import { useRouter } from "next/router";
-import { Box, Button, useToast } from "@chakra-ui/react";
+import { Box, Button, VStack, useToast, Text } from "@chakra-ui/react";
 
 const easyWords = ["cat", "dog", "car", "bus", "sun"];
 const normalWords = ["apple", "grape", "chair", "table", "pencil"];
@@ -22,6 +22,12 @@ export default function Home() {
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
+	const difficultyLabel = () => {
+		if (words === easyWords) return "Easy";
+		if (words === normalWords) return "Normal";
+		if (words === hardWords) return "Hard";
+		return "";
+	};
 
 	const toast = useToast();
 
@@ -58,14 +64,26 @@ export default function Home() {
 
 	return (
 		<Box textAlign="center" pt="10">
-			{isActive && <WordToType word={currentWord} />}
+			{isActive && <WordToType word={currentWord} userInput={userInput} />}
 			<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} />
 			<Timer isActive={isActive} onTimeUp={onTimeUp} duration={30} />
-			<button onClick={startGame}>Start Game</button>
-			<br />
-			<Button onClick={() => setWords(easyWords)}>Easy</Button>
-			<Button onClick={() => setWords(normalWords)}>Normal</Button>
-			<Button onClick={() => setWords(hardWords)}>Hard</Button>
+			{!isActive && (
+				<VStack spacing={4}>
+					<Button onClick={startGame} disabled={isActive}>
+						Start Game
+					</Button>
+					<Text>Current difficulty: {difficultyLabel()}</Text>
+					<Button onClick={() => setWords(easyWords)} disabled={isActive}>
+						Easy
+					</Button>
+					<Button onClick={() => setWords(normalWords)} disabled={isActive}>
+						Normal
+					</Button>
+					<Button onClick={() => setWords(hardWords)} disabled={isActive}>
+						Hard
+					</Button>
+				</VStack>
+			)}
 		</Box>
 	);
 }
