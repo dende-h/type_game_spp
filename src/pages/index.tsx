@@ -1,5 +1,5 @@
 // pages/index.tsx
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import WordToType from "../components/WordToType";
 import TypingInput from "../components/TypingInput";
 import Timer from "../components/Timer";
@@ -12,7 +12,10 @@ import {
 	useColorModeValue,
 	useBreakpointValue,
 	Container,
-	useToast
+	useToast,
+	HStack,
+	FlexProps,
+	Flex
 } from "@chakra-ui/react";
 
 const easyWords = ["cat", "dog", "car", "bus", "sun"];
@@ -26,11 +29,28 @@ const hardWords = [
 ];
 export default function Home() {
 	const [words, setWords] = useState(normalWords);
+
 	const [currentWord, setCurrentWord] = useState(words[0]);
 	const [userInput, setUserInput] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
+	const Difficulty = {
+		EASY: "easy",
+		NORMAL: "normal",
+		HARD: "hard"
+	};
+	const [difficulty, setDifficulty] = useState(Difficulty.NORMAL);
+	useEffect(() => {
+		if (difficulty === Difficulty.EASY) {
+			setWords(easyWords);
+		} else if (difficulty === Difficulty.NORMAL) {
+			setWords(normalWords);
+		} else if (difficulty === Difficulty.HARD) {
+			setWords(hardWords);
+		}
+	}, [difficulty]);
+
 	const difficultyLabel = () => {
 		if (words === easyWords) return "Easy";
 		if (words === normalWords) return "Normal";
@@ -80,6 +100,9 @@ export default function Home() {
 	const bgColor = useColorModeValue("gray.50", "gray.900");
 	const headingColor = useColorModeValue("gray.700", "gray.200");
 	const textSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+	const buttonWidth = "150px";
+
+	const flexDirection = useBreakpointValue<FlexProps["flexDirection"]>({ base: "column", md: "row" });
 
 	return (
 		<Container
@@ -90,55 +113,60 @@ export default function Home() {
 			alignItems="center"
 			backgroundColor={bgColor}
 		>
-			<Text fontSize="4xl" fontWeight="bold" color={headingColor} mb={6}>
+			<Text fontSize={{ base: "3xl", md: "4xl" }} fontWeight="bold" color={headingColor} mb={6}>
 				Typing Practice Game
+			</Text>
+			<Text fontSize={textSize} fontWeight="bold">
+				Difficulty: {difficultyLabel()}
 			</Text>
 			<Box textAlign="center" pt="10">
 				<Timer isActive={isActive} onTimeUp={onTimeUp} duration={30} />
 				{isActive && <WordToType word={currentWord} userInput={userInput} />}
 				<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} inputRef={inputRef} />
-				{!isActive && (
-					<VStack spacing={4}>
+			</Box>
+
+			{!isActive && (
+				<VStack spacing={8} my={8}>
+					<Button
+						onClick={startGameAndFocusInput}
+						disabled={isActive}
+						fontSize={textSize}
+						w={buttonWidth}
+						colorScheme="blue"
+					>
+						Start Game
+					</Button>
+					<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 						<Button
-							onClick={startGameAndFocusInput}
-							disabled={isActive}
-							fontSize={textSize}
-							size="lg"
-							colorScheme="blue"
-						>
-							Start Game
-						</Button>
-						<Text fontSize={textSize}>Current difficulty: {difficultyLabel()}</Text>
-						<Button
-							onClick={() => setWords(easyWords)}
-							disabled={isActive}
-							fontSize={textSize}
-							size="lg"
-							colorScheme="blue"
+							onClick={() => setDifficulty("easy")}
+							w={buttonWidth}
+							colorScheme={difficulty === "easy" ? "teal" : "gray"}
+							mb={{ base: 4, md: 0 }}
+							mx={{ base: 0, md: 2 }}
 						>
 							Easy
 						</Button>
 						<Button
-							onClick={() => setWords(normalWords)}
-							disabled={isActive}
-							fontSize={textSize}
-							size="lg"
-							colorScheme="blue"
+							onClick={() => setDifficulty("normal")}
+							w={buttonWidth}
+							colorScheme={difficulty === "normal" ? "teal" : "gray"}
+							mb={{ base: 4, md: 0 }}
+							mx={{ base: 0, md: 2 }}
 						>
 							Normal
 						</Button>
 						<Button
-							onClick={() => setWords(hardWords)}
-							disabled={isActive}
-							fontSize={textSize}
-							size="lg"
-							colorScheme="blue"
+							onClick={() => setDifficulty("hard")}
+							w={buttonWidth}
+							colorScheme={difficulty === "hard" ? "teal" : "gray"}
+							mb={{ base: 4, md: 0 }}
+							mx={{ base: 0, md: 2 }}
 						>
 							Hard
 						</Button>
-					</VStack>
-				)}
-			</Box>
+					</Flex>
+				</VStack>
+			)}
 		</Container>
 	);
 }
