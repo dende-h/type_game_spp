@@ -17,7 +17,7 @@ export const fantasyWords = [
 	{ kanji: "魔法剣", romaji: "mahoukenn", kana: "まほうけん" },
 	{ kanji: "魔力", romaji: "maryoku", kana: "まりょく" },
 	{ kanji: "ドラゴン", romaji: "doragonn", kana: "どらごん" },
-	{ kanji: "予言書", romaji: "yogennsya", kana: "よげんしょ" },
+	{ kanji: "予言書", romaji: "yogennsyoyogennsyo", kana: "よげんしょ" },
 	{ kanji: "魔術", romaji: "majyutu", kana: "まじゅつ" },
 	{ kanji: "妖精", romaji: "yousei", kana: "ようせい" },
 	{ kanji: "幻獣", romaji: "gennjyuu", kana: "げんじゅう" },
