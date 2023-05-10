@@ -1,5 +1,5 @@
 // pages/index.tsx
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import WordToType from "../components/WordToType";
 import TypingInput from "../components/TypingInput";
 import Timer from "../components/Timer";
@@ -71,6 +71,12 @@ export default function Home() {
 		}, 2000);
 	};
 
+	const inputRef = useRef<HTMLInputElement>(null);
+	const startGameAndFocusInput = () => {
+		startGame();
+		inputRef.current?.focus();
+	};
+
 	const bgColor = useColorModeValue("gray.50", "gray.900");
 	const headingColor = useColorModeValue("gray.700", "gray.200");
 	const textSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
@@ -88,22 +94,46 @@ export default function Home() {
 				Typing Practice Game
 			</Text>
 			<Box textAlign="center" pt="10">
-				{isActive && <WordToType word={currentWord} userInput={userInput} />}
-				<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} />
 				<Timer isActive={isActive} onTimeUp={onTimeUp} duration={30} />
+				{isActive && <WordToType word={currentWord} userInput={userInput} />}
+				<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} inputRef={inputRef} />
 				{!isActive && (
 					<VStack spacing={4}>
-						<Button onClick={startGame} disabled={isActive} fontSize={textSize}>
+						<Button
+							onClick={startGameAndFocusInput}
+							disabled={isActive}
+							fontSize={textSize}
+							size="lg"
+							colorScheme="blue"
+						>
 							Start Game
 						</Button>
 						<Text fontSize={textSize}>Current difficulty: {difficultyLabel()}</Text>
-						<Button onClick={() => setWords(easyWords)} disabled={isActive} fontSize={textSize}>
+						<Button
+							onClick={() => setWords(easyWords)}
+							disabled={isActive}
+							fontSize={textSize}
+							size="lg"
+							colorScheme="blue"
+						>
 							Easy
 						</Button>
-						<Button onClick={() => setWords(normalWords)} disabled={isActive} fontSize={textSize}>
+						<Button
+							onClick={() => setWords(normalWords)}
+							disabled={isActive}
+							fontSize={textSize}
+							size="lg"
+							colorScheme="blue"
+						>
 							Normal
 						</Button>
-						<Button onClick={() => setWords(hardWords)} disabled={isActive} fontSize={textSize}>
+						<Button
+							onClick={() => setWords(hardWords)}
+							disabled={isActive}
+							fontSize={textSize}
+							size="lg"
+							colorScheme="blue"
+						>
 							Hard
 						</Button>
 					</VStack>

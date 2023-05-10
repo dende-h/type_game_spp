@@ -7,19 +7,17 @@ interface WordToTypeProps {
 }
 
 const WordToType: React.FC<WordToTypeProps> = ({ word, userInput }) => {
-	const correctColor = useColorModeValue("green.500", "green.300");
-	const defaultColor = useColorModeValue("black", "white");
-
-	const coloredWord = word.split("").map((char, idx) => (
-		<Text as="span" key={idx} color={userInput[idx] === char ? correctColor : defaultColor}>
-			{char}
-		</Text>
-	));
+	const wordCharacters = word.split("");
+	const userInputCharacters = userInput.split("");
 
 	return (
-		<Box>
-			<Text fontSize="xl">{coloredWord}</Text>
-		</Box>
+		<Text fontSize="3xl" mb={4}>
+			{wordCharacters.map((char, index) => (
+				<Text as="span" key={index} color={userInputCharacters[index] === char ? "green.500" : "inherit"}>
+					{char}
+				</Text>
+			))}
+		</Text>
 	);
 };
 
