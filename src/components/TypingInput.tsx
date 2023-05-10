@@ -28,6 +28,7 @@ const TypingInput: React.FC<TypingInputProps> = ({ value, onChange, disabled, in
 			w="100%"
 			maxW="800px"
 			mb={4}
+			autoFocus={true}
 		/>
 	);
 };

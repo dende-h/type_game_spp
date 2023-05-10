@@ -13,24 +13,19 @@ import {
 	useBreakpointValue,
 	Container,
 	useToast,
-	HStack,
 	FlexProps,
 	Flex
 } from "@chakra-ui/react";
+import { fantasyWords, sfWords, mysteryWords } from "../constant/typingProblems";
 
-const easyWords = ["cat", "dog", "car", "bus", "sun"];
-const normalWords = ["apple", "grape", "chair", "table", "pencil"];
-const hardWords = [
-	"pterodactyl",
-	"supercalifragilisticexpialidocious",
-	"pneumonoultramicroscopicsilicovolcanoconiosis",
-	"floccinaucinihilipilification",
-	"antidisestablishmentarianism"
-];
+const easyWords = fantasyWords;
+const normalWords = mysteryWords;
+const hardWords = sfWords;
 export default function Home() {
 	const [words, setWords] = useState(normalWords);
-
-	const [currentWord, setCurrentWord] = useState(words[0]);
+	const [num, setNum] = useState(Math.floor(Math.random() * words.length));
+	const [currentWord, setCurrentWord] = useState(words[num].romaji);
+	const [jaWord, setJaWord] = useState(words[num].kanji);
 	const [userInput, setUserInput] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
@@ -65,13 +60,17 @@ export default function Home() {
 		if (value === currentWord) {
 			setScore(score + 1);
 			setUserInput("");
-			setCurrentWord(words[Math.floor(Math.random() * words.length)]);
+			const newNum = Math.floor(Math.random() * words.length);
+			setCurrentWord(words[newNum].romaji);
+			setJaWord(words[newNum].kanji);
+			setNum(newNum);
 
 			toast({
 				title: "Correct!",
 				status: "success",
 				duration: 1000,
-				isClosable: true
+				isClosable: true,
+				position: "top"
 			});
 		}
 	};
@@ -80,7 +79,8 @@ export default function Home() {
 		setIsActive(true);
 		setScore(0);
 		setUserInput("");
-		setCurrentWord(words[Math.floor(Math.random() * words.length)]);
+		setCurrentWord(words[num].romaji);
+		setJaWord(words[num].kanji);
 	};
 
 	const onTimeUp = () => {
@@ -121,7 +121,7 @@ export default function Home() {
 			</Text>
 			<Box textAlign="center" pt="10">
 				<Timer isActive={isActive} onTimeUp={onTimeUp} duration={30} />
-				{isActive && <WordToType word={currentWord} userInput={userInput} />}
+				{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} />}
 				<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} inputRef={inputRef} />
 			</Box>
 
