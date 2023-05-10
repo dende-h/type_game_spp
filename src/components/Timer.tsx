@@ -1,7 +1,6 @@
 // components/Timer.tsx
 import React, { useEffect, useState } from "react";
-import { Text } from "@chakra-ui/react";
-
+import { Text, useColorModeValue } from "@chakra-ui/react";
 interface TimerProps {
 	isActive: boolean;
 	onTimeUp: () => void;
@@ -27,8 +26,11 @@ const Timer: React.FC<TimerProps> = ({ isActive, onTimeUp, duration }) => {
 		return () => clearInterval(timer);
 	}, [isActive, onTimeUp, duration]);
 
+	const textColor = useColorModeValue("black", "white");
+	const warningTextColor = useColorModeValue("red.500", "red.300");
+
 	return (
-		<Text fontSize="xl">
+		<Text fontSize="xl" color={timeLeft <= 10 ? warningTextColor : textColor}>
 			Time left: <strong>{timeLeft}</strong> seconds
 		</Text>
 	);
