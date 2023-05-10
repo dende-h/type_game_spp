@@ -6,10 +6,11 @@ interface TimerProps {
 	isActive: boolean;
 	onTimeUp: () => void;
 	duration: number;
+	timeLeft: number;
+	setTimeLeft: (time: number) => void;
 }
 
-const Timer: React.FC<TimerProps> = ({ isActive, onTimeUp, duration }) => {
-	const [timeLeft, setTimeLeft] = useState(duration);
+const Timer: React.FC<TimerProps> = ({ isActive, onTimeUp, duration, timeLeft, setTimeLeft }) => {
 	const startTimeRef = useRef<number | null>(null);
 
 	useEffect(() => {
@@ -22,15 +23,14 @@ const Timer: React.FC<TimerProps> = ({ isActive, onTimeUp, duration }) => {
 
 			const elapsedTime = Math.floor((timestamp - startTimeRef.current) / 1000);
 
-			setTimeLeft(() => {
-				const newTimeLeft = duration - elapsedTime;
+			const newTimeLeft = duration - elapsedTime;
 
-				if (newTimeLeft <= 0) {
-					onTimeUp();
-					return duration;
-				}
-				return newTimeLeft;
-			});
+			if (newTimeLeft <= 0) {
+				onTimeUp();
+				setTimeLeft(0);
+			} else {
+				setTimeLeft(newTimeLeft);
+			}
 
 			if (isActive) {
 				animationFrame = requestAnimationFrame(updateTimer);

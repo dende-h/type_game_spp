@@ -30,6 +30,12 @@ export default function Home() {
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
+	const duration = 30;
+	const [timeLeft, setTimeLeft] = useState(duration);
+
+	const incrementTime = () => {
+		setTimeLeft((prevTime) => prevTime + 1);
+	};
 	const Difficulty = {
 		EASY: "easy",
 		NORMAL: "normal",
@@ -65,8 +71,9 @@ export default function Home() {
 			setJaWord(words[newNum].kanji);
 			setNum(newNum);
 
+			incrementTime();
 			toast({
-				title: "Correct!",
+				title: "Correct! +1 Seconds",
 				status: "success",
 				duration: 1000,
 				isClosable: true,
@@ -84,7 +91,6 @@ export default function Home() {
 	};
 
 	const onTimeUp = () => {
-		setIsActive(false);
 		setUserInput("");
 		setTimeout(() => {
 			router.push({ pathname: "/result", query: { score } });
@@ -120,7 +126,13 @@ export default function Home() {
 				Difficulty: {difficultyLabel()}
 			</Text>
 			<Box textAlign="center" pt="10">
-				<Timer isActive={isActive} onTimeUp={onTimeUp} duration={30} />
+				<Timer
+					isActive={isActive}
+					onTimeUp={onTimeUp}
+					duration={duration}
+					timeLeft={timeLeft}
+					setTimeLeft={setTimeLeft}
+				/>
 				{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} />}
 				<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} inputRef={inputRef} />
 			</Box>
