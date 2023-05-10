@@ -4,7 +4,16 @@ import WordToType from "../components/WordToType";
 import TypingInput from "../components/TypingInput";
 import Timer from "../components/Timer";
 import { useRouter } from "next/router";
-import { Box, Button, VStack, useToast, Text } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	VStack,
+	Text,
+	useColorModeValue,
+	useBreakpointValue,
+	Container,
+	useToast
+} from "@chakra-ui/react";
 
 const easyWords = ["cat", "dog", "car", "bus", "sun"];
 const normalWords = ["apple", "grape", "chair", "table", "pencil"];
@@ -62,28 +71,44 @@ export default function Home() {
 		}, 2000);
 	};
 
+	const bgColor = useColorModeValue("gray.50", "gray.900");
+	const headingColor = useColorModeValue("gray.700", "gray.200");
+	const textSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+
 	return (
-		<Box textAlign="center" pt="10">
-			{isActive && <WordToType word={currentWord} userInput={userInput} />}
-			<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} />
-			<Timer isActive={isActive} onTimeUp={onTimeUp} duration={30} />
-			{!isActive && (
-				<VStack spacing={4}>
-					<Button onClick={startGame} disabled={isActive}>
-						Start Game
-					</Button>
-					<Text>Current difficulty: {difficultyLabel()}</Text>
-					<Button onClick={() => setWords(easyWords)} disabled={isActive}>
-						Easy
-					</Button>
-					<Button onClick={() => setWords(normalWords)} disabled={isActive}>
-						Normal
-					</Button>
-					<Button onClick={() => setWords(hardWords)} disabled={isActive}>
-						Hard
-					</Button>
-				</VStack>
-			)}
-		</Box>
+		<Container
+			height="100vh"
+			display="flex"
+			flexDirection="column"
+			justifyContent="center"
+			alignItems="center"
+			backgroundColor={bgColor}
+		>
+			<Text fontSize="4xl" fontWeight="bold" color={headingColor} mb={6}>
+				Typing Practice Game
+			</Text>
+			<Box textAlign="center" pt="10">
+				{isActive && <WordToType word={currentWord} userInput={userInput} />}
+				<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} />
+				<Timer isActive={isActive} onTimeUp={onTimeUp} duration={30} />
+				{!isActive && (
+					<VStack spacing={4}>
+						<Button onClick={startGame} disabled={isActive} fontSize={textSize}>
+							Start Game
+						</Button>
+						<Text fontSize={textSize}>Current difficulty: {difficultyLabel()}</Text>
+						<Button onClick={() => setWords(easyWords)} disabled={isActive} fontSize={textSize}>
+							Easy
+						</Button>
+						<Button onClick={() => setWords(normalWords)} disabled={isActive} fontSize={textSize}>
+							Normal
+						</Button>
+						<Button onClick={() => setWords(hardWords)} disabled={isActive} fontSize={textSize}>
+							Hard
+						</Button>
+					</VStack>
+				)}
+			</Box>
+		</Container>
 	);
 }
