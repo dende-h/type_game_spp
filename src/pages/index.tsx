@@ -54,6 +54,7 @@ export default function Home() {
 	const [difficulty, setDifficulty] = useState(Difficulty.EASY);
 	useEffect(() => {
 		setMode(Mode.Roma);
+		setDuration(durationInitial);
 		if (difficulty === Difficulty.EASY) {
 			setWords(easyWords);
 		} else if (difficulty === Difficulty.NORMAL) {
@@ -78,11 +79,12 @@ export default function Home() {
 		return "";
 	};
 
-	const duration = difficulty === Difficulty.EASY ? 60 : 120;
+	const durationInitial = difficulty === Difficulty.EASY ? 60 : 120;
+	const [duration, setDuration] = useState(durationInitial);
 	const [timeLeft, setTimeLeft] = useState(duration);
 
 	const incrementTime = (addTime: number) => {
-		setTimeLeft((prevTime) => prevTime + addTime);
+		setDuration((prevDuration) => prevDuration + addTime);
 	};
 
 	const toast = useToast();
@@ -237,7 +239,7 @@ export default function Home() {
 							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
-							Easy
+							Novel Words
 						</Button>
 						<Button
 							onClick={() => setDifficulty("normal")}
@@ -246,7 +248,7 @@ export default function Home() {
 							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
-							Normal
+							Comic&Anime
 						</Button>
 						<Button
 							onClick={() => setDifficulty("hard")}
@@ -255,7 +257,7 @@ export default function Home() {
 							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
-							Hard
+							Hunter×Hunter
 						</Button>
 					</Flex>
 					<Flex direction={flexDirection} justifyContent="space-between" w="100%">
