@@ -19,7 +19,7 @@ export default function Result() {
 			alignItems="center"
 			backgroundColor={bgColor}
 		>
-			<Text fontSize="4xl" fontWeight="bold" color={headingColor} mb={6}>
+			<Text fontSize="3xl" fontWeight="bold" color={headingColor} mb={6}>
 				Typing Practice Game
 			</Text>
 			<Box textAlign="center">
@@ -30,6 +30,9 @@ export default function Result() {
 					Retry
 				</Button>
 			</Box>
+			<Text fontSize={"xl"} color={headingColor} my={6}>
+				©2023 dende-h
+			</Text>
 		</Container>
 	);
 }

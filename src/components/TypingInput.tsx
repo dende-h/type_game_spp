@@ -4,28 +4,18 @@ import { Input } from "@chakra-ui/react";
 
 interface TypingInputProps {
 	value: string;
-	onChange: (value: string, composition: boolean) => void;
+	onChange: (value: string) => void;
+	onKeyPress: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 	disabled: boolean;
 	inputRef: React.RefObject<HTMLInputElement>;
 }
 
-const TypingInput: React.FC<TypingInputProps> = ({ value, onChange, disabled, inputRef }) => {
-	const [composition, setComposition] = useState(false);
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		onChange(event.target.value, composition);
-	};
-
+const TypingInput: React.FC<TypingInputProps> = ({ value, onChange, disabled, inputRef, onKeyPress }) => {
 	return (
 		<Input
 			ref={inputRef}
 			value={value}
-			onCompositionStart={() => {
-				setComposition(true);
-			}}
-			onCompositionEnd={() => {
-				setComposition(false);
-			}}
-			onChange={handleChange}
+			onChange={(e) => onChange(e.target.value)}
 			isDisabled={disabled}
 			placeholder="Start typing..."
 			focusBorderColor="transparent"
@@ -36,6 +26,7 @@ const TypingInput: React.FC<TypingInputProps> = ({ value, onChange, disabled, in
 			maxW="800px"
 			mb={4}
 			autoFocus={true}
+			onKeyDown={onKeyPress}
 		/>
 	);
 };

@@ -35,7 +35,8 @@ export default function Home() {
 	const Mode = {
 		Jap: "japanese",
 		Roma: "roma",
-		Eng: "English"
+		Eng: "english",
+		Mania: "mania"
 	};
 	const [mode, setMode] = useState(Mode.Roma);
 
@@ -49,6 +50,7 @@ export default function Home() {
 	};
 	const [difficulty, setDifficulty] = useState(Difficulty.EASY);
 	useEffect(() => {
+		setMode(Mode.Roma);
 		if (difficulty === Difficulty.EASY) {
 			setWords(easyWords);
 		} else if (difficulty === Difficulty.NORMAL) {
@@ -69,14 +71,19 @@ export default function Home() {
 		if (mode === Mode.Jap) return "Japanese";
 		if (mode === Mode.Roma) return "Roma";
 		if (mode === Mode.Eng) return "English";
+		if (mode === Mode.Mania) return "Mania";
 		return "";
 	};
 
 	const toast = useToast();
 
-	const handleInputChange = (value: string, composition: boolean) => {
-		setUserInput(value);
-		if (value === currentWord && composition) {
+	const userInputRef = useRef(userInput);
+	useEffect(() => {
+		userInputRef.current = userInput;
+	}, [userInput]);
+
+	const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === "Enter" && userInputRef.current === currentWord) {
 			setScore(score + 1);
 			setUserInput("");
 			const newNum = Math.floor(Math.random() * words.length);
@@ -95,6 +102,10 @@ export default function Home() {
 				position: "top"
 			});
 		}
+	};
+
+	const handleInputChange = (value: string) => {
+		setUserInput(value);
 	};
 
 	const startGame = () => {
@@ -139,7 +150,9 @@ export default function Home() {
 				Typing Practice Game
 			</Text>
 			<Text fontSize={textSize} fontWeight="bold">
-				Difficulty: {difficultyLabel()}
+				Genre: {difficultyLabel()}
+				<br />
+				Mode:{modeLabel()}
 			</Text>
 			<Box textAlign="center" pt="10">
 				<Timer
@@ -151,7 +164,13 @@ export default function Home() {
 				/>
 				{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} />}
 				{isActive && (
-					<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} inputRef={inputRef} />
+					<TypingInput
+						value={userInput}
+						onChange={handleInputChange}
+						disabled={!isActive}
+						inputRef={inputRef}
+						onKeyPress={handleKeyPress}
+					/>
 				)}
 			</Box>
 
@@ -171,7 +190,7 @@ export default function Home() {
 							onClick={() => setDifficulty("easy")}
 							w={buttonWidth}
 							colorScheme={difficulty === "easy" ? "teal" : "gray"}
-							mb={{ base: 4, md: 0 }}
+							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
 							Easy
@@ -180,7 +199,7 @@ export default function Home() {
 							onClick={() => setDifficulty("normal")}
 							w={buttonWidth}
 							colorScheme={difficulty === "normal" ? "teal" : "gray"}
-							mb={{ base: 4, md: 0 }}
+							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
 							Normal
@@ -189,7 +208,7 @@ export default function Home() {
 							onClick={() => setDifficulty("hard")}
 							w={buttonWidth}
 							colorScheme={difficulty === "hard" ? "teal" : "gray"}
-							mb={{ base: 4, md: 0 }}
+							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
 							Hard
@@ -200,7 +219,7 @@ export default function Home() {
 							onClick={() => setMode(Mode.Jap)}
 							w={buttonWidth}
 							colorScheme={mode === Mode.Jap ? "teal" : "gray"}
-							mb={{ base: 4, md: 0 }}
+							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
 							JapaneseMode
@@ -209,25 +228,41 @@ export default function Home() {
 							onClick={() => setMode(Mode.Roma)}
 							w={buttonWidth}
 							colorScheme={mode === Mode.Roma ? "teal" : "gray"}
-							mb={{ base: 4, md: 0 }}
+							mb={{ base: 2, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
 							RomaMode
 						</Button>
-						<Button
-							onClick={() => setMode(Mode.Eng)}
-							w={buttonWidth}
-							colorScheme={mode === Mode.Eng ? "teal" : "gray"}
-							mb={{ base: 4, md: 0 }}
-							mx={{ base: 0, md: 2 }}
-						>
-							EnglishMode
-						</Button>
+
+						{difficulty === "hard" ? (
+							<Button
+								onClick={() => setMode(Mode.Mania)}
+								w={buttonWidth}
+								colorScheme={mode === Mode.Mania ? "teal" : "gray"}
+								mb={{ base: 2, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								ManiaMode
+							</Button>
+						) : (
+							<Button
+								onClick={() => setMode(Mode.Eng)}
+								w={buttonWidth}
+								colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+								mb={{ base: 2, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								EnglishMode
+							</Button>
+						)}
 					</Flex>
 				</VStack>
 			) : (
 				<VStack spacing={8} my={8} h={"50%"}></VStack>
 			)}
+			<Text fontSize={"xl"} color={headingColor} my={6}>
+				©2023 dende-h
+			</Text>
 		</Container>
 	);
 }
