@@ -74,9 +74,9 @@ export default function Home() {
 
 	const toast = useToast();
 
-	const handleInputChange = (value: string) => {
+	const handleInputChange = (value: string, composition: boolean) => {
 		setUserInput(value);
-		if (value === currentWord) {
+		if (value === currentWord && composition) {
 			setScore(score + 1);
 			setUserInput("");
 			const newNum = Math.floor(Math.random() * words.length);
