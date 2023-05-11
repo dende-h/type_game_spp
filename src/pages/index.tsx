@@ -17,6 +17,7 @@ import {
 	Flex
 } from "@chakra-ui/react";
 import { novelWords, comicAndAnimeWords, hunterWords } from "../constant/typingProblems";
+import Seo from "../components/Seo";
 
 const easyWords = novelWords;
 const normalWords = comicAndAnimeWords;
@@ -202,132 +203,142 @@ export default function Home() {
 	const flexDirection = useBreakpointValue<FlexProps["flexDirection"]>({ base: "column", md: "row" });
 
 	return (
-		<Container
-			height="100vh"
-			display="flex"
-			flexDirection="column"
-			justifyContent="center"
-			alignItems="center"
-			backgroundColor={bgColor}
-		>
-			<Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color={headingColor} mb={6}>
-				恐ろしく速い“Typing”僕でなきゃ見逃しちゃうねゲーム
-			</Text>
-			<Text fontSize={textSize} fontWeight="bold">
-				Genre : {difficultyLabel()}
-				<br />
-				Mode : {modeLabel()}
-			</Text>
-			<Box textAlign="center" pt="10">
-				<Timer
-					isActive={isActive}
-					onTimeUp={onTimeUp}
-					duration={duration}
-					timeLeft={timeLeft}
-					setTimeLeft={setTimeLeft}
-				/>
-				{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} />}
-				{isActive && (
-					<TypingInput
-						value={userInput}
-						onChange={handleInputChange}
-						disabled={!isActive}
-						inputRef={inputRef}
-						onKeyPress={handleKeyPress}
+		<>
+			<Seo
+				pageDescription={null}
+				pageTitle={null}
+				pagePath={"https://type-game-spp.vercel.app/"}
+				pageImg={null}
+				pageImgWidth={1200}
+				pageImgHeight={600}
+			/>
+			<Container
+				height="100vh"
+				display="flex"
+				flexDirection="column"
+				justifyContent="center"
+				alignItems="center"
+				backgroundColor={bgColor}
+			>
+				<Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color={headingColor} mb={6}>
+					恐ろしく速い“Typing”オレでなきゃ見逃しちゃうねゲーム
+				</Text>
+				<Text fontSize={textSize} fontWeight="bold">
+					Genre : {difficultyLabel()}
+					<br />
+					Mode : {modeLabel()}
+				</Text>
+				<Box textAlign="center" pt="10">
+					<Timer
+						isActive={isActive}
+						onTimeUp={onTimeUp}
+						duration={duration}
+						timeLeft={timeLeft}
+						setTimeLeft={setTimeLeft}
 					/>
+					{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} />}
+					{isActive && (
+						<TypingInput
+							value={userInput}
+							onChange={handleInputChange}
+							disabled={!isActive}
+							inputRef={inputRef}
+							onKeyPress={handleKeyPress}
+						/>
+					)}
+				</Box>
+
+				{!isActive ? (
+					<VStack spacing={{ base: 4, md: 8 }} my={{ base: 4, md: 8 }} h={"50%"}>
+						<Button
+							onClick={startGameAndFocusInput}
+							disabled={isActive}
+							fontSize={textSize}
+							w={buttonWidth}
+							colorScheme="blue"
+						>
+							Start Game
+						</Button>
+						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
+							<Button
+								onClick={() => setDifficulty("easy")}
+								w={buttonWidth}
+								colorScheme={difficulty === "easy" ? "teal" : "gray"}
+								mb={{ base: 2, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								Novel Words
+							</Button>
+							<Button
+								onClick={() => setDifficulty("normal")}
+								w={buttonWidth}
+								colorScheme={difficulty === "normal" ? "teal" : "gray"}
+								mb={{ base: 2, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								Comic&Anime
+							</Button>
+							<Button
+								onClick={() => setDifficulty("hard")}
+								w={buttonWidth}
+								colorScheme={difficulty === "hard" ? "teal" : "gray"}
+								mb={{ base: 2, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								Hunter×Hunter
+							</Button>
+						</Flex>
+						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
+							<Button
+								onClick={() => setMode(Mode.Jap)}
+								w={buttonWidth}
+								colorScheme={mode === Mode.Jap ? "teal" : "gray"}
+								mb={{ base: 2, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								JapaneseMode
+							</Button>
+							<Button
+								onClick={() => setMode(Mode.Roma)}
+								w={buttonWidth}
+								colorScheme={mode === Mode.Roma ? "teal" : "gray"}
+								mb={{ base: 2, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								RomaMode
+							</Button>
+
+							{difficulty === "hard" ? (
+								<Button
+									onClick={() => setMode(Mode.Mania)}
+									w={buttonWidth}
+									colorScheme={mode === Mode.Mania ? "teal" : "gray"}
+									mb={{ base: 2, md: 0 }}
+									mx={{ base: 0, md: 2 }}
+								>
+									ManiaMode
+								</Button>
+							) : (
+								<Button
+									onClick={() => setMode(Mode.Eng)}
+									w={buttonWidth}
+									colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+									mb={{ base: 2, md: 0 }}
+									mx={{ base: 0, md: 2 }}
+								>
+									EnglishMode
+								</Button>
+							)}
+						</Flex>
+					</VStack>
+				) : (
+					<VStack spacing={8} my={8} h={"50%"}></VStack>
 				)}
-			</Box>
-
-			{!isActive ? (
-				<VStack spacing={{ base: 4, md: 8 }} my={{ base: 4, md: 8 }} h={"50%"}>
-					<Button
-						onClick={startGameAndFocusInput}
-						disabled={isActive}
-						fontSize={textSize}
-						w={buttonWidth}
-						colorScheme="blue"
-					>
-						Start Game
-					</Button>
-					<Flex direction={flexDirection} justifyContent="space-between" w="100%">
-						<Button
-							onClick={() => setDifficulty("easy")}
-							w={buttonWidth}
-							colorScheme={difficulty === "easy" ? "teal" : "gray"}
-							mb={{ base: 2, md: 0 }}
-							mx={{ base: 0, md: 2 }}
-						>
-							Novel Words
-						</Button>
-						<Button
-							onClick={() => setDifficulty("normal")}
-							w={buttonWidth}
-							colorScheme={difficulty === "normal" ? "teal" : "gray"}
-							mb={{ base: 2, md: 0 }}
-							mx={{ base: 0, md: 2 }}
-						>
-							Comic&Anime
-						</Button>
-						<Button
-							onClick={() => setDifficulty("hard")}
-							w={buttonWidth}
-							colorScheme={difficulty === "hard" ? "teal" : "gray"}
-							mb={{ base: 2, md: 0 }}
-							mx={{ base: 0, md: 2 }}
-						>
-							Hunter×Hunter
-						</Button>
-					</Flex>
-					<Flex direction={flexDirection} justifyContent="space-between" w="100%">
-						<Button
-							onClick={() => setMode(Mode.Jap)}
-							w={buttonWidth}
-							colorScheme={mode === Mode.Jap ? "teal" : "gray"}
-							mb={{ base: 2, md: 0 }}
-							mx={{ base: 0, md: 2 }}
-						>
-							JapaneseMode
-						</Button>
-						<Button
-							onClick={() => setMode(Mode.Roma)}
-							w={buttonWidth}
-							colorScheme={mode === Mode.Roma ? "teal" : "gray"}
-							mb={{ base: 2, md: 0 }}
-							mx={{ base: 0, md: 2 }}
-						>
-							RomaMode
-						</Button>
-
-						{difficulty === "hard" ? (
-							<Button
-								onClick={() => setMode(Mode.Mania)}
-								w={buttonWidth}
-								colorScheme={mode === Mode.Mania ? "teal" : "gray"}
-								mb={{ base: 2, md: 0 }}
-								mx={{ base: 0, md: 2 }}
-							>
-								ManiaMode
-							</Button>
-						) : (
-							<Button
-								onClick={() => setMode(Mode.Eng)}
-								w={buttonWidth}
-								colorScheme={mode === Mode.Eng ? "teal" : "gray"}
-								mb={{ base: 2, md: 0 }}
-								mx={{ base: 0, md: 2 }}
-							>
-								EnglishMode
-							</Button>
-						)}
-					</Flex>
-				</VStack>
-			) : (
-				<VStack spacing={8} my={8} h={"50%"}></VStack>
-			)}
-			<Text fontSize={"xl"} color={headingColor} my={6}>
-				©2023 dende-h
-			</Text>
-		</Container>
+				<Text fontSize={"xl"} color={headingColor} my={6}>
+					©2023 dende-h
+				</Text>
+			</Container>
+		</>
 	);
 }
 export const getStaticProps = async () => {
