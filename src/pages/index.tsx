@@ -102,9 +102,9 @@ export default function Home() {
 				setScore(score + 1);
 				setUserInput("");
 				toast({
-					title: mode === Mode.Mania ? words[num].kanji : "Correct! +5 Seconds",
+					title: mode === Mode.Mania ? words[num].kanji : "Correct!",
 					status: "success",
-					duration: 1000,
+					duration: mode === Mode.Mania ? 3000 : 1000,
 					isClosable: true,
 					position: "top"
 				});
@@ -144,11 +144,11 @@ export default function Home() {
 				toast({
 					title: mode === Mode.Mania ? words[num].kanji : "Correct!",
 					status: "success",
-					duration: 1000,
+					duration: mode === Mode.Mania ? 3000 : 1000,
 					isClosable: true,
 					position: "top"
 				});
-				if (score % 3 === 0) {
+				if (score !== 0 && score % 3 === 0) {
 					incrementTime(5);
 					toast({
 						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
