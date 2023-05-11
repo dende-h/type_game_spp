@@ -252,7 +252,7 @@ export default function Home() {
 				</Box>
 
 				{!isActive ? (
-					<VStack spacing={{ base: 2, md: 4 }} my={{ base: 2, md: 4 }} h={"50%"}>
+					<VStack spacing={{ base: 0, md: 4 }} my={{ base: 0, md: 4 }} minH={"50%"}>
 						<Button
 							onClick={startGameAndFocusInput}
 							disabled={isActive}
@@ -271,7 +271,7 @@ export default function Home() {
 								onClick={() => setDifficulty("easy")}
 								w={buttonWidth}
 								colorScheme={difficulty === "easy" ? "teal" : "gray"}
-								mb={{ base: 2, md: 0 }}
+								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								Novel Words
@@ -280,7 +280,7 @@ export default function Home() {
 								onClick={() => setDifficulty("normal")}
 								w={buttonWidth}
 								colorScheme={difficulty === "normal" ? "teal" : "gray"}
-								mb={{ base: 2, md: 0 }}
+								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								Comic&Anime
@@ -289,7 +289,7 @@ export default function Home() {
 								onClick={() => setDifficulty("hard")}
 								w={buttonWidth}
 								colorScheme={difficulty === "hard" ? "teal" : "gray"}
-								mb={{ base: 2, md: 0 }}
+								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								Hunter×Hunter
@@ -304,7 +304,7 @@ export default function Home() {
 								onClick={() => setMode(Mode.Jap)}
 								w={buttonWidth}
 								colorScheme={mode === Mode.Jap ? "teal" : "gray"}
-								mb={{ base: 2, md: 0 }}
+								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								JapaneseMode
@@ -313,7 +313,7 @@ export default function Home() {
 								onClick={() => setMode(Mode.Roma)}
 								w={buttonWidth}
 								colorScheme={mode === Mode.Roma ? "teal" : "gray"}
-								mb={{ base: 2, md: 0 }}
+								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								RomaMode
@@ -324,7 +324,7 @@ export default function Home() {
 									onClick={() => setMode(Mode.Mania)}
 									w={buttonWidth}
 									colorScheme={mode === Mode.Mania ? "teal" : "gray"}
-									mb={{ base: 2, md: 0 }}
+									mb={{ base: 1, md: 0 }}
 									mx={{ base: 0, md: 2 }}
 								>
 									ManiaMode
@@ -334,7 +334,7 @@ export default function Home() {
 									onClick={() => setMode(Mode.Eng)}
 									w={buttonWidth}
 									colorScheme={mode === Mode.Eng ? "teal" : "gray"}
-									mb={{ base: 2, md: 0 }}
+									mb={{ base: 1, md: 0 }}
 									mx={{ base: 0, md: 2 }}
 								>
 									EnglishMode
