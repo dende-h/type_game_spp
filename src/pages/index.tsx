@@ -223,8 +223,7 @@ export default function Home() {
 			>
 				<Text as={"h1"} fontSize={{ base: "lg", md: "2xl" }} fontWeight="bold" color={headingColor} mb={6}>
 					恐ろしく速い“Typing”
-					<br />
-					　　　オレでなきゃ見逃しちゃうねゲーム
+					<br />　 オレでなきゃ見逃しちゃうねゲーム
 				</Text>
 				<Text fontSize={textSize} fontWeight="bold">
 					Genre : {difficultyLabel()}
