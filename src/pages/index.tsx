@@ -252,7 +252,7 @@ export default function Home() {
 				</Box>
 
 				{!isActive ? (
-					<VStack spacing={{ base: 4, md: 8 }} my={{ base: 2, md: 66 }} h={"50%"}>
+					<VStack spacing={{ base: 2, md: 4 }} my={{ base: 2, md: 4 }} h={"50%"}>
 						<Button
 							onClick={startGameAndFocusInput}
 							disabled={isActive}
