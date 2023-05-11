@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 // pages/index.tsx
 import React, { useEffect, useRef, useState } from "react";
 import WordToType from "../components/WordToType";
@@ -220,9 +221,10 @@ export default function Home() {
 				alignItems="center"
 				backgroundColor={bgColor}
 			>
-				<Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color={headingColor} mb={6}>
-					恐ろしく速い“Typing”<br />
-					オレでなきゃ見逃しちゃうねゲーム
+				<Text fontSize={{ base: "xl", md: "22xl" }} fontWeight="bold" color={headingColor} mb={6}>
+					恐ろしく速い“Typing”
+					<br />
+					　　　オレでなきゃ見逃しちゃうねゲーム
 				</Text>
 				<Text fontSize={textSize} fontWeight="bold">
 					Genre : {difficultyLabel()}
