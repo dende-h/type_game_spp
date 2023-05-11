@@ -16,14 +16,14 @@ import {
 	FlexProps,
 	Flex
 } from "@chakra-ui/react";
-import { fantasyWords, sfWords, mysteryWords } from "../constant/typingProblems";
+import { novelWords, comicAndAnimeWords, hunterWords } from "../constant/typingProblems";
 
-const easyWords = fantasyWords;
-const normalWords = mysteryWords;
-const hardWords = sfWords;
+const easyWords = novelWords;
+const normalWords = comicAndAnimeWords;
+const hardWords = hunterWords;
 export default function Home() {
-	const [words, setWords] = useState(normalWords);
-	const [num, setNum] = useState(Math.floor(Math.random() * words.length));
+	const [words, setWords] = useState(easyWords);
+	const [num, setNum] = useState(0);
 	const [currentWord, setCurrentWord] = useState(words[num].romaji);
 	const [jaWord, setJaWord] = useState(words[num].kanji);
 	const [userInput, setUserInput] = useState("");
@@ -32,6 +32,12 @@ export default function Home() {
 	const router = useRouter();
 	const duration = 30;
 	const [timeLeft, setTimeLeft] = useState(duration);
+	const Mode = {
+		Jap: "japanese",
+		Roma: "roma",
+		Eng: "English"
+	};
+	const [mode, setMode] = useState(Mode.Roma);
 
 	const incrementTime = () => {
 		setTimeLeft((prevTime) => prevTime + 1);
@@ -41,7 +47,7 @@ export default function Home() {
 		NORMAL: "normal",
 		HARD: "hard"
 	};
-	const [difficulty, setDifficulty] = useState(Difficulty.NORMAL);
+	const [difficulty, setDifficulty] = useState(Difficulty.EASY);
 	useEffect(() => {
 		if (difficulty === Difficulty.EASY) {
 			setWords(easyWords);
@@ -59,6 +65,13 @@ export default function Home() {
 		return "";
 	};
 
+	const modeLabel = () => {
+		if (mode === Mode.Jap) return "Japanese";
+		if (mode === Mode.Roma) return "Roma";
+		if (mode === Mode.Eng) return "English";
+		return "";
+	};
+
 	const toast = useToast();
 
 	const handleInputChange = (value: string) => {
@@ -67,7 +80,9 @@ export default function Home() {
 			setScore(score + 1);
 			setUserInput("");
 			const newNum = Math.floor(Math.random() * words.length);
-			setCurrentWord(words[newNum].romaji);
+			setCurrentWord(
+				mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
+			);
 			setJaWord(words[newNum].kanji);
 			setNum(newNum);
 
@@ -86,12 +101,13 @@ export default function Home() {
 		setIsActive(true);
 		setScore(0);
 		setUserInput("");
-		setCurrentWord(words[num].romaji);
+		setCurrentWord(mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma ? words[num].romaji : words[num].eng);
 		setJaWord(words[num].kanji);
 	};
 
 	const onTimeUp = () => {
 		setUserInput("");
+		setNum(0);
 		setTimeout(() => {
 			router.push({ pathname: "/result", query: { score } });
 		}, 2000);
@@ -133,12 +149,14 @@ export default function Home() {
 					timeLeft={timeLeft}
 					setTimeLeft={setTimeLeft}
 				/>
-				{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} />}
-				<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} inputRef={inputRef} />
+				{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} />}
+				{isActive && (
+					<TypingInput value={userInput} onChange={handleInputChange} disabled={!isActive} inputRef={inputRef} />
+				)}
 			</Box>
 
-			{!isActive && (
-				<VStack spacing={8} my={8}>
+			{!isActive ? (
+				<VStack spacing={8} my={8} h={"50%"}>
 					<Button
 						onClick={startGameAndFocusInput}
 						disabled={isActive}
@@ -177,7 +195,38 @@ export default function Home() {
 							Hard
 						</Button>
 					</Flex>
+					<Flex direction={flexDirection} justifyContent="space-between" w="100%">
+						<Button
+							onClick={() => setMode(Mode.Jap)}
+							w={buttonWidth}
+							colorScheme={mode === Mode.Jap ? "teal" : "gray"}
+							mb={{ base: 4, md: 0 }}
+							mx={{ base: 0, md: 2 }}
+						>
+							JapaneseMode
+						</Button>
+						<Button
+							onClick={() => setMode(Mode.Roma)}
+							w={buttonWidth}
+							colorScheme={difficulty === Mode.Roma ? "teal" : "gray"}
+							mb={{ base: 4, md: 0 }}
+							mx={{ base: 0, md: 2 }}
+						>
+							RomaMode
+						</Button>
+						<Button
+							onClick={() => setMode(Mode.Eng)}
+							w={buttonWidth}
+							colorScheme={difficulty === Mode.Eng ? "teal" : "gray"}
+							mb={{ base: 4, md: 0 }}
+							mx={{ base: 0, md: 2 }}
+						>
+							EnglishMode
+						</Button>
+					</Flex>
 				</VStack>
+			) : (
+				<VStack spacing={8} my={8} h={"50%"}></VStack>
 			)}
 		</Container>
 	);

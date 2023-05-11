@@ -6,15 +6,16 @@ interface WordToTypeProps {
 	word: string;
 	jaWord: string;
 	userInput: string;
+	mode: string;
 }
 
-const WordToType: React.FC<WordToTypeProps> = ({ word, userInput, jaWord }) => {
+const WordToType: React.FC<WordToTypeProps> = ({ word, userInput, jaWord, mode }) => {
 	const wordCharacters = word.split("");
 	const userInputCharacters = userInput.split("");
 
 	return (
 		<VStack mt={8} spacing={0}>
-			<Text fontSize="2xl">{jaWord}</Text>
+			{mode === "japanese" || <Text fontSize="2xl">{jaWord}</Text>}
 			<Text fontSize="3xl" mb={4}>
 				{wordCharacters.map((char, index) => (
 					<Text as="span" key={index} color={userInputCharacters[index] === char ? "green.500" : "inherit"}>
