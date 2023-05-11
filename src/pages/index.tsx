@@ -262,6 +262,10 @@ export default function Home() {
 						>
 							Start Game
 						</Button>
+						<Text as={"h4"}>
+							<br />
+							Genre
+						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
 								onClick={() => setDifficulty("easy")}
@@ -291,6 +295,10 @@ export default function Home() {
 								Hunter×Hunter
 							</Button>
 						</Flex>
+						<Text as={"h4"}>
+							<br />
+							Mode
+						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
 								onClick={() => setMode(Mode.Jap)}
