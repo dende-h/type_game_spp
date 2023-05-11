@@ -37,7 +37,7 @@ export default function Home() {
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
-	const duration = 30;
+	const duration = 60;
 	const [timeLeft, setTimeLeft] = useState(duration);
 	const Mode = {
 		Jap: "japanese",
@@ -48,7 +48,7 @@ export default function Home() {
 	const [mode, setMode] = useState(Mode.Roma);
 
 	const incrementTime = () => {
-		setTimeLeft((prevTime) => prevTime + 1);
+		setTimeLeft((prevTime) => prevTime + 5);
 	};
 	const Difficulty = {
 		EASY: "easy",
@@ -68,9 +68,9 @@ export default function Home() {
 	}, [difficulty]);
 
 	const difficultyLabel = () => {
-		if (words === easyWords) return "Easy";
-		if (words === normalWords) return "Normal";
-		if (words === hardWords) return "Hard";
+		if (words === easyWords) return "Novel Words";
+		if (words === normalWords) return "Comic and Anime";
+		if (words === hardWords) return "Hunter×Hunter";
 		return "";
 	};
 
@@ -96,14 +96,20 @@ export default function Home() {
 				setUserInput("");
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
+					mode === Mode.Jap
+						? words[newNum].kanji
+						: mode === Mode.Roma
+						? words[newNum].romaji
+						: mode === Mode.Mania
+						? words[newNum].kanji
+						: words[newNum].eng
 				);
 				setJaWord(words[newNum].kanji);
 				setNum(newNum);
 
 				incrementTime();
 				toast({
-					title: "Correct! +1 Seconds",
+					title: "Correct! +5 Seconds",
 					status: "success",
 					duration: 1000,
 					isClosable: true,
@@ -124,7 +130,13 @@ export default function Home() {
 				setUserInput("");
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
+					mode === Mode.Jap
+						? words[newNum].kanji
+						: mode === Mode.Roma
+						? words[newNum].romaji
+						: mode === Mode.Mania
+						? words[newNum].kanji
+						: words[newNum].eng
 				);
 				setJaWord(words[newNum].kanji);
 				setNum(newNum);
@@ -145,8 +157,16 @@ export default function Home() {
 		setIsActive(true);
 		setScore(0);
 		setUserInput("");
-		setCurrentWord(mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma ? words[num].romaji : words[num].eng);
-		setJaWord(words[num].kanji);
+		setCurrentWord(
+			mode === Mode.Jap
+				? words[num].kanji
+				: mode === Mode.Roma
+				? words[num].romaji
+				: mode === Mode.Mania
+				? words[num].kanji
+				: words[num].eng
+		);
+		setJaWord(mode === Mode.Mania ? words[num].eng : words[num].kanji);
 	};
 
 	const onTimeUp = () => {
