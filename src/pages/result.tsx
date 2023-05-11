@@ -36,3 +36,10 @@ export default function Result() {
 		</Container>
 	);
 }
+export const getStaticProps = async () => {
+	return {
+		props: {
+			data: "This is static data"
+		}
+	};
+};
