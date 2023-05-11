@@ -208,7 +208,7 @@ export default function Home() {
 						<Button
 							onClick={() => setMode(Mode.Roma)}
 							w={buttonWidth}
-							colorScheme={difficulty === Mode.Roma ? "teal" : "gray"}
+							colorScheme={mode === Mode.Roma ? "teal" : "gray"}
 							mb={{ base: 4, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
@@ -217,7 +217,7 @@ export default function Home() {
 						<Button
 							onClick={() => setMode(Mode.Eng)}
 							w={buttonWidth}
-							colorScheme={difficulty === Mode.Eng ? "teal" : "gray"}
+							colorScheme={mode === Mode.Eng ? "teal" : "gray"}
 							mb={{ base: 4, md: 0 }}
 							mx={{ base: 0, md: 2 }}
 						>
