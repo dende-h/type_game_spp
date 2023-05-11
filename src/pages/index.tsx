@@ -108,7 +108,7 @@ export default function Home() {
 					isClosable: true,
 					position: "top"
 				});
-				if (score % 3 === 0) {
+				if (score !== 0 && score % 3 === 0) {
 					incrementTime(5);
 					toast({
 						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
