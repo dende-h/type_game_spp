@@ -37,8 +37,7 @@ export default function Home() {
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
-	const duration = 60;
-	const [timeLeft, setTimeLeft] = useState(duration);
+
 	const Mode = {
 		Jap: "japanese",
 		Roma: "roma",
@@ -47,9 +46,6 @@ export default function Home() {
 	};
 	const [mode, setMode] = useState(Mode.Roma);
 
-	const incrementTime = () => {
-		setTimeLeft((prevTime) => prevTime + 5);
-	};
 	const Difficulty = {
 		EASY: "easy",
 		NORMAL: "normal",
@@ -80,6 +76,13 @@ export default function Home() {
 		if (mode === Mode.Eng) return "English";
 		if (mode === Mode.Mania) return "Mania";
 		return "";
+	};
+
+	const duration = difficulty === Difficulty.EASY ? 60 : 120;
+	const [timeLeft, setTimeLeft] = useState(duration);
+
+	const incrementTime = () => {
+		setTimeLeft((prevTime) => prevTime + 5);
 	};
 
 	const toast = useToast();
@@ -144,7 +147,6 @@ export default function Home() {
 				setNum(newNum);
 
 				incrementTime();
-				
 			}
 		}
 	};
