@@ -20,7 +20,7 @@ export default function Result() {
 			backgroundColor={bgColor}
 		>
 			<Text fontSize="3xl" fontWeight="bold" color={headingColor} mb={6}>
-				Typing Practice Game
+				Thanks for playing!
 			</Text>
 			<Box textAlign="center">
 				<Text fontSize="3xl" mb={4}>
