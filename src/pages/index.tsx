@@ -143,7 +143,7 @@ export default function Home() {
 
 				incrementTime();
 				toast({
-					title: "Correct! +1 Seconds",
+					title: "Correct! +5 Seconds",
 					status: "success",
 					duration: 1000,
 					isClosable: true,
@@ -228,7 +228,7 @@ export default function Home() {
 			</Box>
 
 			{!isActive ? (
-				<VStack spacing={8} my={8} h={"50%"}>
+				<VStack spacing={{ base: 4, md: 8 }} my={{ base: 4, md: 8 }} h={"50%"}>
 					<Button
 						onClick={startGameAndFocusInput}
 						disabled={isActive}
