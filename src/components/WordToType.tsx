@@ -15,8 +15,12 @@ const WordToType: React.FC<WordToTypeProps> = ({ word, userInput, jaWord, mode }
 	const bgColor = useColorModeValue("gray.50", "gray.900");
 	return (
 		<VStack mt={8} spacing={0}>
-			{mode === "japanese" || <Text fontSize={{ base: "xl", md: "2xl" }}>{jaWord}</Text>}
-			<Text fontSize={{ base: "2xl", md: "3xl" }} mb={4}>
+			{mode === "japanese" || (
+				<Text fontSize={{ base: "xl", md: "2xl" }} overflowWrap="break-word">
+					{jaWord}
+				</Text>
+			)}
+			<Text fontSize={{ base: "2xl", md: "3xl" }} mb={4} overflowWrap="break-word">
 				{wordCharacters.map((char, index) => (
 					<Text
 						as="span"

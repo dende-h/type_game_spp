@@ -220,8 +220,9 @@ export default function Home() {
 				alignItems="center"
 				backgroundColor={bgColor}
 			>
-				<Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color={headingColor} mb={6}>
-					恐ろしく速い“Typing”オレでなきゃ見逃しちゃうねゲーム
+				<Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color={headingColor} mb={6}>
+					恐ろしく速い“Typing”<br />
+					オレでなきゃ見逃しちゃうねゲーム
 				</Text>
 				<Text fontSize={textSize} fontWeight="bold">
 					Genre : {difficultyLabel()}
