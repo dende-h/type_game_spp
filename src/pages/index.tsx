@@ -221,7 +221,7 @@ export default function Home() {
 				alignItems="center"
 				backgroundColor={bgColor}
 			>
-				<Text fontSize={{ base: "xl", md: "22xl" }} fontWeight="bold" color={headingColor} mb={6}>
+				<Text as={"h1"} fontSize={{ base: "lg", md: "2xl" }} fontWeight="bold" color={headingColor} mb={6}>
 					恐ろしく速い“Typing”
 					<br />
 					　　　オレでなきゃ見逃しちゃうねゲーム
