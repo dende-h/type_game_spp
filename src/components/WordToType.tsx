@@ -21,7 +21,15 @@ const WordToType: React.FC<WordToTypeProps> = ({ word, userInput, jaWord, mode }
 					<Text
 						as="span"
 						key={index}
-						color={userInputCharacters[index] === char ? "green.500" : mode === "mania" ? bgColor : "inherit"}
+						color={
+							userInputCharacters[index] === char
+								? "green.500"
+								: mode === "mania"
+								? index === 0
+									? "inherit"
+									: bgColor
+								: "inherit"
+						}
 					>
 						{char}
 					</Text>

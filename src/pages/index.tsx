@@ -94,27 +94,24 @@ export default function Home() {
 			if (event.key === "Enter" && userInputRef.current === currentWord) {
 				setScore(score + 1);
 				setUserInput("");
-				const newNum = Math.floor(Math.random() * words.length);
-				setCurrentWord(
-					mode === Mode.Jap
-						? words[newNum].kanji
-						: mode === Mode.Roma
-						? words[newNum].romaji
-						: mode === Mode.Mania
-						? words[newNum].kanji
-						: words[newNum].eng
-				);
-				setJaWord(words[newNum].kanji);
-				setNum(newNum);
-
-				incrementTime();
 				toast({
-					title: "Correct! +5 Seconds",
+					title: mode === Mode.Mania ? words[num].kanji : "Correct! +5 Seconds",
 					status: "success",
 					duration: 1000,
 					isClosable: true,
 					position: "top"
 				});
+				const newNum = Math.floor(Math.random() * words.length);
+				setCurrentWord(
+					mode === Mode.Jap
+						? words[newNum].kanji
+						: mode === Mode.Roma || Mode.Mania
+						? words[newNum].romaji
+						: words[newNum].eng
+				);
+				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
+				setNum(newNum);
+				incrementTime();
 			}
 		}
 	};
@@ -128,27 +125,26 @@ export default function Home() {
 			if (value === currentWord) {
 				setScore(score + 1);
 				setUserInput("");
-				const newNum = Math.floor(Math.random() * words.length);
-				setCurrentWord(
-					mode === Mode.Jap
-						? words[newNum].kanji
-						: mode === Mode.Roma
-						? words[newNum].romaji
-						: mode === Mode.Mania
-						? words[newNum].kanji
-						: words[newNum].eng
-				);
-				setJaWord(words[newNum].kanji);
-				setNum(newNum);
-
-				incrementTime();
 				toast({
-					title: "Correct! +5 Seconds",
+					title: mode === Mode.Mania ? words[num].kanji : "Correct! +5 Seconds",
 					status: "success",
 					duration: 1000,
 					isClosable: true,
 					position: "top"
 				});
+				const newNum = Math.floor(Math.random() * words.length);
+				setCurrentWord(
+					mode === Mode.Jap
+						? words[newNum].kanji
+						: mode === Mode.Roma || Mode.Mania
+						? words[newNum].romaji
+						: words[newNum].eng
+				);
+				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
+				setNum(newNum);
+
+				incrementTime();
+				
 			}
 		}
 	};
@@ -158,13 +154,7 @@ export default function Home() {
 		setScore(0);
 		setUserInput("");
 		setCurrentWord(
-			mode === Mode.Jap
-				? words[num].kanji
-				: mode === Mode.Roma
-				? words[num].romaji
-				: mode === Mode.Mania
-				? words[num].kanji
-				: words[num].eng
+			mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma || Mode.Mania ? words[num].romaji : words[num].eng
 		);
 		setJaWord(mode === Mode.Mania ? words[num].eng : words[num].kanji);
 	};
@@ -203,9 +193,9 @@ export default function Home() {
 				Typing Practice Game
 			</Text>
 			<Text fontSize={textSize} fontWeight="bold">
-				Genre: {difficultyLabel()}
+				Genre : {difficultyLabel()}
 				<br />
-				Mode:{modeLabel()}
+				Mode : {modeLabel()}
 			</Text>
 			<Box textAlign="center" pt="10">
 				<Timer

@@ -27,6 +27,7 @@ const TypingInput: React.FC<TypingInputProps> = ({ value, onChange, disabled, in
 			mb={4}
 			autoFocus={true}
 			onKeyDown={onKeyPress}
+			
 		/>
 	);
 };
