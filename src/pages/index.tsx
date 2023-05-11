@@ -81,8 +81,8 @@ export default function Home() {
 	const duration = difficulty === Difficulty.EASY ? 60 : 120;
 	const [timeLeft, setTimeLeft] = useState(duration);
 
-	const incrementTime = () => {
-		setTimeLeft((prevTime) => prevTime + 5);
+	const incrementTime = (addTime: number) => {
+		setTimeLeft((prevTime) => prevTime + addTime);
 	};
 
 	const toast = useToast();
@@ -93,7 +93,7 @@ export default function Home() {
 	}, [userInput]);
 
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		if (isMobileDevice() || mode === Mode.Jap || mode === Mode.Mania) {
+		if (isMobileDevice() || mode === Mode.Jap) {
 			if (event.key === "Enter" && userInputRef.current === currentWord) {
 				setScore(score + 1);
 				setUserInput("");
@@ -104,6 +104,7 @@ export default function Home() {
 					isClosable: true,
 					position: "top"
 				});
+				incrementTime(5);
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
 					mode === Mode.Jap
@@ -114,14 +115,13 @@ export default function Home() {
 				);
 				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
 				setNum(newNum);
-				incrementTime();
 			}
 		}
 	};
 
 	const handleInputChange = (value: string) => {
 		setUserInput(value);
-		if (isMobileDevice() || mode === Mode.Jap || mode === Mode.Mania) {
+		if (isMobileDevice() || mode === Mode.Jap) {
 			// なにもしない
 		} else {
 			// PCの場合、エンターキーを押さずに判定
@@ -135,6 +135,7 @@ export default function Home() {
 					isClosable: true,
 					position: "top"
 				});
+				incrementTime(5);
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
 					mode === Mode.Jap
@@ -145,8 +146,6 @@ export default function Home() {
 				);
 				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
 				setNum(newNum);
-
-				incrementTime();
 			}
 		}
 	};

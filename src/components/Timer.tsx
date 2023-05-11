@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 // components/Timer.tsx
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Text, useColorModeValue } from "@chakra-ui/react";
 interface TimerProps {
 	isActive: boolean;
