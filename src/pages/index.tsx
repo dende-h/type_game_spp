@@ -81,10 +81,11 @@ export default function Home() {
 		return "";
 	};
 
-	const durationInitial = difficulty === Difficulty.EASY ? 60 : 120;
+	const durationInitial = difficulty === Difficulty.EASY ? 60 : 90;
 	const [duration, setDuration] = useState(durationInitial);
 	const [timeLeft, setTimeLeft] = useState(duration);
 
+	
 	const incrementTime = (addTime: number) => {
 		setDuration((prevDuration) => prevDuration + addTime);
 	};
