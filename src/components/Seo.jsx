@@ -5,11 +5,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-tabs */
 import Head from "next/head";
+import React from "react";
 
 const Seo = ({ pageTitle, pageDescription, pagePath, pageImg, pageImgWidth, pageImgHeight }) => {
 	const defaultTitle = "恐ろしく速いタイピング";
-	const defaultDescription =
-		"恐ろしく速いタイピングを習得して彼をビックリさせましょう";
+	const defaultDescription = "恐ろしく速いタイピングを習得して彼をビックリさせましょう";
 	const defaultImageUrl = "/typinggame";
 
 	const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle;
