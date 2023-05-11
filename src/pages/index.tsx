@@ -22,6 +22,13 @@ const easyWords = novelWords;
 const normalWords = comicAndAnimeWords;
 const hardWords = hunterWords;
 export default function Home() {
+	const isMobileDevice = (): boolean => {
+		if (typeof window === "undefined") return false;
+
+		const userAgent = window.navigator.userAgent.toLowerCase();
+		const mobileRegex = /iphone|ipod|ipad|android|blackberry|windows phone|opera mini|silk/i;
+		return mobileRegex.test(userAgent);
+	};
 	const [words, setWords] = useState(easyWords);
 	const [num, setNum] = useState(0);
 	const [currentWord, setCurrentWord] = useState(words[num].romaji);
@@ -83,29 +90,55 @@ export default function Home() {
 	}, [userInput]);
 
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		if (event.key === "Enter" && userInputRef.current === currentWord) {
-			setScore(score + 1);
-			setUserInput("");
-			const newNum = Math.floor(Math.random() * words.length);
-			setCurrentWord(
-				mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
-			);
-			setJaWord(words[newNum].kanji);
-			setNum(newNum);
+		if (isMobileDevice() || mode === Mode.Jap || mode === Mode.Mania) {
+			if (event.key === "Enter" && userInputRef.current === currentWord) {
+				setScore(score + 1);
+				setUserInput("");
+				const newNum = Math.floor(Math.random() * words.length);
+				setCurrentWord(
+					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
+				);
+				setJaWord(words[newNum].kanji);
+				setNum(newNum);
 
-			incrementTime();
-			toast({
-				title: "Correct! +1 Seconds",
-				status: "success",
-				duration: 1000,
-				isClosable: true,
-				position: "top"
-			});
+				incrementTime();
+				toast({
+					title: "Correct! +1 Seconds",
+					status: "success",
+					duration: 1000,
+					isClosable: true,
+					position: "top"
+				});
+			}
 		}
 	};
 
 	const handleInputChange = (value: string) => {
 		setUserInput(value);
+		if (isMobileDevice() || mode === Mode.Jap || mode === Mode.Mania) {
+			// なにもしない
+		} else {
+			// PCの場合、エンターキーを押さずに判定
+			if (value === currentWord) {
+				setScore(score + 1);
+				setUserInput("");
+				const newNum = Math.floor(Math.random() * words.length);
+				setCurrentWord(
+					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
+				);
+				setJaWord(words[newNum].kanji);
+				setNum(newNum);
+
+				incrementTime();
+				toast({
+					title: "Correct! +1 Seconds",
+					status: "success",
+					duration: 1000,
+					isClosable: true,
+					position: "top"
+				});
+			}
+		}
 	};
 
 	const startGame = () => {
