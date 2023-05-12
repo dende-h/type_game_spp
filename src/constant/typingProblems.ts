@@ -185,7 +185,7 @@ export const hunterWords = [
 	{ kanji: "蠅の仕事", romaji: "haenosigoto", eng: "サイレントワーカー" },
 	{ kanji: "天上不知唯我独損", romaji: "tennjyouhutiyuigadokusonn", eng: "ハコワレ" },
 	{ kanji: "天使の自動筆記", romaji: "tennsinojidouhikki", eng: "ラブリーゴーストライター" },
-	{ kanji: "黒子無想", romaji: "kurokomusou", eng: "テレプシコーラ" },
+	{ kanji: "黒子無想", romaji: "kokusimusou", eng: "テレプシコーラ" },
 	{ kanji: "玩具修理者", romaji: "ganngusyuurisya", eng: "ドクタープライス" },
 	{ kanji: "窓を開く者", romaji: "madowohirakumono", eng: "スクリーム" },
 	{ kanji: "四次元マンション", romaji: "yojigennmannsyonn", eng: "ハイドアンドシーク" },
