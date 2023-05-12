@@ -81,7 +81,7 @@ export default function Home() {
 		return "";
 	};
 
-	const durationInitial = genre === Genre.EASY ? 60 : 90;
+	const durationInitial = genre === Genre.EASY ? 60 : mode === Mode.Mania ? 120 : 90;
 	const [duration, setDuration] = useState(durationInitial);
 	const [timeLeft, setTimeLeft] = useState(duration);
 
@@ -349,7 +349,7 @@ export default function Home() {
 					©2023 dende-h
 				</Text>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.1.1.25
+					ver.1.2.2
 				</Text>
 			</Container>
 		</>
