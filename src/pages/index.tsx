@@ -85,7 +85,6 @@ export default function Home() {
 	const [duration, setDuration] = useState(durationInitial);
 	const [timeLeft, setTimeLeft] = useState(duration);
 
-	
 	const incrementTime = (addTime: number) => {
 		setDuration((prevDuration) => prevDuration + addTime);
 	};
@@ -346,8 +345,11 @@ export default function Home() {
 				) : (
 					<VStack spacing={8} my={8} h={"50%"}></VStack>
 				)}
-				<Text fontSize={"xl"} color={headingColor} my={6}>
+				<Text fontSize={"xl"} color={headingColor} mt={6}>
 					©2023 dende-h
+				</Text>
+				<Text fontSize={"xl"} color={headingColor} mb={6}>
+					ver.1.1.24
 				</Text>
 			</Container>
 		</>
