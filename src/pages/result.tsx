@@ -7,6 +7,8 @@ import Seo from "../components/Seo";
 export default function Result() {
 	const router = useRouter();
 	const score = router.query.score;
+	const mode = router.query.mode;
+	const genre = router.query.genre;
 
 	const bgColor = useColorModeValue("gray.50", "gray.900");
 	const headingColor = useColorModeValue("gray.700", "gray.200");
@@ -33,6 +35,8 @@ export default function Result() {
 					Thanks for playing!
 				</Text>
 				<Box textAlign="center">
+					<Text fontSize="3xl">Genres Played : {genre}</Text>
+					<Text fontSize="3xl">Modes Played : {mode}</Text>
 					<Text fontSize="3xl" mb={4}>
 						Score: {score}
 					</Text>

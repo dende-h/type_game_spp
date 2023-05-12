@@ -32,7 +32,7 @@ export default function Home() {
 		return mobileRegex.test(userAgent);
 	};
 	const [words, setWords] = useState(easyWords);
-	const [num, setNum] = useState(0);
+	const [num, setNum] = useState(Math.floor(Math.random() * 10));
 	const [currentWord, setCurrentWord] = useState(words[num].romaji);
 	const [jaWord, setJaWord] = useState(words[num].kanji);
 	const [userInput, setUserInput] = useState("");
@@ -48,25 +48,25 @@ export default function Home() {
 	};
 	const [mode, setMode] = useState(Mode.Roma);
 
-	const Difficulty = {
+	const Genre = {
 		EASY: "easy",
 		NORMAL: "normal",
 		HARD: "hard"
 	};
-	const [difficulty, setDifficulty] = useState(Difficulty.EASY);
+	const [genre, setGenre] = useState(Genre.EASY);
 	useEffect(() => {
 		setMode(Mode.Roma);
 		setDuration(durationInitial);
-		if (difficulty === Difficulty.EASY) {
+		if (genre === Genre.EASY) {
 			setWords(easyWords);
-		} else if (difficulty === Difficulty.NORMAL) {
+		} else if (genre === Genre.NORMAL) {
 			setWords(normalWords);
-		} else if (difficulty === Difficulty.HARD) {
+		} else if (genre === Genre.HARD) {
 			setWords(hardWords);
 		}
-	}, [difficulty]);
+	}, [genre]);
 
-	const difficultyLabel = () => {
+	const genreLabel = () => {
 		if (words === easyWords) return "Novel Words";
 		if (words === normalWords) return "Comic and Anime";
 		if (words === hardWords) return "Hunter×Hunter";
@@ -81,7 +81,7 @@ export default function Home() {
 		return "";
 	};
 
-	const durationInitial = difficulty === Difficulty.EASY ? 60 : 90;
+	const durationInitial = genre === Genre.EASY ? 60 : 90;
 	const [duration, setDuration] = useState(durationInitial);
 	const [timeLeft, setTimeLeft] = useState(duration);
 
@@ -186,7 +186,7 @@ export default function Home() {
 		setUserInput("");
 		setNum(0);
 		setTimeout(() => {
-			router.push({ pathname: "/result", query: { score } });
+			router.push({ pathname: "/result", query: { score, mode, genre } });
 		}, 2000);
 	};
 
@@ -227,7 +227,7 @@ export default function Home() {
 					　オレでなきゃ見逃しちゃうねゲーム
 				</Text>
 				<Text fontSize={textSize} fontWeight="bold">
-					Genre : {difficultyLabel()}
+					Genre : {genreLabel()}
 					<br />
 					Mode : {modeLabel()}
 				</Text>
@@ -268,27 +268,27 @@ export default function Home() {
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
-								onClick={() => setDifficulty("easy")}
+								onClick={() => setGenre("easy")}
 								w={buttonWidth}
-								colorScheme={difficulty === "easy" ? "teal" : "gray"}
+								colorScheme={genre === "easy" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								Novel Words
 							</Button>
 							<Button
-								onClick={() => setDifficulty("normal")}
+								onClick={() => setGenre("normal")}
 								w={buttonWidth}
-								colorScheme={difficulty === "normal" ? "teal" : "gray"}
+								colorScheme={genre === "normal" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								Comic&Anime
 							</Button>
 							<Button
-								onClick={() => setDifficulty("hard")}
+								onClick={() => setGenre("hard")}
 								w={buttonWidth}
-								colorScheme={difficulty === "hard" ? "teal" : "gray"}
+								colorScheme={genre === "hard" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
@@ -319,7 +319,7 @@ export default function Home() {
 								RomaMode
 							</Button>
 
-							{difficulty === "hard" ? (
+							{genre === "hard" ? (
 								<Button
 									onClick={() => setMode(Mode.Mania)}
 									w={buttonWidth}
@@ -349,7 +349,7 @@ export default function Home() {
 					©2023 dende-h
 				</Text>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.1.1.24
+					ver.1.1.25
 				</Text>
 			</Container>
 		</>
