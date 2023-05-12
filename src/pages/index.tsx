@@ -214,7 +214,7 @@ export default function Home() {
 				pageImgHeight={600}
 			/>
 			<Container
-				height="100vh"
+				minHeight="100vh"
 				display="flex"
 				flexDirection="column"
 				justifyContent="center"
@@ -349,7 +349,7 @@ export default function Home() {
 					©2023 dende-h
 				</Text>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.1.2.2
+					ver.1.2.3
 				</Text>
 			</Container>
 		</>

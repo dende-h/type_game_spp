@@ -25,7 +25,7 @@ export default function Result() {
 				pageImgHeight={600}
 			/>
 			<Container
-				height="100vh"
+				minHeight="100vh"
 				display="flex"
 				flexDirection="column"
 				justifyContent="center"
