@@ -49,9 +49,9 @@ export default function Home() {
 	const [mode, setMode] = useState(Mode.Roma);
 
 	const Genre = {
-		EASY: "easy",
-		NORMAL: "normal",
-		HARD: "hard"
+		EASY: "Novel Words",
+		NORMAL: "ComicAndAnime",
+		HARD: "Hunter×Hunter"
 	};
 	const [genre, setGenre] = useState(Genre.EASY);
 	useEffect(() => {
@@ -108,7 +108,7 @@ export default function Home() {
 					isClosable: true,
 					position: "top"
 				});
-				if (score !== 0 && score % 3 === 0) {
+				if (score !== 0 && score % 5 === 0) {
 					incrementTime(5);
 					toast({
 						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
@@ -148,7 +148,7 @@ export default function Home() {
 					isClosable: true,
 					position: "top"
 				});
-				if (score !== 0 && score % 3 === 0) {
+				if (score !== 0 && score % 5 === 0) {
 					incrementTime(5);
 					toast({
 						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
@@ -268,27 +268,27 @@ export default function Home() {
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
-								onClick={() => setGenre("easy")}
+								onClick={() => setGenre("Novel Words")}
 								w={buttonWidth}
-								colorScheme={genre === "easy" ? "teal" : "gray"}
+								colorScheme={genre === "Novel Words" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								Novel Words
 							</Button>
 							<Button
-								onClick={() => setGenre("normal")}
+								onClick={() => setGenre("ComicAndAnime")}
 								w={buttonWidth}
-								colorScheme={genre === "normal" ? "teal" : "gray"}
+								colorScheme={genre === "ComicAndAnime" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
 								Comic&Anime
 							</Button>
 							<Button
-								onClick={() => setGenre("hard")}
+								onClick={() => setGenre("Hunter×Hunter")}
 								w={buttonWidth}
-								colorScheme={genre === "hard" ? "teal" : "gray"}
+								colorScheme={genre === "Hunter×Hunter" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
@@ -319,7 +319,7 @@ export default function Home() {
 								RomaMode
 							</Button>
 
-							{genre === "hard" ? (
+							{genre === "Hunter×Hunter" ? (
 								<Button
 									onClick={() => setMode(Mode.Mania)}
 									w={buttonWidth}
