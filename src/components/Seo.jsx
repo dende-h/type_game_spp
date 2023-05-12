@@ -37,6 +37,9 @@ const Seo = ({ pageTitle, pageDescription, pagePath, pageImg, pageImgWidth, page
 			<link rel="preconnect" href="https://fonts.gstatic.com" />
 			<link rel="canonical" href={url} />
 			<link rel="icon" href="/favicon.ico" />
+			<link rel="icon" type="image/png" sizes="32x32" href="/assassin32.png" />
+			<link rel="apple-touch-icon" sizes="180x180" href="/assassin180.png" />
+			<link rel="manifest" href="/manifest.json" />
 			<meta name="google-site-verification" content="26u2b3-4uum3ZXDKrS6jWfPzCaWa9I8dPyp5TD2ekrE" />
 		</Head>
 	);
