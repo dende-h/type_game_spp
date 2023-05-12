@@ -130,7 +130,7 @@ export const hunterWords = [
 	{ kanji: "百式観音零の掌", romaji: "hyakusikikannnonnzeronote", eng: "ひゃくしきかんのんぜろのて" },
 	{ kanji: "百式観音九十九の掌", romaji: "hyakusikikannnonntukumonote", eng: "ひゃくしきかんのんつくものて" },
 	{ kanji: "蚤弾", romaji: "huri-damu", eng: "フリーダム" },
-	{ kanji: "死体と遊ぶな子供達", romaji: "sitaitoazobunakodomotati", eng: "リビングデッドドールズ" },
+	{ kanji: "死体と遊ぶな子供達", romaji: "sitaitoasobunakodomotati", eng: "リビングデッドドールズ" },
 	{ kanji: "180分の恋奴隷", romaji: "180hunnnokoidorei", eng: "インスタントラヴァー" },
 	{ kanji: "俤人", romaji: "omokagebito", eng: "ソウルドール" },
 	{ kanji: "魂呼ばい", romaji: "tamayobai", eng: "たまよばい" },

@@ -274,7 +274,7 @@ export default function Home() {
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								Novel Words
+								小説ワード
 							</Button>
 							<Button
 								onClick={() => setGenre("ComicAndAnime")}
@@ -283,7 +283,7 @@ export default function Home() {
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								Comic&Anime
+								漫画&アニメ
 							</Button>
 							<Button
 								onClick={() => setGenre("Hunter×Hunter")}
@@ -307,7 +307,7 @@ export default function Home() {
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								JapaneseMode
+								変換入力
 							</Button>
 							<Button
 								onClick={() => setMode(Mode.Roma)}
@@ -316,7 +316,7 @@ export default function Home() {
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								RomaMode
+								ローマ字
 							</Button>
 
 							{genre === "Hunter×Hunter" ? (
@@ -327,7 +327,7 @@ export default function Home() {
 									mb={{ base: 1, md: 0 }}
 									mx={{ base: 0, md: 2 }}
 								>
-									ManiaMode
+									マニア
 								</Button>
 							) : (
 								<Button
@@ -337,7 +337,7 @@ export default function Home() {
 									mb={{ base: 1, md: 0 }}
 									mx={{ base: 0, md: 2 }}
 								>
-									EnglishMode
+									English
 								</Button>
 							)}
 						</Flex>
@@ -349,7 +349,7 @@ export default function Home() {
 					©2023 dende-h
 				</Text>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.1.2.3
+					ver.1.2.4
 				</Text>
 			</Container>
 		</>
