@@ -97,6 +97,7 @@ export default function Home() {
 	}, [userInput]);
 
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		
 		if (isMobileDevice() || mode === Mode.Jap) {
 			if (event.key === "Enter" && userInputRef.current === currentWord) {
 				setScore(score + 1);
@@ -133,7 +134,15 @@ export default function Home() {
 	};
 
 	const handleInputChange = (value: string) => {
-		setUserInput(value);
+		if (mode === Mode.Roma || Mode.Eng) {
+			if (currentWord.includes(value)) {
+				
+				setUserInput(value)
+			};
+		} else {
+			setUserInput(value);
+		}
+
 		if (isMobileDevice() || mode === Mode.Jap) {
 			// なにもしない
 		} else {
