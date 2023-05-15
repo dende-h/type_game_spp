@@ -49,8 +49,8 @@ export default function Home() {
 	const [mode, setMode] = useState(Mode.Roma);
 
 	const Genre = {
-		EASY: "Novel Words",
-		NORMAL: "ComicAndAnime",
+		EASY: "Magic Items",
+		NORMAL: "Figure",
 		HARD: "Hunter×Hunter"
 	};
 	const [genre, setGenre] = useState(Genre.EASY);
@@ -67,7 +67,7 @@ export default function Home() {
 	}, [genre]);
 
 	const genreLabel = () => {
-		if (words === easyWords) return "Novel Words";
+		if (words === easyWords) return "Magic Items";
 		if (words === normalWords) return "Comic and Anime";
 		if (words === hardWords) return "Hunter×Hunter";
 		return "";
@@ -289,26 +289,26 @@ export default function Home() {
 						</Button>
 						<Text as={"h4"}>
 							<br />
-							Genre
+							ジャンル
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
-								onClick={() => setGenre("Novel Words")}
+								onClick={() => setGenre("Magic Items")}
 								w={buttonWidth}
-								colorScheme={genre === "Novel Words" ? "teal" : "gray"}
+								colorScheme={genre === "Magic Items" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								小説ワード
+								魔道具
 							</Button>
 							<Button
-								onClick={() => setGenre("ComicAndAnime")}
+								onClick={() => setGenre("Figure")}
 								w={buttonWidth}
-								colorScheme={genre === "ComicAndAnime" ? "teal" : "gray"}
+								colorScheme={genre === "Figure" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								漫画&アニメ
+								形容表現
 							</Button>
 							<Button
 								onClick={() => setGenre("Hunter×Hunter")}
@@ -322,7 +322,7 @@ export default function Home() {
 						</Flex>
 						<Text as={"h4"}>
 							<br />
-							Mode
+							モード選択
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
