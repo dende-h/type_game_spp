@@ -1,103 +1,744 @@
 //小説の言葉
-export const novelWords = [
-	{ kanji: "魔法使い", romaji: "mahoutukai", eng: "wizard", validInputs: ["mahoutukai","mahoutsukai","mahoutucai","mahoutsucai"] },
-  { kanji: "魔法陣", romaji: "mahoujin", eng: "magic circle", validInputs: ["mahoujin","mahouzin"] },
-	{ kanji: "呪文", romaji: "jumon", eng: "spell", validInputs: ["jumon","jyumon","zyumon"] },
-	{ kanji: "杖", romaji: "tue", eng: "wand", validInputs: ["tue","tsue"] },
-	{ kanji: "竜", romaji: "ryuu", eng: "dragon", validInputs: ["ryuu"] },
-	{ kanji: "魔王", romaji: "maou", eng: "demon king", validInputs: ["maou"] },
-	{ kanji: "騎士", romaji: "kisi", eng: "knight", validInputs: ["kisi","kici","kishi"] },
-	{ kanji: "冒険者", romaji: "boukensya", eng: "adventurer", validInputs: ["boukensya","boukennsya","boukensha","boukennsha"] },
-	{ kanji: "勇者", romaji: "yuusya", eng: "hero", validInputs: ["yuusya","yuusha"] },
-	{ kanji: "魔獣", romaji: "majuu", eng: "magical beast", validInputs: ["majuu","majyuu","mazyuu"] },
-	{ kanji: "召喚", romaji: "syoukan", eng: "summon", validInputs: ["syoukan","shoukan","syoucan","shoucan"] },
-	{ kanji: "魔力", romaji: "maryoku", eng: "magical power", validInputs: ["maryoku","maryocu"] },
-	{ kanji: "ドラゴン", romaji: "doragon", eng: "dragon", validInputs: ["doragon"] },
-	{ kanji: "予言書", romaji: "yogensyo", eng: "prophecy book", validInputs: ["yogensyo","yogensho"] },
-	{ kanji: "魔術", romaji: "majutu", eng: "magic art" ,validInputs:["majutu","majutsu","majyutu","majyutsu","mazyutu","mazyutsu"]},
-	{ kanji: "妖精", romaji: "yousei", eng: "fairy" ,validInputs:["yousei"]},
-	{ kanji: "幻獣", romaji: "genjuu", eng: "phantom beast" ,validInputs:["genjuu","genjyuu","genzyu"]},
-	{ kanji: "神話", romaji: "sinwa", eng: "myth" ,validInputs:["sinwa","cinwa","shinwa"]},
-	{ kanji: "戦士", romaji: "sensi", eng: "warrior" ,validInputs:["sensi","senci","senshi","sennsi","sennci","sennshi"]},
-	{ kanji: "聖剣", romaji: "seiken", eng: "holy sword" ,validInputs:["seiken"]},
-	{ kanji: "魔界", romaji: "makai", eng: "demon world" ,validInputs:["makai","macai"]},
-	{ kanji: "魔女", romaji: "majo", eng: "witch" ,validInputs:["majo","majyo","mazyo"]},
-	{ kanji: "魔法学校", romaji: "mahougakkou", eng: "magic school" ,validInputs:["mahougakkou","mahougaccou"]},
-	{ kanji: "宇宙船", romaji: "utyuusen", eng: "spaceship" ,validInputs:[]},
-	{ kanji: "未来", romaji: "mirai", eng: "future" ,validInputs:[]},
-	{ kanji: "超能力", romaji: "tyounouryoku", eng: "psychic powers" ,validInputs:[]},
-	{ kanji: "タイムトラベル", romaji: "taimutoraberu", eng: "time travel" ,validInputs:[]},
-	{ kanji: "異星人", romaji: "iseijin", eng: "extraterrestrial" ,validInputs:[]},
-	{ kanji: "戦争", romaji: "sensou", eng: "war" ,validInputs:[]},
-	{ kanji: "サイバーパンク", romaji: "saiba-panku", eng: "cyberpunk" ,validInputs:[]},
-	{ kanji: "パラレルワールド", romaji: "parareruwa-rudo", eng: "parallel world" ,validInputs:[]},
-	{ kanji: "人工知能", romaji: "jinkoutinou", eng: "artificial intelligence" ,validInputs:[]},
-	{ kanji: "アンドロイド", romaji: "andoroido", eng: "android" ,validInputs:[]},
-	{ kanji: "サイボーグ", romaji: "saibo-gu", eng: "cyborg" ,validInputs:[]},
-	{ kanji: "ディストピア", romaji: "dhisutopia", eng: "dystopia" ,validInputs:[]},
-	{ kanji: "宇宙ステーション", romaji: "utyuusute-syon", eng: "space station" ,validInputs:[]},
-	{ kanji: "ロボット工学", romaji: "robottokougaku", eng: "robotics" ,validInputs:[]},
-	{ kanji: "宇宙エレベーター", romaji: "utyuuerebe-ta-", eng: "space elevator" ,validInputs:[]},
-	{ kanji: "宇宙戦艦", romaji: "utyuusenkan", eng: "space battleship" ,validInputs:[]},
-	{ kanji: "クローン技術", romaji: "kuro-ngijyutu", eng: "clone technology" ,validInputs:[]},
-	{ kanji: "テレポーテーション", romaji: "terepo-te-syon", eng: "teleportation" ,validInputs:[]},
-	{ kanji: "人工衛星", romaji: "jinkoueisei", eng: "artificial satellite" ,validInputs:[]},
-	{ kanji: "仮想現実", romaji: "kasougenjitu", eng: "virtual reality" ,validInputs:[]},
-	{ kanji: "アステロイド", romaji: "asuteroido", eng: "asteroid" ,validInputs:[]},
-	{ kanji: "太陽系", romaji: "taiyoukei", eng: "solar system" ,validInputs:[]},
-	{ kanji: "恒星", romaji: "kousei", eng: "star" ,validInputs:[]},
-	{ kanji: "ブラックホール", romaji: "burakkuho-ru", eng: "black hole" ,validInputs:[]},
-	{ kanji: "スペースコロニー", romaji: "supe-sukoroni-", eng: "space colony" ,validInputs:[]},
-	{ kanji: "テラフォーミング", romaji: "terafo-mingu", eng: "terraforming" ,validInputs:[]},
-	{ kanji: "惑星探査機", romaji: "wakuseitansaki", eng: "planetary probe" ,validInputs:[]},
-	{ kanji: "地球外生命体", romaji: "tikyuugaiseimeitai", eng: "extraterrestrial life" ,validInputs:[]},
-	{ kanji: "量子コンピューター", romaji: "ryousikonpyu-ta-", eng: "quantum computer" ,validInputs:[]},
-	{ kanji: "テクノロジー", romaji: "tekunoroji-", eng: "technology" ,validInputs:[]},
-	{ kanji: "スペースシャトル", romaji: "supe-susyatoru", eng: "space shuttle" ,validInputs:[]},
-	{ kanji: "推理小説", romaji: "suirisyousetu", eng: "detective novel" ,validInputs:[]},
-	{ kanji: "ミステリー", romaji: "misuteri-", eng: "mystery" ,validInputs:[]},
-	{ kanji: "犯罪", romaji: "hanzai", eng: "crime" ,validInputs:[]},
-	{ kanji: "証拠", romaji: "syouko", eng: "evidence" ,validInputs:[]},
-	{ kanji: "アリバイ", romaji: "aribai", eng: "alibi" ,validInputs:[]},
-	{ kanji: "謎", romaji: "nazo", eng: "puzzle" ,validInputs:[]},
-	{ kanji: "密室", romaji: "missitu", eng: "locked room" ,validInputs:[]},
-	{ kanji: "事件現場", romaji: "jikengenba", eng: "crime scene" ,validInputs:[]},
-	{ kanji: "犯人", romaji: "hannnin", eng: "criminal" ,validInputs:[]},
-	{ kanji: "探偵助手", romaji: "tanteijyosyu", eng: "detective assistant" ,validInputs:[]},
-	{ kanji: "怪盗", romaji: "kaitou", eng: "phantom thief" ,validInputs:[]},
-	{ kanji: "暗号", romaji: "angou", eng: "cipher" ,validInputs:[]},
-	{ kanji: "推理力", romaji: "suiriryoku", eng: "deductive reasoning" ,validInputs:[]},
-	{ kanji: "サスペンス", romaji: "sasupensu", eng: "suspense" ,validInputs:[]},
-	{ kanji: "アクション", romaji: "akusyon", eng: "action" ,validInputs:[]},
-	{ kanji: "事件簿", romaji: "jikenbo", eng: "case file" ,validInputs:[]},
-	{ kanji: "密室殺人", romaji: "missitusatujin", eng: "locked-room murder" ,validInputs:[]},
-	{ kanji: "探偵事務所", romaji: "tanteijimusyo", eng: "detective agency" ,validInputs:[]},
-	{ kanji: "黒幕", romaji: "kuromaku", eng: "mastermind" ,validInputs:[]},
-	{ kanji: "証言", romaji: "syougen", eng: "testimony" ,validInputs:[]},
-{kanji:"",romaji:"",eng:"",validInputs:[]}
+export const magicItems = [
+	// {
+	// 	kanji: "魔法使い",
+	// 	romaji: "mahoutukai",
+	// 	eng: "wizard",
+	// 	validInputs: ["mahoutukai", "mahoutsukai", "mahoutucai", "mahoutsucai"]
+	// },
+	// { kanji: "魔法陣", romaji: "mahoujin", eng: "magic circle", validInputs: ["mahoujin", "mahouzin"] },
+	// { kanji: "呪文", romaji: "jumon", eng: "spell", validInputs: ["jumon", "jyumon", "zyumon"] },
+	// { kanji: "杖", romaji: "tue", eng: "wand", validInputs: ["tue", "tsue"] },
+	// { kanji: "竜", romaji: "ryuu", eng: "dragon", validInputs: ["ryuu"] },
+	// { kanji: "魔王", romaji: "maou", eng: "demon king", validInputs: ["maou"] },
+	// { kanji: "騎士", romaji: "kisi", eng: "knight", validInputs: ["kisi", "kici", "kishi"] },
+	// {
+	// 	kanji: "冒険者",
+	// 	romaji: "boukensya",
+	// 	eng: "adventurer",
+	// 	validInputs: ["boukensya", "boukennsya", "boukensha", "boukennsha"]
+	// },
+	// { kanji: "勇者", romaji: "yuusya", eng: "hero", validInputs: ["yuusya", "yuusha"] },
+	// { kanji: "魔獣", romaji: "majuu", eng: "magical beast", validInputs: ["majuu", "majyuu", "mazyuu"] },
+	// { kanji: "召喚", romaji: "syoukan", eng: "summon", validInputs: ["syoukan", "shoukan", "syoucan", "shoucan"] },
+	// { kanji: "魔力", romaji: "maryoku", eng: "magical power", validInputs: ["maryoku", "maryocu"] },
+	// { kanji: "ドラゴン", romaji: "doragon", eng: "dragon", validInputs: ["doragon"] },
+	// { kanji: "予言書", romaji: "yogensyo", eng: "prophecy book", validInputs: ["yogensyo", "yogensho"] },
+	// {
+	// 	kanji: "魔術",
+	// 	romaji: "majutu",
+	// 	eng: "magic art",
+	// 	validInputs: ["majutu", "majutsu", "majyutu", "majyutsu", "mazyutu", "mazyutsu"]
+	// },
+	// { kanji: "妖精", romaji: "yousei", eng: "fairy", validInputs: ["yousei"] },
+	// { kanji: "幻獣", romaji: "genjuu", eng: "phantom beast", validInputs: ["genjuu", "genjyuu", "genzyu"] },
+	// { kanji: "神話", romaji: "sinwa", eng: "myth", validInputs: ["sinwa", "cinwa", "shinwa"] },
+	// {
+	// 	kanji: "戦士",
+	// 	romaji: "sensi",
+	// 	eng: "warrior",
+	// 	validInputs: ["sensi", "senci", "senshi", "sennsi", "sennci", "sennshi"]
+	// },
+	// { kanji: "聖剣", romaji: "seiken", eng: "holy sword", validInputs: ["seiken"] },
+	// { kanji: "魔界", romaji: "makai", eng: "demon world", validInputs: ["makai", "macai"] },
+	// { kanji: "魔女", romaji: "majo", eng: "witch", validInputs: ["majo", "majyo", "mazyo"] },
+	// { kanji: "魔法学校", romaji: "mahougakkou", eng: "magic school", validInputs: ["mahougakkou", "mahougaccou"] },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	{ kanji: "アイギスの盾", romaji: "aigisunotate", eng: "aegis hield", validInputs: ["aigisunotate"] }, //1
+	{
+		kanji: "愛の秘薬",
+		romaji: "ainohiyaku",
+		eng: "Love Potion",
+		validInputs: ["ainohiyaku", "ainohiyacu", "ainohiyaqu"]
+	}, //3
+	{
+		kanji: "アカシックレコード",
+		romaji: "akasikkureko-do",
+		eng: "Akashic Records",
+		validInputs: [
+			"akasikkureko-do",
+			"akasiccureco-do",
+			"akashikkureko-do",
+			"akashikkureco-do",
+			"akashiccureko-do",
+			"akashiccureco-do",
+			"akasiccureko-do",
+			"akasikkureco-do",
+			"akaciccureko-do",
+			"akacikkureco-do",
+			"akacikkureko-do",
+			"acashikkureko-do",
+			"acashikkureco-do",
+			"acashiccureko-do",
+			"acashiccureco-do",
+			"acasiccureko-do",
+			"acasiccureco-do",
+			"acasikkureko-do",
+			"acasikkureco-do",
+			"acaciccureko-do",
+			"acaciccureco-do",
+			"acacikkureko-do",
+			"acacikkureco-do",
+			"akashiqqureko-do",
+			"akashiqqureco-do",
+			"akasiqqureko-do",
+			"akasiqqureco-do",
+			"akaciqqureko-do",
+			"akaciqqureco-do",
+			"acashiqqureko-do",
+			"acashiqqureco-do",
+			"acasiqqureko-do",
+			"acasiqqureco-do",
+			"acaciqqureko-do",
+			"acaciqqureco-do"
+		]
+	}, //36
+	{
+		kanji: "アキレウスの鎧",
+		romaji: "akireusunoyoroi",
+		eng: "achilles armor",
+		validInputs: ["akireusunoyoroi"] //1
+	},
+	{
+		kanji: "アスクレピオスの杖",
+		romaji: "asukurepiosunotue",
+		eng: "asclepius staff",
+		validInputs: [
+			"asukurepiosunotue",
+			"asukurepiosunotsue",
+			"asucurepiosunotsue",
+			"asucurepiosunotue",
+			"asuqurepiosunotsue",
+			"asuqurepiosunotue"
+		] //6
+	},
+	{ kanji: "梓弓", romaji: "azusayumi", eng: "Azusa Bow", validInputs: ["azusayumi"] }, //1
+	{
+		kanji: "アポロンの竪琴",
+		romaji: "aporonnnotategoto",
+		eng: "apollos lyre",
+		validInputs: ["aporonnnotategoto"] //1
+	},
+	{ kanji: "アミュレット", romaji: "amyuretto", eng: "Amulet", validInputs: ["amyuretto"] }, //1
+	{
+		kanji: "アリアドネの糸",
+		romaji: "ariadonenoito",
+		eng: "ariadnes thread",
+		validInputs: ["ariadonenoito"]
+	}, //1
+	{
+		kanji: "アレクサンドリア図書館",
+		romaji: "arekusandoriatosyokan",
+		eng: "library of alexandria",
+		validInputs: [
+			"arekusandoriatosyokan",
+			"arekusandoriatoshokan",
+			"arekusandoriatosyocan",
+			"arekusandoriatoshocan",
+			"arecusandoriatosyokan",
+			"arecusandoriatoshokan",
+			"arecusandoriatosyocan",
+			"arecusandoriatoshocan",
+			"arequsandoriatosyokan",
+			"arequsandoriatoshokan",
+			"arequsandoriatosyocan",
+			"arequsandoriatoshocan",
+			"arekusanndoriatosyokan",
+			"arekusanndoriatoshokan",
+			"arekusanndoriatosyocan",
+			"arekusanndoriatoshocan",
+			"arecusanndoriatosyokan",
+			"arecusanndoriatoshokan",
+			"arecusanndoriatosyocan",
+			"arecusanndoriatoshocan",
+			"arequsanndoriatosyokan",
+			"arequsanndoriatoshokan",
+			"arequsanndoriatosyocan",
+			"arequsanndoriatoshocan"
+		]
+	}, //24
+	{
+		kanji: "アンブロシア",
+		romaji: "anburosia",
+		eng: "ambrosia",
+		validInputs: ["anburosia", "anburoshia", "anbrocia", "annburosia", "annburoshia", "annbrocia"]
+	}, //6
+	{
+		kanji: "イカロスの翼",
+		romaji: "ikarosunotubasa",
+		eng: "icarus wings",
+		validInputs: ["ikarosunotubasa", "ikarosunotsubasa", "icarosunotubasa", "icarosunotsubasa"]
+	}, //4
+	{
+		kanji: "イモリの黒焼き",
+		romaji: "imorinokuroyaki",
+		eng: "charred newt",
+		validInputs: ["imorinokuroyaki", "imorinocuroyaki", "imorinoquroyaki"]
+	}, //3
+	{ kanji: "ヴァジュラ", romaji: "vajura", eng: "vajra", validInputs: ["vajura", "vajyura", "vazyura"] }, //3
+	{
+		kanji: "ヴォータンの槍",
+		romaji: "vo-tannnoyari",
+		eng: "wotans spear",
+		validInputs: ["vo-tannnoyari"]
+	}, //1
+	{
+		kanji: "打ち出の小槌",
+		romaji: "utidenokozuti",
+		eng: "uchide mallet",
+		validInputs: [
+			"utidenokozuti",
+			"utidenocozuti",
+			"utidenokozuchi",
+			"utidenocozuchi",
+			"uchidenokozuti",
+			"uchidenocozuti",
+			"uchidenokozuchi",
+			"uchidenocozuchi"
+		]
+	}, //8
+	{ kanji: "イチイバル", romaji: "itiibaru", eng: "ichii-ball", validInputs: ["itiibaru", "ichiibaru"] }, //2
+	{
+		kanji: "エウリュトスの弓",
+		romaji: "euryutosunoyumi",
+		eng: "eurytus bow",
+		validInputs: ["euryutosunoyumi"]
+	}, //1
+	{
+		kanji: "エクスカリバー",
+		romaji: "ekusukariba-",
+		eng: "excalibur",
+		validInputs: ["ekusukariba-", "ekusucariba-", "ecusukariba-", "ecusucariba-", "equsukariba-", "equsucariba-"]
+	}, //6
+	{
+		kanji: "円卓",
+		romaji: "entaku",
+		eng: "round table",
+		validInputs: ["entaku", "entacu", "entaqu", "enntaku", "enntacu", "enntaqu"]
+	}, //6
+	{
+		kanji: "黄金の花嫁",
+		romaji: "ougonnnohanayome",
+		eng: "golden bride",
+		validInputs: ["ougonnnohanayome"]
+	},
+	{
+		kanji: "オティヌスの弩",
+		romaji: "othinusunoisiyumi",
+		eng: "othinus crossbow",
+		validInputs: [
+			"othinusunoisiyumi",
+			"othinusunoishiyumi",
+			"othinusunoiciyumi",
+			"otelinusunoisiyumi",
+			"otelinusunoishiyumi",
+			"otelinusunoiciyumi",
+			"otexinusunoisiyumi",
+			"otexinusunoishiyumi",
+			"otexinusunoiciyumi"
+		]
+	}, //9
+	{ kanji: "オリハルコン", romaji: "oriharukon", eng: "orichalcum", validInputs: ["oriharukon", "oriharucon"] },
+	{
+		kanji: "オルフェウスの竪琴",
+		romaji: "orufeusunotategoto",
+		eng: "orpheus yre",
+		validInputs: ["orufeusunotategoto"]
+	}, //1
+	{
+		kanji: "ガルダの羽根",
+		romaji: "garudanohane",
+		eng: "garudas feather",
+		validInputs: ["garudanohane"]
+	}, //1
+	{
+		kanji: "カンタレラ",
+		romaji: "kantarera",
+		eng: "cantarella",
+		validInputs: ["kantarera", "cantarera", "kanntarera", "canntarera"] //4
+	},
+	{
+		kanji: "菊一文字",
+		romaji: "kikuitimonji",
+		eng: "kikuichimonji",
+		validInputs: [
+			"kikuitimonji",
+			"kikuichimonji",
+			"kikuitimonzi",
+			"kikuichimonzi",
+			"kicuitimonji",
+			"kicuichimonji",
+			"kicuitimonzi",
+			"kicuichimonzi",
+			"kiquitimonji",
+			"kiquichimonji",
+			"kiquitimonzi",
+			"kiquichimonzi",
+			"kikuitimonnji",
+			"kikuichimonnji",
+			"kikuitimonnzi",
+			"kikuichimonnzi",
+			"kicuitimonnji",
+			"kicuichimonnji",
+			"kicuitimonnzi",
+			"kicuichimonnzi",
+			"kiquitimonnji",
+			"kiquichimonnji",
+			"kiquitimonnzi",
+			"kiquichimonnzi"
+		]
+	}, //16
+	{ kanji: "ギャラルホルン", romaji: "gyararuhorun", eng: "gjallarhorn", validInputs: ["gyararuhorun"] },
+	{
+		kanji: "草薙剣",
+		romaji: "kusanaginoturugi",
+		eng: "kusanagi Sword",
+		validInputs: [
+			"kusanaginoturugi",
+			"kusanaginotsurugi",
+			"cusanaginoturugi",
+			"cusanaginotsurugi",
+			"qusanaginoturugi",
+			"qusanaginotsurugi"
+		]
+	}, //6
+	{ kanji: "グラム", romaji: "guramu", eng: "gram", validInputs: ["guramu"] }, //1
+	{ kanji: "グレイプニル", romaji: "gureipuniru", eng: "gleipnir", validInputs: ["gureipuniru"] }, //1
+	{ kanji: "グングニル", romaji: "gunguniru", eng: "gungnir", validInputs: ["gunguniru", "gunnguniru"] }, //2
+	{ kanji: "小鴉丸", romaji: "kogarasumaru", eng: "kogarasumaru", validInputs: ["kogarasumaru", "cogarasumaru"] },
+	{ kanji: "虎徹", romaji: "kotetu", eng: "kotetsu", validInputs: ["kotetu", "kotetsu", "cotetu", "cotetsu"] }, //4
+	{
+		kanji: "死海文書",
+		romaji: "sikaimonjo",
+		eng: "Dead Sea Scrolls",
+		validInputs: [
+			"sikaimonjo",
+			"sikaimonjyo",
+			"sikaimonzyo",
+			"shikaimonjo",
+			"shikaimonjyo",
+			"shikaimonzyo",
+			"cikaimonjo",
+			"cikaimonjyo",
+			"cikaimonzyo",
+			"sicaimonjo",
+			"sicaimonjyo",
+			"sicaimonzyo",
+			"shicaimonjo",
+			"shicaimonjyo",
+			"shicaimonzyo",
+			"cicaimonjo",
+			"cicaimonjyo",
+			"cicaimonzyo",
+			"sikaimonnjo",
+			"sikaimonnjyo",
+			"sikaimonnzyo",
+			"shikaimonnjo",
+			"shikaimonnjyo",
+			"shikaimonnzyo",
+			"cikaimonnjo",
+			"cikaimonnjyo",
+			"cikaimonnzyo",
+			"sicaimonnjo",
+			"sicaimonnjyo",
+			"sicaimonnzyo",
+			"shicaimonnjo",
+			"shicaimonnjyo",
+			"shicaimonnzyo",
+			"cicaimonnjo",
+			"cicaimonnjyo",
+			"cicaimonnzyo"
+		]
+	},
+	{
+		kanji: "七枝刀",
+		romaji: "sitisitou",
+		eng: "sichisito",
+		validInputs: [
+			"sitisitou",
+			"sitishitou",
+			"siticitou",
+			"shitishitou",
+			"citicitou",
+			"sichisitou",
+			"sichishitou",
+			"sichicitou",
+			"shichishitou",
+			"cichicitou"
+		]
+	}, //10
+	{
+		kanji: "シビュレの書",
+		romaji: "sibyurenosyo",
+		eng: "sibylline books",
+		validInputs: ["sibyurenosyo", "shibyurenosyo", "cibyurenosyo", "sibyurenosho", "shibyurenosho", "cibyurenosho"]
+	}, //6
+	{ kanji: "スカラベ", romaji: "sukarabe", eng: "scarab", validInputs: ["sukarabe", "sucarabe"] }, //2
+	{
+		kanji: "ストーンヘンジ",
+		romaji: "suto-nhenji",
+		eng: "stonehenge",
+		validInputs: [
+			"suto-nhenji",
+			"suto-nhenzi",
+			"suto-nnhennji",
+			"suto-nnhennzi",
+			"suto-nnhenji",
+			"suto-nnhenzi",
+			"suto-nhennji",
+			"suto-nhennzi"
+		]
+	}, //8
+	{
+		kanji: "ゼウスの雷霆",
+		romaji: "zeusunoraitei",
+		eng: "zeus thunderbolt",
+		validInputs: ["zeusunoraitei"] //1
+	},
+	{ kanji: "聖槍", romaji: "seisou", eng: "holy spear", validInputs: ["seisou"] }, //1
+	{ kanji: "聖杯", romaji: "seihai", eng: "holy grail", validInputs: ["seihai"] }, //1
+	{
+		kanji: "ゾンビパウダー",
+		romaji: "zonbipauda-",
+		eng: "zombie powder",
+		validInputs: ["zonbipauda-", "zonnbipauda-"]
+	}, //2
+	{
+		kanji: "ダインスレイフ",
+		romaji: "dainsureifu",
+		eng: "dainsleif",
+		validInputs: ["dainsureifu", "dainsureihu", "dainnsureifu", "dainnsureihu"]
+	}, //4
+	{
+		kanji: "ダマスカス鋼",
+		romaji: "damasukasukou",
+		eng: "damascus steel",
+		validInputs: ["damasukasukou", "damasukasucou", "damasucasukou", "damasucasucou"]
+	}, //4
+	{ kanji: "玉手箱", romaji: "tamatebako", eng: "tamatebako", validInputs: ["tamatebako", "tamatebaco"] }, //2
+	{ kanji: "タリスマン", romaji: "tarisuman", eng: "talisman", validInputs: ["tarisuman"] }, //1
+	{ kanji: "達磨", romaji: "daruma", eng: "daruma", validInputs: ["daruma"] }, //1
+	{
+		kanji: "ディンギルの塔",
+		romaji: "dhingirunotou",
+		eng: "tower of dingir",
+		validInputs: [
+			"dhingirunotou",
+			"delingirunotou",
+			"dexingirunotou",
+			"dhinngirunotou",
+			"delinngirunotou",
+			"dexinngirunotou"
+		]
+	}, //6
+	{ kanji: "デュランダル", romaji: "dhurandaru", eng: "durandal", validInputs: ["dhurandaru", "dhuranndaru"] }, //2
+	{ kanji: "テュルフィング", romaji: "thurufingu", eng: "tyrfing", validInputs: ["thurufingu", "thurufinngu"] }, //2
+	{
+		kanji: "十種の神宝",
+		romaji: "tokusanokandakara",
+		eng: "ten sacred treasures",
+		validInputs: [
+			"tokusanokandakara",
+			"tokusanokandacara",
+			"tokusanocandakara",
+			"tokusanocandacara",
+			"tocusanokandakara",
+			"tocusanokandacara",
+			"tocusanocandakara",
+			"tocusanocandacara",
+			"toqusanokandakara",
+			"toqusanokandacara",
+			"toqusanocandakara",
+			"toqusanocandacara"
+		]
+	}, //12
+	{
+		kanji: "トロイアの木馬",
+		romaji: "toroianomokuba",
+		eng: "trojan horse",
+		validInputs: ["toroianomokuba", "toroianomocuba", "toroianomoquba"]
+	}, //3
+	{ kanji: "蜻蛉切", romaji: "tonbokiri", eng: "tonbokiri", validInputs: ["tonbokiri", "tonnbokiri"] }, //2
+	{
+		kanji: "ネクロノミコン",
+		romaji: "nekuronomikon",
+		eng: "necronomicon",
+		validInputs: ["nekuronomikon", "nekuronomicon", "necuronomikon", "necuronomicon", "nequronomikon", "nequronomicon"]
+	}, //6
+	{ kanji: "ノアの方舟", romaji: "noanohakobune", eng: "noahs ark", validInputs: ["noanohakobune", "noanohacobune"] }, //2
+	{ kanji: "バベルの塔", romaji: "baberunotou", eng: "tower of babel", validInputs: ["baberunotou"] }, //1
+	{ kanji: "パルテノン", romaji: "parutenon", eng: "parthenon", validInputs: ["parutenon"] }, //1
+	{
+		kanji: "バルムンク",
+		romaji: "barumunku",
+		eng: "balmung",
+		validInputs: ["barumunku", "barumuncu", "barumunqu", "barumunnku", "barumunncu", "barumunnqu"]
+	},
+	{
+		kanji: "反魂香",
+		romaji: "hangonkou",
+		eng: "resurrection incense",
+		validInputs: [
+			"hangonkou",
+			"hangoncou",
+			"hangonnkou",
+			"hangonncou",
+			"hanngonkou",
+			"hanngoncou",
+			"hanngonnkou",
+			"hanngonncou"
+		]
+	}, //8
+	{
+		kanji: "パンドラの箱",
+		romaji: "pandoranohako",
+		eng: "pandoras box",
+		validInputs: ["pandoranohako", "pandoranohaco", "panndoranohako", "panndoranohaco"]
+	}, //4
+	{ kanji: "膝丸", romaji: "hizamaru", eng: "hizamaru", validInputs: ["hizamaru"] }, //1
+	{ kanji: "雛人形", romaji: "hinaningyou", eng: "hina doll", validInputs: ["hinaningyou", "hinaninngyou"] }, //2
+	{ kanji: "ヒヒイロカネ", romaji: "hihiirokane", eng: "hihiirokane", validInputs: ["hihiirokane", "hihiirocane"] }, //2
+	{ kanji: "ピュリスの手", romaji: "pyurisunote", eng: "hand of pyris", validInputs: ["pyurisunote"] }, //1
+	{
+		kanji: "ファーティマの手",
+		romaji: "fa-thimanote",
+		eng: "Hand of Fatima",
+		validInputs: ["fa-thimanote", "fa-telimanote", "fa-teximanote"] //3
+	},
+	{
+		kanji: "プランシェット",
+		romaji: "puransyetto",
+		eng: "planchette",
+		validInputs: ["puransyetto", "puranshetto", "purannsyetto", "purannshetto"]
+	}, //4
+	{
+		kanji: "ブリューナク",
+		romaji: "buryu-naku",
+		eng: "brunak",
+		validInputs: ["buryu-naku", "buryu-nacu", "buryu-naqu"]
+	}, //3
+	{ kanji: "フレイの馬", romaji: "fureinouma", eng: "freis horse", validInputs: ["fureinouma", "hureinouma"] }, //2
+	{
+		kanji: "フレイムランス",
+		romaji: "fureimuransu",
+		eng: "Flame Lance",
+		validInputs: ["fureimuransu", "hureimuransu", "fureimurannsu", "hureimurannsu"]
+	}, //4
+	{
+		kanji: "ヘズワルの剣",
+		romaji: "hezuwarunoken",
+		eng: "sword of hezwar",
+		validInputs: ["hezuwarunoken"]
+	}, //1
+	{
+		kanji: "ヘラクレスの弓",
+		romaji: "herakuresunoyumi",
+		eng: "bow of hercules",
+		validInputs: ["herakuresunoyumi", "heracuresunoyumi", "heraquresunoyumi"]
+	}, //3
+	{ kanji: "ベラドンナ", romaji: "beradonnna", eng: "belladonna", validInputs: ["beradonnna"] }, //1
+	{
+		kanji: "ペルセウスの靴",
+		romaji: "peruseusunokutu",
+		eng: "Shoes of Perseus",
+		validInputs: [
+			"peruseusunokutu",
+			"peruseusunokutsu",
+			"peruseusunocutu",
+			"peruseusunocutsu",
+			"peruseusunoqutu",
+			"peruseusunoqutsu"
+		]
+	},
+	{
+		kanji: "ヘルメスの杖",
+		romaji: "herumesunotue",
+		eng: "staff of hermes",
+		validInputs: ["herumesunotsue", "herumesunotue"]
+	},
+	{
+		kanji: "ポセイドンの戟",
+		romaji: "poseidonnnohoko",
+		eng: "trident of poseidon",
+		validInputs: ["poseidonnnohoko", "poseidonnnohoco"] //2
+	},
+	{ kanji: "ホテルスの帯", romaji: "hoterusunoobi", eng: "belt of hotei", validInputs: ["hoterusunoobi"] }, //1
+	{ kanji: "ホルスの目", romaji: "horusunome", eng: "eye of horus", validInputs: ["horusunome"] }, //1
+	{
+		kanji: "魔女の軟膏",
+		romaji: "majononankou",
+		eng: "witch's ointment",
+		validInputs: [
+			"majononankou",
+			"majyononankou",
+			"mazyononankou",
+			"majononancou",
+			"majyononancou",
+			"mazyononancou",
+			"majononannkou",
+			"majyononannkou",
+			"mazyononannkou",
+			"majononanncou",
+			"majyononanncou",
+			"mazyononanncou"
+		]
+	}, //12
+	{ kanji: "魔弾", romaji: "madan", eng: "magic bullet", validInputs: ["madan"] }, //1
+	{
+		kanji: "マラキの予言",
+		romaji: "marakinoyogen",
+		eng: "prophecy of malachi",
+		validInputs: ["marakinoyogen"]
+	}, //1
+	{ kanji: "曼陀羅", romaji: "mandara", eng: "mandala", validInputs: ["mandara", "manndara"] }, //2
+	{ kanji: "ミスリル", romaji: "misuriru", eng: "mithril", validInputs: ["misuriru"] }, //1
+	{ kanji: "ミョルニル", romaji: "myoruniru", eng: "mjolnir", validInputs: ["myoruniru"] }, //1
+	{ kanji: "村雨", romaji: "murasame", eng: "murasame", validInputs: ["murasame"] }, //1
+	{ kanji: "村正", romaji: "muramasa", eng: "muramasa", validInputs: ["muramasa"] }, //1
+	{ kanji: "モーセの杖", romaji: "mo-senotue", eng: "mose's staff", validInputs: ["mo-senotue", "mo-senotsue"] }, //2
+	{ kanji: "馬頭琴", romaji: "batoukin", eng: "horsehead fiddle", validInputs: ["batoukin"] }, //1
+	{
+		kanji: "八握剣",
+		romaji: "yatukanoturugi",
+		eng: "eight-grip sword",
+		validInputs: [
+			"yatukanoturugi",
+			"yatucanoturugi",
+			"yatsukanotsurugi",
+			"yatsucanotsurugi",
+			"yatukanotsurugi",
+			"yatucanotsurugi",
+			"yatsukanoturugi",
+			"yatsucanoturugi"
+		]
+	}, //8
+	{ kanji: "雷切", romaji: "raikiri", eng: "lightning cutter", validInputs: ["raikiri"] }, //1
+	{
+		kanji: "ラビュリントス",
+		romaji: "rabyurintosu",
+		eng: "labyrinthos",
+		validInputs: ["rabyurintosu", "rabyurinntosu"]
+	}, //1
+	{
+		kanji: "竜宮城",
+		romaji: "ryuuguujou",
+		eng: "dragon palace",
+		validInputs: ["ryuuguujou", "ryuuguuzyou", "ryuuguujyou"]
+	}, //3
+	{ kanji: "レーヴァテイン", romaji: "re-vatein", eng: "Leavateinn", validInputs: ["re-vatein"] }, //1
+	{ kanji: "レメゲトン", romaji: "remegeton", eng: "Lemegton", validInputs: ["remegeton"] }, //1
+	{ kanji: "わすれな草", romaji: "wasurenagusa", eng: "forget me not", validInputs: ["wasurenagusa"] }, //1
+	{
+		kanji: "ソードブレイカー",
+		romaji: "so-dobureika-",
+		eng: "swordbreaker",
+		validInputs: ["so-dobureika-", "so-dobureica-"]
+	},
+	{
+		kanji: "フランベルジュ",
+		romaji: "furanberuju",
+		eng: "flamberge",
+		validInputs: [
+			"furanberuju",
+			"furanberujyu",
+			"furanberuzyu",
+			"huranberuju",
+			"huranberujyu",
+			"huranberuzyu",
+			"furannberuju",
+			"furannberujyu",
+			"furannberuzyu",
+			"hurannberuju",
+			"hurannberujyu",
+			"hurannberuzyu"
+		]
+	}, //12
+	{
+		kanji: "チャクラム",
+		romaji: "chakuramu",
+		eng: "chakram",
+		validInputs: [
+			"chakuramu",
+			"tyakuramu",
+			"cyakuramu",
+			"chacuramu",
+			"tyacuramu",
+			"cyacuramu",
+			"chaquramu",
+			"tyaquramu",
+			"cyaquramu"
+		]
+	}, //9
+	{ kanji: "エアの剣", romaji: "eanoken", eng: "sword of ea", validInputs: ["eanoken"] }, //1
+	{
+		kanji: "トールハンマー",
+		romaji: "to-ruhanma-",
+		eng: "thor's hammer",
+		validInputs: ["to-ruhanma-", "to-ruhannma-"]
+	}, //2
+	{ kanji: "天鹿児弓", romaji: "amenokagoyumi", eng: "amenokago bow", validInputs: ["amenokagoyumi", "amenocagoyumi"] }, //2
+	{ kanji: "アダマンタイト", romaji: "adamantaito", eng: "adamantite", validInputs: ["adamantaito", "adamanntaito"] }, //2
+	{ kanji: "天羽々切", romaji: "amenohabakiri", eng: "amenohabakiri", validInputs: ["amenohabakiri"] }, //1
+	{ kanji: "イガリマ", romaji: "igarima", eng: "igarima", validInputs: ["igarima"] }, //1
+	{
+		kanji: "シュルシャガナ",
+		romaji: "syurusyagana",
+		eng: "shurushagana",
+		validInputs: ["syurusyagana", "shurushagana", "syurushagana", "shurusyagana"]
+	}, //4
+	{ kanji: "アガートラーム", romaji: "aga-tora-mu", eng: "Agart Tram", validInputs: ["aga-tora-mu"] }
 ];
+// { kanji: "未来", romaji: "mirai", eng: "future" ,validInputs:[]},
+// { kanji: "超能力", romaji: "tyounouryoku", eng: "psychic powers" ,validInputs:[]},
+// { kanji: "タイムトラベル", romaji: "taimutoraberu", eng: "time travel" ,validInputs:[]},
+// { kanji: "異星人", romaji: "iseijin", eng: "extraterrestrial" ,validInputs:[]},
+// { kanji: "戦争", romaji: "sensou", eng: "war" ,validInputs:[]},
+// { kanji: "サイバーパンク", romaji: "saiba-panku", eng: "cyberpunk" ,validInputs:[]},
+// { kanji: "パラレルワールド", romaji: "parareruwa-rudo", eng: "parallel world" ,validInputs:[]},
+// { kanji: "人工知能", romaji: "jinkoutinou", eng: "artificial intelligence" ,validInputs:[]},
+// { kanji: "アンドロイド", romaji: "andoroido", eng: "android" ,validInputs:[]},
+// { kanji: "サイボーグ", romaji: "saibo-gu", eng: "cyborg" ,validInputs:[]},
+// { kanji: "ディストピア", romaji: "dhisutopia", eng: "dystopia" ,validInputs:[]},
+// { kanji: "宇宙ステーション", romaji: "utyuusute-syon", eng: "space station" ,validInputs:[]},
+// { kanji: "ロボット工学", romaji: "robottokougaku", eng: "robotics" ,validInputs:[]},
+//{ kanji: "宇宙船", romaji: "utyuusen", eng: "spaceship", validInputs: [] },
+// { kanji: "宇宙エレベーター", romaji: "utyuuerebe-ta-", eng: "space elevator" ,validInputs:[]},
+// { kanji: "宇宙戦艦", romaji: "utyuusenkan", eng: "space battleship" ,validInputs:[]},
+// { kanji: "クローン技術", romaji: "kuro-ngijyutu", eng: "clone technology" ,validInputs:[]},
+// { kanji: "テレポーテーション", romaji: "terepo-te-syon", eng: "teleportation" ,validInputs:[]},
+// { kanji: "人工衛星", romaji: "jinkoueisei", eng: "artificial satellite" ,validInputs:[]},
+// { kanji: "仮想現実", romaji: "kasougenjitu", eng: "virtual reality" ,validInputs:[]},
+// { kanji: "アステロイド", romaji: "asuteroido", eng: "asteroid" ,validInputs:[]},
+// { kanji: "太陽系", romaji: "taiyoukei", eng: "solar system" ,validInputs:[]},
+// { kanji: "恒星", romaji: "kousei", eng: "star" ,validInputs:[]},
+// { kanji: "ブラックホール", romaji: "burakkuho-ru", eng: "black hole" ,validInputs:[]},
+// { kanji: "スペースコロニー", romaji: "supe-sukoroni-", eng: "space colony" ,validInputs:[]},
+// { kanji: "テラフォーミング", romaji: "terafo-mingu", eng: "terraforming" ,validInputs:[]},
+// { kanji: "惑星探査機", romaji: "wakuseitansaki", eng: "planetary probe" ,validInputs:[]},
+// { kanji: "地球外生命体", romaji: "tikyuugaiseimeitai", eng: "extraterrestrial life" ,validInputs:[]},
+// { kanji: "量子コンピューター", romaji: "ryousikonpyu-ta-", eng: "quantum computer" ,validInputs:[]},
+// { kanji: "テクノロジー", romaji: "tekunoroji-", eng: "technology" ,validInputs:[]},
+// { kanji: "スペースシャトル", romaji: "supe-susyatoru", eng: "space shuttle" ,validInputs:[]},
+// { kanji: "推理小説", romaji: "suirisyousetu", eng: "detective novel" ,validInputs:[]},
+// { kanji: "ミステリー", romaji: "misuteri-", eng: "mystery" ,validInputs:[]},
+// { kanji: "犯罪", romaji: "hanzai", eng: "crime" ,validInputs:[]},
+// { kanji: "証拠", romaji: "syouko", eng: "evidence" ,validInputs:[]},
+// { kanji: "アリバイ", romaji: "aribai", eng: "alibi" ,validInputs:[]},
+// { kanji: "謎", romaji: "nazo", eng: "puzzle" ,validInputs:[]},
+// { kanji: "密室", romaji: "missitu", eng: "locked room" ,validInputs:[]},
+// { kanji: "事件現場", romaji: "jikengenba", eng: "crime scene" ,validInputs:[]},
+// { kanji: "犯人", romaji: "hannnin", eng: "criminal" ,validInputs:[]},
+// { kanji: "探偵助手", romaji: "tanteijyosyu", eng: "detective assistant" ,validInputs:[]},
+// { kanji: "怪盗", romaji: "kaitou", eng: "phantom thief" ,validInputs:[]},
+// { kanji: "暗号", romaji: "angou", eng: "cipher" ,validInputs:[]},
+// { kanji: "推理力", romaji: "suiriryoku", eng: "deductive reasoning" ,validInputs:[]},
+// { kanji: "サスペンス", romaji: "sasupensu", eng: "suspense" ,validInputs:[]},
+// { kanji: "アクション", romaji: "akusyon", eng: "action" ,validInputs:[]},
+// { kanji: "事件簿", romaji: "jikenbo", eng: "case file" ,validInputs:[]},
+// { kanji: "密室殺人", romaji: "missitusatujin", eng: "locked-room murder" ,validInputs:[]},
+// { kanji: "探偵事務所", romaji: "tanteijimusyo", eng: "detective agency" ,validInputs:[]},
+// { kanji: "黒幕", romaji: "kuromaku", eng: "mastermind" ,validInputs:[]},
+// { kanji: "証言", romaji: "syougen", eng: "testimony" ,validInputs:[]},
 
 //ハンターハンター
 export const hunterWords = [

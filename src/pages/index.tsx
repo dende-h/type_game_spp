@@ -17,10 +17,10 @@ import {
 	FlexProps,
 	Flex
 } from "@chakra-ui/react";
-import { novelWords, comicAndAnimeWords, hunterWords } from "../constant/typingProblems";
+import { magicItems, comicAndAnimeWords, hunterWords } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 
-const easyWords = novelWords;
+const easyWords = magicItems;
 const normalWords = comicAndAnimeWords;
 const hardWords = hunterWords;
 export default function Home() {
@@ -97,7 +97,6 @@ export default function Home() {
 	}, [userInput]);
 
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		
 		if (isMobileDevice() || mode === Mode.Jap) {
 			if (event.key === "Enter" && userInputRef.current === currentWord) {
 				setScore(score + 1);
@@ -134,11 +133,28 @@ export default function Home() {
 	};
 
 	const handleInputChange = (value: string) => {
-		if (mode === Mode.Roma || Mode.Eng) {
-			if (currentWord.includes(value)) {
-				
-				setUserInput(value)
-			};
+		if (mode === Mode.Roma) {
+			if ([...words[num].romaji][0] !== [...value][0]) {
+				return;
+			} else {
+				if ([...value].length > 1 && [...words[num].romaji][1] !== [...value][1]) {
+					return;
+				} else {
+					if (words[num].validInputs.some((validInput) => validInput.includes(value))) {
+						const findIndex = words[num].validInputs.findIndex((validInput) => validInput.includes(value));
+						if (currentWord.includes(words[num].validInputs[findIndex])) {
+							setUserInput(value);
+						} else {
+							setCurrentWord(words[num].validInputs[findIndex]);
+							setUserInput(value);
+						}
+					}
+				}
+			}
+		} else if (mode === Mode.Eng) {
+			if (words[num].eng.includes(value)) {
+				setUserInput(value);
+			}
 		} else {
 			setUserInput(value);
 		}
