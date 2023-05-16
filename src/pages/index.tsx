@@ -26,7 +26,7 @@ type WordList = {
 	romaji: string;
 	eng: string;
 	validInputs: string[];
-	validInputs2?: string[];
+	validInputs2: string[];
 };
 
 const easyWords = magicItems;
@@ -157,7 +157,25 @@ export default function Home() {
 				}
 			}
 		} else if (mode === Mode.Eng) {
-			if (words[num].eng.includes(value)) {
+			if (genre === "Hunter×Hunter") {
+				if ([...words[num].eng][0] !== [...value][0]) {
+					return;
+				} else {
+					if ([...value].length > 1 && [...words[num].eng][1] !== [...value][1]) {
+						return;
+					} else {
+						if (words[num].validInputs2.some((validInput) => validInput.includes(value))) {
+							const findIndex = words[num].validInputs2.findIndex((validInput) => validInput.includes(value));
+							if (currentWord.includes(words[num].validInputs[findIndex])) {
+								setUserInput(value);
+							} else {
+								setCurrentWord(words[num].validInputs[findIndex]);
+								setUserInput(value);
+							}
+						}
+					}
+				}
+			} else if (words[num].eng.includes(value)) {
 				setUserInput(value);
 			}
 		} else {
