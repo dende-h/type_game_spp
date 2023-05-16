@@ -17,8 +17,9 @@ import {
 	FlexProps,
 	Flex
 } from "@chakra-ui/react";
-import { magicItems, adjectives, hunterWords } from "../constant/typingProblems";
+import { magicItems, adjectives } from "../constant/typingProblems";
 import Seo from "../components/Seo";
+import { hunterWords } from "@/constant/typingProblemHunterHunter";
 
 type WordList = {
 	kanji: string;
@@ -343,15 +344,26 @@ export default function Home() {
 							</Button>
 
 							{genre === "Hunter×Hunter" ? (
-								<Button
-									onClick={() => setMode(Mode.Mania)}
-									w={buttonWidth}
-									colorScheme={mode === Mode.Mania ? "teal" : "gray"}
-									mb={{ base: 1, md: 0 }}
-									mx={{ base: 0, md: 2 }}
-								>
-									マニア
-								</Button>
+								<>
+									<Button
+										onClick={() => setMode(Mode.Eng)}
+										w={buttonWidth}
+										colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+										mb={{ base: 1, md: 0 }}
+										mx={{ base: 0, md: 2 }}
+									>
+										ルビ
+									</Button>
+									<Button
+										onClick={() => setMode(Mode.Mania)}
+										w={buttonWidth}
+										colorScheme={mode === Mode.Mania ? "teal" : "gray"}
+										mb={{ base: 1, md: 0 }}
+										mx={{ base: 0, md: 2 }}
+									>
+										マニア
+									</Button>
+								</>
 							) : (
 								<Button
 									onClick={() => setMode(Mode.Eng)}

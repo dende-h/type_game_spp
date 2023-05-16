@@ -10,7 +10,8 @@ import React from "react";
 const Seo = ({ pageTitle, pageDescription, pagePath, pageImg, pageImgWidth, pageImgHeight }) => {
 	const defaultTitle = "恐ろしく速いタイピング";
 	const defaultDescription = "恐ろしく速いタイピングを習得して彼をビックリさせましょう";
-	const defaultImageUrl = "/typinggame";
+	const defaultImageUrl =
+		"https://enjzxtbbcyrptkkutovq.supabase.co/storage/v1/object/public/images/siteImage/assassin512.png?t=2023-05-16T02%3A56%3A11.445Z";
 
 	const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle;
 	const description = pageDescription || defaultDescription;
