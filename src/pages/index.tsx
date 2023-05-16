@@ -17,11 +17,19 @@ import {
 	FlexProps,
 	Flex
 } from "@chakra-ui/react";
-import { magicItems, comicAndAnimeWords, hunterWords } from "../constant/typingProblems";
+import { magicItems, adjectives, hunterWords } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 
+type WordList = {
+	kanji: string;
+	romaji: string;
+	eng: string;
+	validInputs: string[];
+	validInputs2?: string[];
+};
+
 const easyWords = magicItems;
-const normalWords = comicAndAnimeWords;
+const normalWords = adjectives;
 const hardWords = hunterWords;
 export default function Home() {
 	const isMobileDevice = (): boolean => {
@@ -31,7 +39,7 @@ export default function Home() {
 		const mobileRegex = /iphone|ipod|ipad|android|blackberry|windows phone|opera mini|silk/i;
 		return mobileRegex.test(userAgent);
 	};
-	const [words, setWords] = useState(easyWords);
+	const [words, setWords] = useState<WordList[]>(easyWords);
 	const [num, setNum] = useState(Math.floor(Math.random() * 10));
 	const [currentWord, setCurrentWord] = useState(words[num].romaji);
 	const [jaWord, setJaWord] = useState(words[num].kanji);
@@ -50,7 +58,7 @@ export default function Home() {
 
 	const Genre = {
 		EASY: "Magic Items",
-		NORMAL: "Figure",
+		NORMAL: "Adjective",
 		HARD: "Hunter×Hunter"
 	};
 	const [genre, setGenre] = useState(Genre.EASY);
@@ -68,7 +76,7 @@ export default function Home() {
 
 	const genreLabel = () => {
 		if (words === easyWords) return "Magic Items";
-		if (words === normalWords) return "Comic and Anime";
+		if (words === normalWords) return "Adjective";
 		if (words === hardWords) return "Hunter×Hunter";
 		return "";
 	};
@@ -102,9 +110,9 @@ export default function Home() {
 				setScore(score + 1);
 				setUserInput("");
 				toast({
-					title: mode === Mode.Mania ? words[num].kanji : "Correct!",
+					title: "Correct!",
 					status: "success",
-					duration: mode === Mode.Mania ? 3000 : 1000,
+					duration: 1000,
 					isClosable: true,
 					position: "top"
 				});
@@ -120,13 +128,9 @@ export default function Home() {
 				}
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap
-						? words[newNum].kanji
-						: mode === Mode.Roma || Mode.Mania
-						? words[newNum].romaji
-						: words[newNum].eng
+					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
 				);
-				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
+				setJaWord(words[newNum].kanji);
 				setNum(newNum);
 			}
 		}
@@ -167,13 +171,13 @@ export default function Home() {
 				setScore(score + 1);
 				setUserInput("");
 				toast({
-					title: mode === Mode.Mania ? words[num].kanji : "Correct!",
+					title: "Correct!",
 					status: "success",
-					duration: mode === Mode.Mania ? 3000 : 1000,
+					duration: 1000,
 					isClosable: true,
 					position: "top"
 				});
-				if (score !== 0 && score % 5 === 0) {
+				if (score !== 0 && score % 3 === 0) {
 					incrementTime(5);
 					toast({
 						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
@@ -185,13 +189,9 @@ export default function Home() {
 				}
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap
-						? words[newNum].kanji
-						: mode === Mode.Roma || Mode.Mania
-						? words[newNum].romaji
-						: words[newNum].eng
+					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
 				);
-				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
+				setJaWord(words[newNum].kanji);
 				setNum(newNum);
 			}
 		}
@@ -201,10 +201,8 @@ export default function Home() {
 		setIsActive(true);
 		setScore(0);
 		setUserInput("");
-		setCurrentWord(
-			mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma || Mode.Mania ? words[num].romaji : words[num].eng
-		);
-		setJaWord(mode === Mode.Mania ? words[num].eng : words[num].kanji);
+		setCurrentWord(mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma ? words[num].romaji : words[num].eng);
+		setJaWord(words[num].kanji);
 	};
 
 	const onTimeUp = () => {
@@ -302,13 +300,13 @@ export default function Home() {
 								魔道具
 							</Button>
 							<Button
-								onClick={() => setGenre("Figure")}
+								onClick={() => setGenre("Adjective")}
 								w={buttonWidth}
-								colorScheme={genre === "Figure" ? "teal" : "gray"}
+								colorScheme={genre === "Adjective" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								形容表現
+								形容詞
 							</Button>
 							<Button
 								onClick={() => setGenre("Hunter×Hunter")}
