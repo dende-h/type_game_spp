@@ -15,13 +15,16 @@ import {
 	Container,
 	useToast,
 	FlexProps,
-	Flex
+	Flex,
+	HStack
 } from "@chakra-ui/react";
-import { novelWords, comicAndAnimeWords, hunterWords } from "../constant/typingProblems";
+import { magicItems, adjectives } from "../constant/typingProblems";
 import Seo from "../components/Seo";
+import { hunterWords } from "@/constant/typingProblemHunterHunter";
+import Link from "next/link";
 
-const easyWords = novelWords;
-const normalWords = comicAndAnimeWords;
+const easyWords = magicItems;
+const normalWords = adjectives;
 const hardWords = hunterWords;
 export default function Home() {
 	const isMobileDevice = (): boolean => {
@@ -49,8 +52,8 @@ export default function Home() {
 	const [mode, setMode] = useState(Mode.Roma);
 
 	const Genre = {
-		EASY: "Novel Words",
-		NORMAL: "ComicAndAnime",
+		EASY: "Magic Items",
+		NORMAL: "Adjective",
 		HARD: "Hunter×Hunter"
 	};
 	const [genre, setGenre] = useState(Genre.EASY);
@@ -67,8 +70,8 @@ export default function Home() {
 	}, [genre]);
 
 	const genreLabel = () => {
-		if (words === easyWords) return "Novel Words";
-		if (words === normalWords) return "Comic and Anime";
+		if (words === easyWords) return "Magic Items";
+		if (words === normalWords) return "Adjective";
 		if (words === hardWords) return "Hunter×Hunter";
 		return "";
 	};
@@ -76,7 +79,7 @@ export default function Home() {
 	const modeLabel = () => {
 		if (mode === Mode.Jap) return "Japanese";
 		if (mode === Mode.Roma) return "Roma";
-		if (mode === Mode.Eng) return "English";
+		if (mode === Mode.Eng) return genre === "Hunter×Hunter" ? "Ruby" : "English";
 		if (mode === Mode.Mania) return "Mania";
 		return "";
 	};
@@ -102,9 +105,9 @@ export default function Home() {
 				setScore(score + 1);
 				setUserInput("");
 				toast({
-					title: mode === Mode.Mania ? words[num].kanji : "Correct!",
+					title: "Correct!",
 					status: "success",
-					duration: mode === Mode.Mania ? 3000 : 1000,
+					duration: 1000,
 					isClosable: true,
 					position: "top"
 				});
@@ -120,20 +123,59 @@ export default function Home() {
 				}
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap
-						? words[newNum].kanji
-						: mode === Mode.Roma || Mode.Mania
-						? words[newNum].romaji
-						: words[newNum].eng
+					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
 				);
-				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
+				setJaWord(words[newNum].kanji);
 				setNum(newNum);
 			}
 		}
 	};
 
 	const handleInputChange = (value: string) => {
-		setUserInput(value);
+		if (mode === Mode.Roma) {
+			if ([...words[num].romaji][0] !== [...value][0]) {
+				return;
+			} else {
+				if ([...value].length > 1 && [...words[num].romaji][1] !== [...value][1]) {
+					return;
+				} else {
+					if (words[num].validInputs.some((validInput) => validInput.includes(value))) {
+						const findIndex = words[num].validInputs.findIndex((validInput) => validInput.includes(value));
+						if (currentWord.includes(words[num].validInputs[findIndex])) {
+							setUserInput(value);
+						} else {
+							setCurrentWord(words[num].validInputs[findIndex]);
+							setUserInput(value);
+						}
+					}
+				}
+			}
+		} else if (mode === Mode.Eng || mode === Mode.Mania) {
+			if (genre === "Hunter×Hunter") {
+				if ([...words[num].eng][0] !== [...value][0]) {
+					return;
+				} else {
+					if ([...value].length > 1 && [...words[num].eng][1] !== [...value][1]) {
+						return;
+					} else {
+						if (words[num].validInputs2.some((validInput) => validInput.includes(value))) {
+							const findIndex = words[num].validInputs2.findIndex((validInput) => validInput.includes(value));
+							if (currentWord.includes(words[num].validInputs2[findIndex])) {
+								setUserInput(value);
+							} else {
+								setCurrentWord(words[num].validInputs2[findIndex]);
+								setUserInput(value);
+							}
+						}
+					}
+				}
+			} else if (words[num].eng.includes(value)) {
+				setUserInput(value);
+			}
+		} else {
+			setUserInput(value);
+		}
+
 		if (isMobileDevice() || mode === Mode.Jap) {
 			// なにもしない
 		} else {
@@ -142,13 +184,13 @@ export default function Home() {
 				setScore(score + 1);
 				setUserInput("");
 				toast({
-					title: mode === Mode.Mania ? words[num].kanji : "Correct!",
+					title: "Correct!",
 					status: "success",
-					duration: mode === Mode.Mania ? 3000 : 1000,
+					duration: 1000,
 					isClosable: true,
 					position: "top"
 				});
-				if (score !== 0 && score % 5 === 0) {
+				if (score !== 0 && score % 3 === 0) {
 					incrementTime(5);
 					toast({
 						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
@@ -160,13 +202,9 @@ export default function Home() {
 				}
 				const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap
-						? words[newNum].kanji
-						: mode === Mode.Roma || Mode.Mania
-						? words[newNum].romaji
-						: words[newNum].eng
+					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
 				);
-				setJaWord(mode === Mode.Mania ? words[newNum].eng : words[newNum].kanji);
+				setJaWord(words[newNum].kanji);
 				setNum(newNum);
 			}
 		}
@@ -176,10 +214,8 @@ export default function Home() {
 		setIsActive(true);
 		setScore(0);
 		setUserInput("");
-		setCurrentWord(
-			mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma || Mode.Mania ? words[num].romaji : words[num].eng
-		);
-		setJaWord(mode === Mode.Mania ? words[num].eng : words[num].kanji);
+		setCurrentWord(mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma ? words[num].romaji : words[num].eng);
+		setJaWord(words[num].kanji);
 	};
 
 	const onTimeUp = () => {
@@ -264,26 +300,26 @@ export default function Home() {
 						</Button>
 						<Text as={"h4"}>
 							<br />
-							Genre
+							ジャンル
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
-								onClick={() => setGenre("Novel Words")}
+								onClick={() => setGenre("Magic Items")}
 								w={buttonWidth}
-								colorScheme={genre === "Novel Words" ? "teal" : "gray"}
+								colorScheme={genre === "Magic Items" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								小説ワード
+								魔道具
 							</Button>
 							<Button
-								onClick={() => setGenre("ComicAndAnime")}
+								onClick={() => setGenre("Adjective")}
 								w={buttonWidth}
-								colorScheme={genre === "ComicAndAnime" ? "teal" : "gray"}
+								colorScheme={genre === "Adjective" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								漫画&アニメ
+								形容詞
 							</Button>
 							<Button
 								onClick={() => setGenre("Hunter×Hunter")}
@@ -297,12 +333,12 @@ export default function Home() {
 						</Flex>
 						<Text as={"h4"}>
 							<br />
-							Mode
+							モード選択
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
 								onClick={() => setMode(Mode.Jap)}
-								w={buttonWidth}
+								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Jap ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -311,7 +347,7 @@ export default function Home() {
 							</Button>
 							<Button
 								onClick={() => setMode(Mode.Roma)}
-								w={buttonWidth}
+								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Roma ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -320,15 +356,26 @@ export default function Home() {
 							</Button>
 
 							{genre === "Hunter×Hunter" ? (
-								<Button
-									onClick={() => setMode(Mode.Mania)}
-									w={buttonWidth}
-									colorScheme={mode === Mode.Mania ? "teal" : "gray"}
-									mb={{ base: 1, md: 0 }}
-									mx={{ base: 0, md: 2 }}
-								>
-									マニア
-								</Button>
+								<>
+									<Button
+										onClick={() => setMode(Mode.Eng)}
+										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+										colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+										mb={{ base: 1, md: 0 }}
+										mx={{ base: 0, md: 2 }}
+									>
+										ルビ
+									</Button>
+									<Button
+										onClick={() => setMode(Mode.Mania)}
+										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+										colorScheme={mode === Mode.Mania ? "teal" : "gray"}
+										mb={{ base: 1, md: 0 }}
+										mx={{ base: 0, md: 2 }}
+									>
+										マニア
+									</Button>
+								</>
 							) : (
 								<Button
 									onClick={() => setMode(Mode.Eng)}
@@ -345,11 +392,16 @@ export default function Home() {
 				) : (
 					<VStack spacing={8} my={8} h={"50%"}></VStack>
 				)}
-				<Text fontSize={"xl"} color={headingColor} mt={6}>
-					©2023 dende-h
-				</Text>
+				<HStack>
+					<Text fontSize={"xl"} color={headingColor} mt={6}>
+						©2023 dende-h
+					</Text>
+					<Link href={"https://twitter.com/dendeiriamaka1"} passHref>
+						<Text>Twitter</Text>
+					</Link>
+				</HStack>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.1.2.4
+					ver.2.0.1
 				</Text>
 			</Container>
 		</>
