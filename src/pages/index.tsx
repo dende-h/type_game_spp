@@ -403,7 +403,7 @@ export default function Home() {
 					</Link>
 				</HStack>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.2.0.1
+					ver.2.0.22
 				</Text>
 			</Container>
 		</>
