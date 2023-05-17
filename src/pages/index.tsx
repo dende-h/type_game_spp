@@ -397,7 +397,9 @@ export default function Home() {
 						©2023 dende-h
 					</Text>
 					<Link href={"https://twitter.com/dendeiriamaka1"} passHref>
-						<Text>Twitter</Text>
+						<Text fontSize={"xl"} color={headingColor} mt={6}>
+							Twitter
+						</Text>
 					</Link>
 				</HStack>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
