@@ -21,14 +21,6 @@ import { magicItems, adjectives } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
 
-type WordList = {
-	kanji: string;
-	romaji: string;
-	eng: string;
-	validInputs: string[];
-	validInputs2: string[];
-};
-
 const easyWords = magicItems;
 const normalWords = adjectives;
 const hardWords = hunterWords;
@@ -40,7 +32,7 @@ export default function Home() {
 		const mobileRegex = /iphone|ipod|ipad|android|blackberry|windows phone|opera mini|silk/i;
 		return mobileRegex.test(userAgent);
 	};
-	const [words, setWords] = useState<WordList[]>(easyWords);
+	const [words, setWords] = useState(easyWords);
 	const [num, setNum] = useState(Math.floor(Math.random() * 10));
 	const [currentWord, setCurrentWord] = useState(words[num].romaji);
 	const [jaWord, setJaWord] = useState(words[num].kanji);
@@ -85,7 +77,7 @@ export default function Home() {
 	const modeLabel = () => {
 		if (mode === Mode.Jap) return "Japanese";
 		if (mode === Mode.Roma) return "Roma";
-		if (mode === Mode.Eng) return "English";
+		if (mode === Mode.Eng) return genre === "Hunter×Hunter" ? "Ruby" : "English";
 		if (mode === Mode.Mania) return "Mania";
 		return "";
 	};
@@ -156,7 +148,7 @@ export default function Home() {
 					}
 				}
 			}
-		} else if (mode === Mode.Eng) {
+		} else if (mode === Mode.Eng || mode === Mode.Mania) {
 			if (genre === "Hunter×Hunter") {
 				if ([...words[num].eng][0] !== [...value][0]) {
 					return;
@@ -166,10 +158,10 @@ export default function Home() {
 					} else {
 						if (words[num].validInputs2.some((validInput) => validInput.includes(value))) {
 							const findIndex = words[num].validInputs2.findIndex((validInput) => validInput.includes(value));
-							if (currentWord.includes(words[num].validInputs[findIndex])) {
+							if (currentWord.includes(words[num].validInputs2[findIndex])) {
 								setUserInput(value);
 							} else {
-								setCurrentWord(words[num].validInputs[findIndex]);
+								setCurrentWord(words[num].validInputs2[findIndex]);
 								setUserInput(value);
 							}
 						}
@@ -344,7 +336,7 @@ export default function Home() {
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
 								onClick={() => setMode(Mode.Jap)}
-								w={buttonWidth}
+								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Jap ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -353,7 +345,7 @@ export default function Home() {
 							</Button>
 							<Button
 								onClick={() => setMode(Mode.Roma)}
-								w={buttonWidth}
+								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Roma ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -365,7 +357,7 @@ export default function Home() {
 								<>
 									<Button
 										onClick={() => setMode(Mode.Eng)}
-										w={buttonWidth}
+										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
 										colorScheme={mode === Mode.Eng ? "teal" : "gray"}
 										mb={{ base: 1, md: 0 }}
 										mx={{ base: 0, md: 2 }}
@@ -374,7 +366,7 @@ export default function Home() {
 									</Button>
 									<Button
 										onClick={() => setMode(Mode.Mania)}
-										w={buttonWidth}
+										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
 										colorScheme={mode === Mode.Mania ? "teal" : "gray"}
 										mb={{ base: 1, md: 0 }}
 										mx={{ base: 0, md: 2 }}
@@ -402,7 +394,7 @@ export default function Home() {
 					©2023 dende-h
 				</Text>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.1.2.4
+					ver.2.0.1
 				</Text>
 			</Container>
 		</>
