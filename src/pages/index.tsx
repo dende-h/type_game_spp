@@ -15,11 +15,13 @@ import {
 	Container,
 	useToast,
 	FlexProps,
-	Flex
+	Flex,
+	HStack
 } from "@chakra-ui/react";
 import { magicItems, adjectives } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
+import Link from "next/link";
 
 const easyWords = magicItems;
 const normalWords = adjectives;
@@ -390,9 +392,14 @@ export default function Home() {
 				) : (
 					<VStack spacing={8} my={8} h={"50%"}></VStack>
 				)}
-				<Text fontSize={"xl"} color={headingColor} mt={6}>
-					©2023 dende-h
-				</Text>
+				<HStack>
+					<Text fontSize={"xl"} color={headingColor} mt={6}>
+						©2023 dende-h
+					</Text>
+					<Link href={"https://twitter.com/dendeiriamaka1"} passHref>
+						<Text>Twitter</Text>
+					</Link>
+				</HStack>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
 					ver.2.0.1
 				</Text>
