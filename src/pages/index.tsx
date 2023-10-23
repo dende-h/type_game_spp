@@ -72,10 +72,6 @@ export default function Home() {
 		}
 	}, [currentQuestionIndex]);
 
-	const currentQuestion = shuffledQuestions[currentQuestionIndex];
-
-	const [currentWord, setCurrentWord] = useState(currentQuestion.romaji);
-	const [jaWord, setJaWord] = useState(currentQuestion.kanji);
 	const Mode = {
 		Jap: "japanese",
 		Roma: "roma",
@@ -117,6 +113,18 @@ export default function Home() {
 		return "";
 	};
 
+	const currentQuestion = shuffledQuestions[currentQuestionIndex];
+	useEffect(() => {
+		const updatedQuestion = shuffledQuestions[currentQuestionIndex];
+		setCurrentWord(
+			mode === Mode.Jap ? updatedQuestion.kanji : mode === Mode.Roma ? updatedQuestion.romaji : updatedQuestion.eng
+		);
+		setJaWord(updatedQuestion.kanji);
+	}, [currentQuestionIndex, mode, shuffledQuestions]);
+
+	const [currentWord, setCurrentWord] = useState(currentQuestion.romaji);
+	const [jaWord, setJaWord] = useState(currentQuestion.kanji);
+
 	const durationInitial = genre === Genre.EASY ? 60 : mode === Mode.Mania ? 120 : 90;
 	const [duration, setDuration] = useState(durationInitial);
 	const [timeLeft, setTimeLeft] = useState(duration);
@@ -137,6 +145,7 @@ export default function Home() {
 			if (event.key === "Enter" && userInputRef.current === currentWord) {
 				setScore(score + 1);
 				setUserInput("");
+				setCurrentQuestionIndex((prev) => prev + 1);
 				toast({
 					title: "Correct!",
 					status: "success",
@@ -154,12 +163,11 @@ export default function Home() {
 						position: "top"
 					});
 				}
-				setCurrentQuestionIndex((prev) => prev + 1);
 				// const newNum = Math.floor(Math.random() * words.length);
-				setCurrentWord(
-					mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
-				);
-				setJaWord(currentQuestion.kanji);
+				// setCurrentWord(
+				// 	mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
+				// );
+				// setJaWord(currentQuestion.kanji);
 				// setNum(newNum);
 			}
 		}
@@ -217,6 +225,7 @@ export default function Home() {
 			if (value === currentWord) {
 				setScore(score + 1);
 				setUserInput("");
+				setCurrentQuestionIndex((prev) => prev + 1);
 				toast({
 					title: "Correct!",
 					status: "success",
@@ -234,12 +243,11 @@ export default function Home() {
 						position: "top"
 					});
 				}
-				setCurrentQuestionIndex((prev) => prev + 1);
 				// const newNum = Math.floor(Math.random() * words.length);
-				setCurrentWord(
-					mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
-				);
-				setJaWord(currentQuestion.kanji);
+				// setCurrentWord(
+				// 	mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
+				// );
+				// setJaWord(currentQuestion.kanji);
 				// setNum(newNum);
 			}
 		}
