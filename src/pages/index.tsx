@@ -23,6 +23,7 @@ import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
 import Link from "next/link";
 import { ColorSwitchButton } from "@/components/ColorSwitchButton";
+import { GuideOnOffSwitchButton } from "@/components/GuideOnOffSwichButton";
 
 const easyWords = magicItems;
 const normalWords = adjectives;
@@ -56,30 +57,15 @@ export default function Home() {
 		const mobileRegex = /iphone|ipod|ipad|android|blackberry|windows phone|opera mini|silk/i;
 		return mobileRegex.test(userAgent);
 	};
-	const [words, setWords] = useState(easyWords);
+	const [words, setWords] = useState(shuffleArray([...easyWords]));
 	// const [num, setNum] = useState(Math.floor(Math.random() * 80));
 
 	const [userInput, setUserInput] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
-	const [shuffledQuestions, setShuffledQuestions] = useState<WordList[]>(shuffleArray([...words]));
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
-	useEffect(() => {
-		if (currentQuestionIndex >= shuffledQuestions.length) {
-			setShuffledQuestions(shuffleArray([...words]));
-			setCurrentQuestionIndex(0);
-		}
-	}, [currentQuestionIndex]);
-
-	const Mode = {
-		Jap: "japanese",
-		Roma: "roma",
-		Eng: "english",
-		Mania: "mania"
-	};
-	const [mode, setMode] = useState(Mode.Roma);
+	const [guideOnFlag, setGuideOnFlag] = useState(true);
 
 	const Genre = {
 		EASY: "Magic Items",
@@ -90,14 +76,29 @@ export default function Home() {
 	useEffect(() => {
 		setMode(Mode.Roma);
 		setDuration(durationInitial);
-		if (genre === Genre.EASY) {
-			setWords(easyWords);
-		} else if (genre === Genre.NORMAL) {
-			setWords(normalWords);
-		} else if (genre === Genre.HARD) {
-			setWords(hardWords);
-		}
+		const selectWords: WordList[] =
+			(genre === Genre.EASY && easyWords) || (genre === Genre.NORMAL && normalWords) || hardWords;
+
+		setWords(shuffleArray([...selectWords]));
 	}, [genre]);
+
+	//出題数が問題数を超えたら問題をリセット
+	useEffect(() => {
+		if (currentQuestionIndex >= words.length) {
+			setCurrentQuestionIndex(0);
+			setWords(() => shuffleArray([...words]));
+			setCurrentWord(words[0].romaji);
+			setJaWord(words[0].kanji);
+		}
+	}, [currentQuestionIndex]);
+
+	const Mode = {
+		Jap: "japanese",
+		Roma: "roma",
+		Eng: "english",
+		Mania: "mania"
+	};
+	const [mode, setMode] = useState(Mode.Roma);
 
 	const genreLabel = () => {
 		if (words === easyWords) return "Magic Items";
@@ -114,17 +115,20 @@ export default function Home() {
 		return "";
 	};
 
-	const currentQuestion = shuffledQuestions[currentQuestionIndex];
 	useEffect(() => {
-		const updatedQuestion = shuffledQuestions[currentQuestionIndex];
-		setCurrentWord(
-			mode === Mode.Jap ? updatedQuestion.kanji : mode === Mode.Roma ? updatedQuestion.romaji : updatedQuestion.eng
-		);
-		setJaWord(updatedQuestion.kanji);
-	}, [currentQuestionIndex, mode, shuffledQuestions]);
+		if (currentQuestionIndex < words.length) {
+			const updatedQuestion = words[currentQuestionIndex];
+			setCurrentWord(
+				mode === Mode.Jap ? updatedQuestion.kanji : mode === Mode.Roma ? updatedQuestion.romaji : updatedQuestion.eng
+			);
+			setJaWord(updatedQuestion.kanji);
+		}
+	}, [currentQuestionIndex]);
 
-	const [currentWord, setCurrentWord] = useState(currentQuestion.romaji);
-	const [jaWord, setJaWord] = useState(currentQuestion.kanji);
+	const [currentWord, setCurrentWord] = useState(
+		currentQuestionIndex < words.length ? words[currentQuestionIndex].romaji : ""
+	);
+	const [jaWord, setJaWord] = useState(currentQuestionIndex < words.length ? words[currentQuestionIndex].kanji : "");
 
 	const durationInitial = genre === Genre.EASY ? 60 : mode === Mode.Mania ? 120 : 90;
 	const [duration, setDuration] = useState(durationInitial);
@@ -157,7 +161,7 @@ export default function Home() {
 				if (score !== 0 && score % 5 === 0) {
 					incrementTime(5);
 					toast({
-						title: mode === Mode.Mania ? currentQuestion.kanji : "+5 Seconds Bonus",
+						title: mode === Mode.Mania ? words[currentQuestionIndex].kanji : "+5 Seconds Bonus",
 						status: "success",
 						duration: 1000,
 						isClosable: true,
@@ -166,9 +170,9 @@ export default function Home() {
 				}
 				// const newNum = Math.floor(Math.random() * words.length);
 				// setCurrentWord(
-				// 	mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
+				// 	mode === Mode.Jap ? words[currentQuestionIndex].kanji : mode === Mode.Roma ? words[currentQuestionIndex].romaji : words[currentQuestionIndex].eng
 				// );
-				// setJaWord(currentQuestion.kanji);
+				// setJaWord(words[currentQuestionIndex].kanji);
 				// setNum(newNum);
 			}
 		}
@@ -176,18 +180,20 @@ export default function Home() {
 
 	const handleInputChange = (value: string) => {
 		if (mode === Mode.Roma) {
-			if ([...currentQuestion.romaji][0] !== [...value][0]) {
+			if ([...words[currentQuestionIndex].romaji][0] !== [...value][0]) {
 				return;
 			} else {
-				if ([...value].length > 1 && [...currentQuestion.romaji][1] !== [...value][1]) {
+				if ([...value].length > 1 && [...words[currentQuestionIndex].romaji][1] !== [...value][1]) {
 					return;
 				} else {
-					if (currentQuestion.validInputs.some((validInput) => validInput.includes(value))) {
-						const findIndex = currentQuestion.validInputs.findIndex((validInput) => validInput.includes(value));
-						if (currentWord.includes(currentQuestion.validInputs[findIndex])) {
+					if (words[currentQuestionIndex].validInputs.some((validInput) => validInput.includes(value))) {
+						const findIndex = words[currentQuestionIndex].validInputs.findIndex((validInput) =>
+							validInput.includes(value)
+						);
+						if (currentWord.includes(words[currentQuestionIndex].validInputs[findIndex])) {
 							setUserInput(value);
 						} else {
-							setCurrentWord(currentQuestion.validInputs[findIndex]);
+							setCurrentWord(words[currentQuestionIndex].validInputs[findIndex]);
 							setUserInput(value);
 						}
 					}
@@ -195,24 +201,26 @@ export default function Home() {
 			}
 		} else if (mode === Mode.Eng || mode === Mode.Mania) {
 			if (genre === "Hunter×Hunter") {
-				if ([...currentQuestion.eng][0] !== [...value][0]) {
+				if ([...words[currentQuestionIndex].eng][0] !== [...value][0]) {
 					return;
 				} else {
-					if ([...value].length > 1 && [...currentQuestion.eng][1] !== [...value][1]) {
+					if ([...value].length > 1 && [...words[currentQuestionIndex].eng][1] !== [...value][1]) {
 						return;
 					} else {
-						if (currentQuestion.validInputs2.some((validInput) => validInput.includes(value))) {
-							const findIndex = currentQuestion.validInputs2.findIndex((validInput) => validInput.includes(value));
-							if (currentWord.includes(currentQuestion.validInputs2[findIndex])) {
+						if (words[currentQuestionIndex].validInputs2.some((validInput) => validInput.includes(value))) {
+							const findIndex = words[currentQuestionIndex].validInputs2.findIndex((validInput) =>
+								validInput.includes(value)
+							);
+							if (currentWord.includes(words[currentQuestionIndex].validInputs2[findIndex])) {
 								setUserInput(value);
 							} else {
-								setCurrentWord(currentQuestion.validInputs2[findIndex]);
+								setCurrentWord(words[currentQuestionIndex].validInputs2[findIndex]);
 								setUserInput(value);
 							}
 						}
 					}
 				}
-			} else if (currentQuestion.eng.includes(value)) {
+			} else if (words[currentQuestionIndex].eng.includes(value)) {
 				setUserInput(value);
 			}
 		} else {
@@ -237,7 +245,7 @@ export default function Home() {
 				if (score !== 0 && score % 3 === 0) {
 					incrementTime(5);
 					toast({
-						title: mode === Mode.Mania ? currentQuestion.kanji : "+5 Seconds Bonus",
+						title: mode === Mode.Mania ? words[currentQuestionIndex].kanji : "+5 Seconds Bonus",
 						status: "success",
 						duration: 1000,
 						isClosable: true,
@@ -246,9 +254,9 @@ export default function Home() {
 				}
 				// const newNum = Math.floor(Math.random() * words.length);
 				// setCurrentWord(
-				// 	mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
+				// 	mode === Mode.Jap ? words[currentQuestionIndex].kanji : mode === Mode.Roma ? words[currentQuestionIndex].romaji : words[currentQuestionIndex].eng
 				// );
-				// setJaWord(currentQuestion.kanji);
+				// setJaWord(words[currentQuestionIndex].kanji);
 				// setNum(newNum);
 			}
 		}
@@ -259,9 +267,11 @@ export default function Home() {
 		setScore(0);
 		setUserInput("");
 		setCurrentWord(
-			mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
+			(mode === Mode.Jap && words[currentQuestionIndex].kanji) ||
+				(mode === Mode.Roma && words[currentQuestionIndex].romaji) ||
+				words[currentQuestionIndex].eng
 		);
-		setJaWord(currentQuestion.kanji);
+		setJaWord(words[currentQuestionIndex].kanji);
 	};
 
 	const onTimeUp = () => {
@@ -321,7 +331,9 @@ export default function Home() {
 						timeLeft={timeLeft}
 						setTimeLeft={setTimeLeft}
 					/>
-					{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} />}
+					{isActive && (
+						<WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} guideOn={guideOnFlag} />
+					)}
 					{isActive && (
 						<TypingInput
 							value={userInput}
@@ -438,7 +450,21 @@ export default function Home() {
 							<br />
 							Config
 						</Text>
-						<ColorSwitchButton aria-label={"colorMode switch"} />
+						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
+							<ColorSwitchButton
+								aria-label={"colorMode switch"}
+								w={buttonWidth}
+								mb={{ base: 1, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							/>
+							<GuideOnOffSwitchButton
+								onClickButton={setGuideOnFlag}
+								guideOnFlag={guideOnFlag}
+								w={buttonWidth}
+								mb={{ base: 1, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							/>
+						</Flex>
 					</VStack>
 				) : (
 					<VStack spacing={8} my={8} h={"50%"}></VStack>

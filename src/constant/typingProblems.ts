@@ -22,132 +22,132 @@ export const magicItems: WordList[] = [
 		validInputs: ["ainohiyaku", "ainohiyacu", "ainohiyaqu"],
 		validInputs2: []
 	}, //3
-	{
-		kanji: "アカシックレコード",
-		romaji: "akasikkureko-do",
-		eng: "Akashic Records",
-		validInputs: [
-			"akasikkureko-do",
-			"akasiccureco-do",
-			"akashikkureko-do",
-			"akashikkureco-do",
-			"akashiccureko-do",
-			"akashiccureco-do",
-			"akasiccureko-do",
-			"akasikkureco-do",
-			"akaciccureko-do",
-			"akacikkureco-do",
-			"akacikkureko-do",
-			"acashikkureko-do",
-			"acashikkureco-do",
-			"acashiccureko-do",
-			"acashiccureco-do",
-			"acasiccureko-do",
-			"acasiccureco-do",
-			"acasikkureko-do",
-			"acasikkureco-do",
-			"acaciccureko-do",
-			"acaciccureco-do",
-			"acacikkureko-do",
-			"acacikkureco-do",
-			"akashiqqureko-do",
-			"akashiqqureco-do",
-			"akasiqqureko-do",
-			"akasiqqureco-do",
-			"akaciqqureko-do",
-			"akaciqqureco-do",
-			"acashiqqureko-do",
-			"acashiqqureco-do",
-			"acasiqqureko-do",
-			"acasiqqureco-do",
-			"acaciqqureko-do",
-			"acaciqqureco-do"
-		],
-		validInputs2: []
-	}, //36
-	{
-		kanji: "アキレウスの鎧",
-		romaji: "akireusunoyoroi",
-		eng: "achilles armor",
-		validInputs: ["akireusunoyoroi"], //1
-		validInputs2: []
-	},
-	{
-		kanji: "アスクレピオスの杖",
-		romaji: "asukurepiosunotue",
-		eng: "asclepius staff",
-		validInputs: [
-			"asukurepiosunotue",
-			"asukurepiosunotsue",
-			"asucurepiosunotsue",
-			"asucurepiosunotue",
-			"asuqurepiosunotsue",
-			"asuqurepiosunotue"
-		], //6
-		validInputs2: []
-	},
-	{ kanji: "梓弓", romaji: "azusayumi", eng: "Azusa Bow", validInputs: ["azusayumi"], validInputs2: [] }, //1
-	{
-		kanji: "アポロンの竪琴",
-		romaji: "aporonnnotategoto",
-		eng: "apollos lyre",
-		validInputs: ["aporonnnotategoto"], //1
-		validInputs2: []
-	},
-	{ kanji: "アミュレット", romaji: "amyuretto", eng: "Amulet", validInputs: ["amyuretto"], validInputs2: [] }, //1
-	{
-		kanji: "アリアドネの糸",
-		romaji: "ariadonenoito",
-		eng: "ariadnes thread",
-		validInputs: ["ariadonenoito"],
-		validInputs2: []
-	}, //1
-	{
-		kanji: "アレクサンドリア図書館",
-		romaji: "arekusandoriatosyokan",
-		eng: "library of alexandria",
-		validInputs: [
-			"arekusandoriatosyokan",
-			"arekusandoriatoshokan",
-			"arekusandoriatosyocan",
-			"arekusandoriatoshocan",
-			"arecusandoriatosyokan",
-			"arecusandoriatoshokan",
-			"arecusandoriatosyocan",
-			"arecusandoriatoshocan",
-			"arequsandoriatosyokan",
-			"arequsandoriatoshokan",
-			"arequsandoriatosyocan",
-			"arequsandoriatoshocan",
-			"arekusanndoriatosyokan",
-			"arekusanndoriatoshokan",
-			"arekusanndoriatosyocan",
-			"arekusanndoriatoshocan",
-			"arecusanndoriatosyokan",
-			"arecusanndoriatoshokan",
-			"arecusanndoriatosyocan",
-			"arecusanndoriatoshocan",
-			"arequsanndoriatosyokan",
-			"arequsanndoriatoshokan",
-			"arequsanndoriatosyocan",
-			"arequsanndoriatoshocan"
-		],
-		validInputs2: []
-	}, //24
-	{
-		kanji: "アンブロシア",
-		romaji: "anburosia",
-		eng: "ambrosia",
-		validInputs: ["anburosia", "anburoshia", "anbrocia", "annburosia", "annburoshia", "annbrocia"],
-		validInputs2: []
-	}, //6
-	{
-		kanji: "イカロスの翼",
-		romaji: "ikarosunotubasa",
-		eng: "icarus wings",
-		validInputs: ["ikarosunotubasa", "ikarosunotsubasa", "icarosunotubasa", "icarosunotsubasa"],
-		validInputs2: []
-	}, //4
+	// {
+	// 	kanji: "アカシックレコード",
+	// 	romaji: "akasikkureko-do",
+	// 	eng: "Akashic Records",
+	// 	validInputs: [
+	// 		"akasikkureko-do",
+	// 		"akasiccureco-do",
+	// 		"akashikkureko-do",
+	// 		"akashikkureco-do",
+	// 		"akashiccureko-do",
+	// 		"akashiccureco-do",
+	// 		"akasiccureko-do",
+	// 		"akasikkureco-do",
+	// 		"akaciccureko-do",
+	// 		"akacikkureco-do",
+	// 		"akacikkureko-do",
+	// 		"acashikkureko-do",
+	// 		"acashikkureco-do",
+	// 		"acashiccureko-do",
+	// 		"acashiccureco-do",
+	// 		"acasiccureko-do",
+	// 		"acasiccureco-do",
+	// 		"acasikkureko-do",
+	// 		"acasikkureco-do",
+	// 		"acaciccureko-do",
+	// 		"acaciccureco-do",
+	// 		"acacikkureko-do",
+	// 		"acacikkureco-do",
+	// 		"akashiqqureko-do",
+	// 		"akashiqqureco-do",
+	// 		"akasiqqureko-do",
+	// 		"akasiqqureco-do",
+	// 		"akaciqqureko-do",
+	// 		"akaciqqureco-do",
+	// 		"acashiqqureko-do",
+	// 		"acashiqqureco-do",
+	// 		"acasiqqureko-do",
+	// 		"acasiqqureco-do",
+	// 		"acaciqqureko-do",
+	// 		"acaciqqureco-do"
+	// 	],
+	// 	validInputs2: []
+	// }, //36
+	// {
+	// 	kanji: "アキレウスの鎧",
+	// 	romaji: "akireusunoyoroi",
+	// 	eng: "achilles armor",
+	// 	validInputs: ["akireusunoyoroi"], //1
+	// 	validInputs2: []
+	// },
+	// {
+	// 	kanji: "アスクレピオスの杖",
+	// 	romaji: "asukurepiosunotue",
+	// 	eng: "asclepius staff",
+	// 	validInputs: [
+	// 		"asukurepiosunotue",
+	// 		"asukurepiosunotsue",
+	// 		"asucurepiosunotsue",
+	// 		"asucurepiosunotue",
+	// 		"asuqurepiosunotsue",
+	// 		"asuqurepiosunotue"
+	// 	], //6
+	// 	validInputs2: []
+	// },
+	// { kanji: "梓弓", romaji: "azusayumi", eng: "Azusa Bow", validInputs: ["azusayumi"], validInputs2: [] }, //1
+	// {
+	// 	kanji: "アポロンの竪琴",
+	// 	romaji: "aporonnnotategoto",
+	// 	eng: "apollos lyre",
+	// 	validInputs: ["aporonnnotategoto"], //1
+	// 	validInputs2: []
+	// },
+	// { kanji: "アミュレット", romaji: "amyuretto", eng: "Amulet", validInputs: ["amyuretto"], validInputs2: [] }, //1
+	// {
+	// 	kanji: "アリアドネの糸",
+	// 	romaji: "ariadonenoito",
+	// 	eng: "ariadnes thread",
+	// 	validInputs: ["ariadonenoito"],
+	// 	validInputs2: []
+	// }, //1
+	// {
+	// 	kanji: "アレクサンドリア図書館",
+	// 	romaji: "arekusandoriatosyokan",
+	// 	eng: "library of alexandria",
+	// 	validInputs: [
+	// 		"arekusandoriatosyokan",
+	// 		"arekusandoriatoshokan",
+	// 		"arekusandoriatosyocan",
+	// 		"arekusandoriatoshocan",
+	// 		"arecusandoriatosyokan",
+	// 		"arecusandoriatoshokan",
+	// 		"arecusandoriatosyocan",
+	// 		"arecusandoriatoshocan",
+	// 		"arequsandoriatosyokan",
+	// 		"arequsandoriatoshokan",
+	// 		"arequsandoriatosyocan",
+	// 		"arequsandoriatoshocan",
+	// 		"arekusanndoriatosyokan",
+	// 		"arekusanndoriatoshokan",
+	// 		"arekusanndoriatosyocan",
+	// 		"arekusanndoriatoshocan",
+	// 		"arecusanndoriatosyokan",
+	// 		"arecusanndoriatoshokan",
+	// 		"arecusanndoriatosyocan",
+	// 		"arecusanndoriatoshocan",
+	// 		"arequsanndoriatosyokan",
+	// 		"arequsanndoriatoshokan",
+	// 		"arequsanndoriatosyocan",
+	// 		"arequsanndoriatoshocan"
+	// 	],
+	// 	validInputs2: []
+	// }, //24
+	// {
+	// 	kanji: "アンブロシア",
+	// 	romaji: "anburosia",
+	// 	eng: "ambrosia",
+	// 	validInputs: ["anburosia", "anburoshia", "anbrocia", "annburosia", "annburoshia", "annbrocia"],
+	// 	validInputs2: []
+	// }, //6
+	// {
+	// 	kanji: "イカロスの翼",
+	// 	romaji: "ikarosunotubasa",
+	// 	eng: "icarus wings",
+	// 	validInputs: ["ikarosunotubasa", "ikarosunotsubasa", "icarosunotubasa", "icarosunotsubasa"],
+	// 	validInputs2: []
+	// }, //4
 	{
 		kanji: "イモリの黒焼き",
 		romaji: "imorinokuroyaki",
