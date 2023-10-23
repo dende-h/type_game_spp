@@ -22,6 +22,7 @@ import { magicItems, adjectives, WordList } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
 import Link from "next/link";
+import { ColorSwitchButton } from "@/components/ColorSwitchButton";
 
 const easyWords = magicItems;
 const normalWords = adjectives;
@@ -343,9 +344,9 @@ export default function Home() {
 						>
 							Start Game
 						</Button>
-						<Text as={"h4"}>
+						<Text as={"h2"} fontWeight="bold">
 							<br />
-							ジャンル
+							ジャンル選択
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
@@ -376,7 +377,7 @@ export default function Home() {
 								Hunter×Hunter
 							</Button>
 						</Flex>
-						<Text as={"h4"}>
+						<Text as={"h2"} fontWeight="bold">
 							<br />
 							モード選択
 						</Text>
@@ -433,6 +434,11 @@ export default function Home() {
 								</Button>
 							)}
 						</Flex>
+						<Text as={"h3"} fontWeight="bold">
+							<br />
+							Config
+						</Text>
+						<ColorSwitchButton aria-label={"colorMode switch"} />
 					</VStack>
 				) : (
 					<VStack spacing={8} my={8} h={"50%"}></VStack>
