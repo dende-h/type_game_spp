@@ -24,6 +24,7 @@ import { hunterWords } from "@/constant/typingProblemHunterHunter";
 import Link from "next/link";
 import { ColorSwitchButton } from "@/components/ColorSwitchButton";
 import { GuideOnOffSwitchButton } from "@/components/GuideOnOffSwichButton";
+import { CheckInputMode } from "@/components/CheckInputMode";
 
 const easyWords = magicItems;
 const normalWords = adjectives;
@@ -332,30 +333,40 @@ export default function Home() {
 						setTimeLeft={setTimeLeft}
 					/>
 					{isActive && (
-						<WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} guideOn={guideOnFlag} />
-					)}
-					{isActive && (
-						<TypingInput
-							value={userInput}
-							onChange={handleInputChange}
-							disabled={!isActive}
-							inputRef={inputRef}
-							onKeyPress={handleKeyPress}
-						/>
+						<>
+							<WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} guideOn={guideOnFlag} />
+							<TypingInput
+								value={userInput}
+								onChange={handleInputChange}
+								disabled={!isActive}
+								inputRef={inputRef}
+								onKeyPress={handleKeyPress}
+							/>
+							<Button
+								fontSize={textSize}
+								w={buttonWidth}
+								colorScheme="red"
+								onClick={() => {
+									onTimeUp();
+								}}
+							>
+								Stop the game
+							</Button>
+						</>
 					)}
 				</Box>
 
 				{!isActive ? (
 					<VStack spacing={{ base: 0, md: 4 }} my={{ base: 0, md: 4 }} minH={"50%"}>
-						<Button
-							onClick={startGameAndFocusInput}
+						<CheckInputMode
+							onclickStart={startGameAndFocusInput}
 							disabled={isActive}
 							fontSize={textSize}
 							w={buttonWidth}
 							colorScheme="blue"
-						>
-							Start Game
-						</Button>
+							genre={genre}
+							mode={mode}
+						/>
 						<Text as={"h2"} fontWeight="bold">
 							<br />
 							ジャンル選択
