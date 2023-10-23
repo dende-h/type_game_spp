@@ -18,7 +18,7 @@ import {
 	Flex,
 	HStack
 } from "@chakra-ui/react";
-import { magicItems, adjectives } from "../constant/typingProblems";
+import { magicItems, adjectives, WordList } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
 import Link from "next/link";
@@ -26,6 +26,27 @@ import Link from "next/link";
 const easyWords = magicItems;
 const normalWords = adjectives;
 const hardWords = hunterWords;
+
+//この関数は、配列をシャッフル（ランダムに並び替え）するためのヘルパー関数です。
+//Fisher-Yates（またはKnuth）シャッフルというアルゴリズムを使用している。
+//このアルゴリズムは、配列を効率的かつ公平にシャッフルするためのもの。
+const shuffleArray = (array: WordList[]) => {
+	let currentIndex = array.length;
+	let randomIndex;
+
+	// While there remain elements to shuffle...
+	while (currentIndex !== 0) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		// And swap it with the current element.
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+	}
+
+	return array;
+};
+
 export default function Home() {
 	const isMobileDevice = (): boolean => {
 		if (typeof window === "undefined") return false;
@@ -35,14 +56,26 @@ export default function Home() {
 		return mobileRegex.test(userAgent);
 	};
 	const [words, setWords] = useState(easyWords);
-	const [num, setNum] = useState(Math.floor(Math.random() * 10));
-	const [currentWord, setCurrentWord] = useState(words[num].romaji);
-	const [jaWord, setJaWord] = useState(words[num].kanji);
+	// const [num, setNum] = useState(Math.floor(Math.random() * 80));
+
 	const [userInput, setUserInput] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
+	const [shuffledQuestions, setShuffledQuestions] = useState<WordList[]>(shuffleArray([...words]));
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+	useEffect(() => {
+		if (currentQuestionIndex >= shuffledQuestions.length) {
+			setShuffledQuestions(shuffleArray([...words]));
+			setCurrentQuestionIndex(0);
+		}
+	}, [currentQuestionIndex]);
+
+	const currentQuestion = shuffledQuestions[currentQuestionIndex];
+
+	const [currentWord, setCurrentWord] = useState(currentQuestion.romaji);
+	const [jaWord, setJaWord] = useState(currentQuestion.kanji);
 	const Mode = {
 		Jap: "japanese",
 		Roma: "roma",
@@ -114,37 +147,38 @@ export default function Home() {
 				if (score !== 0 && score % 5 === 0) {
 					incrementTime(5);
 					toast({
-						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
+						title: mode === Mode.Mania ? currentQuestion.kanji : "+5 Seconds Bonus",
 						status: "success",
 						duration: 1000,
 						isClosable: true,
 						position: "top"
 					});
 				}
-				const newNum = Math.floor(Math.random() * words.length);
+				setCurrentQuestionIndex((prev) => prev + 1);
+				// const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
+					mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
 				);
-				setJaWord(words[newNum].kanji);
-				setNum(newNum);
+				setJaWord(currentQuestion.kanji);
+				// setNum(newNum);
 			}
 		}
 	};
 
 	const handleInputChange = (value: string) => {
 		if (mode === Mode.Roma) {
-			if ([...words[num].romaji][0] !== [...value][0]) {
+			if ([...currentQuestion.romaji][0] !== [...value][0]) {
 				return;
 			} else {
-				if ([...value].length > 1 && [...words[num].romaji][1] !== [...value][1]) {
+				if ([...value].length > 1 && [...currentQuestion.romaji][1] !== [...value][1]) {
 					return;
 				} else {
-					if (words[num].validInputs.some((validInput) => validInput.includes(value))) {
-						const findIndex = words[num].validInputs.findIndex((validInput) => validInput.includes(value));
-						if (currentWord.includes(words[num].validInputs[findIndex])) {
+					if (currentQuestion.validInputs.some((validInput) => validInput.includes(value))) {
+						const findIndex = currentQuestion.validInputs.findIndex((validInput) => validInput.includes(value));
+						if (currentWord.includes(currentQuestion.validInputs[findIndex])) {
 							setUserInput(value);
 						} else {
-							setCurrentWord(words[num].validInputs[findIndex]);
+							setCurrentWord(currentQuestion.validInputs[findIndex]);
 							setUserInput(value);
 						}
 					}
@@ -152,24 +186,24 @@ export default function Home() {
 			}
 		} else if (mode === Mode.Eng || mode === Mode.Mania) {
 			if (genre === "Hunter×Hunter") {
-				if ([...words[num].eng][0] !== [...value][0]) {
+				if ([...currentQuestion.eng][0] !== [...value][0]) {
 					return;
 				} else {
-					if ([...value].length > 1 && [...words[num].eng][1] !== [...value][1]) {
+					if ([...value].length > 1 && [...currentQuestion.eng][1] !== [...value][1]) {
 						return;
 					} else {
-						if (words[num].validInputs2.some((validInput) => validInput.includes(value))) {
-							const findIndex = words[num].validInputs2.findIndex((validInput) => validInput.includes(value));
-							if (currentWord.includes(words[num].validInputs2[findIndex])) {
+						if (currentQuestion.validInputs2.some((validInput) => validInput.includes(value))) {
+							const findIndex = currentQuestion.validInputs2.findIndex((validInput) => validInput.includes(value));
+							if (currentWord.includes(currentQuestion.validInputs2[findIndex])) {
 								setUserInput(value);
 							} else {
-								setCurrentWord(words[num].validInputs2[findIndex]);
+								setCurrentWord(currentQuestion.validInputs2[findIndex]);
 								setUserInput(value);
 							}
 						}
 					}
 				}
-			} else if (words[num].eng.includes(value)) {
+			} else if (currentQuestion.eng.includes(value)) {
 				setUserInput(value);
 			}
 		} else {
@@ -193,19 +227,20 @@ export default function Home() {
 				if (score !== 0 && score % 3 === 0) {
 					incrementTime(5);
 					toast({
-						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
+						title: mode === Mode.Mania ? currentQuestion.kanji : "+5 Seconds Bonus",
 						status: "success",
 						duration: 1000,
 						isClosable: true,
 						position: "top"
 					});
 				}
-				const newNum = Math.floor(Math.random() * words.length);
+				setCurrentQuestionIndex((prev) => prev + 1);
+				// const newNum = Math.floor(Math.random() * words.length);
 				setCurrentWord(
-					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
+					mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
 				);
-				setJaWord(words[newNum].kanji);
-				setNum(newNum);
+				setJaWord(currentQuestion.kanji);
+				// setNum(newNum);
 			}
 		}
 	};
@@ -214,13 +249,15 @@ export default function Home() {
 		setIsActive(true);
 		setScore(0);
 		setUserInput("");
-		setCurrentWord(mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma ? words[num].romaji : words[num].eng);
-		setJaWord(words[num].kanji);
+		setCurrentWord(
+			mode === Mode.Jap ? currentQuestion.kanji : mode === Mode.Roma ? currentQuestion.romaji : currentQuestion.eng
+		);
+		setJaWord(currentQuestion.kanji);
 	};
 
 	const onTimeUp = () => {
 		setUserInput("");
-		setNum(0);
+		// setNum(0);
 		setTimeout(() => {
 			router.push({ pathname: "/result", query: { score, mode, genre } });
 		}, 2000);
