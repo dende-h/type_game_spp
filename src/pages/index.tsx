@@ -485,7 +485,7 @@ export default function Home() {
 					</Link>
 				</HStack>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.2.0.22
+					ver.2.1.1
 				</Text>
 			</Container>
 		</>

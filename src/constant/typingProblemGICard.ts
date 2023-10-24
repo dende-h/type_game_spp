@@ -27,25 +27,7 @@ export const spellWords: WordList[] = [
 			"dhifencibuwho-ru",
 			"dhifennsibuwho-ru",
 			"dhifennshibuwho-ru",
-			"dhifenncibuwho-ru",
-			"delifensibuwho-ru",
-			"delifenshibuwho-ru",
-			"delifencibuwho-ru",
-			"delifennsibuwho-ru",
-			"delifennshibuwho-ru",
-			"delifenncibuwho-ru",
-			"dhifensibuulo-ru",
-			"dhifenshibuulo-ru",
-			"dhifencibuulo-ru",
-			"dhifennsibuulo-ru",
-			"dhifennshibuulo-ru",
-			"dhifenncibuulo-ru",
-			"delifensibuulo-ru",
-			"delifenshibuulo-ru",
-			"delifencibuulo-ru",
-			"delifennsibuulo-ru",
-			"delifennshibuulo-ru",
-			"delifenncibuulo-ru"
+			"dhifenncibuwho-ru"
 		]
 	},
 	{
@@ -73,14 +55,7 @@ export const spellWords: WordList[] = [
 		romaji: "jiryoku",
 		eng: "magunethikkufo-su",
 		validInputs: ["jiryoku", "ziryoku", "jiryocu", "jiryocu", "jiryoqu", "ziryoqu"],
-		validInputs2: [
-			"magunethikkufo-su",
-			"magunethiccufo-su",
-			"magunethiqqufo-su",
-			"magunetelikkufo-su",
-			"maguneteliccufo-su",
-			"maguneteliqqufo-su"
-		]
+		validInputs2: ["magunethikkufo-su", "magunethiccufo-su", "magunethiqqufo-su"]
 	},
 	{
 		kanji: "<Ruby>掏摸<rt>ピックポケット</rt></Ruby>",
@@ -234,7 +209,7 @@ export const spellWords: WordList[] = [
 		romaji: "seisui",
 		eng: "ho-ri-who-ta-",
 		validInputs: ["seisui"],
-		validInputs2: ["ho-ri-who-ta-", "ho-ri-ulo-ta-"]
+		validInputs2: ["ho-ri-who-ta-"]
 	},
 	{
 		kanji: "<Ruby>追跡<rt>トレース</rt></Ruby>",
