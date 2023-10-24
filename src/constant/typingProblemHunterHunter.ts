@@ -3,7 +3,7 @@ import { WordList } from "./typingProblems";
 //ハンターハンター
 export const hunterWords: WordList[] = [
 	{
-		kanji: "百式観音",
+		kanji: "<Ruby>百式観音<rt>ひゃくしきかんのん</rt></Ruby>",
 		romaji: "hyakusikikannnon",
 		eng: "hyakusikikannnon",
 		validInputs: [
@@ -48,7 +48,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "百式観音壱乃掌",
+		kanji: "<Ruby>百式観音壱乃掌<rt>ひゃくしきかんのんいちのて</rt></Ruby>",
 		romaji: "hyakusikikannnonnitinote",
 		eng: "hyakusikikannnonnitinote",
 		validInputs: [
@@ -129,7 +129,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "百式観音零の掌",
+		kanji: "<Ruby>百式観音零の掌<rt>ひゃくしきかんのんぜろのて</rt></Ruby>",
 		romaji: "hyakusikikannnonzeronote",
 		eng: "hyakusikikannnonzeronote",
 		validInputs: [
@@ -174,7 +174,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "百式観音九十九の掌",
+		kanji: "<Ruby>百式観音九十九の掌<rt>ひゃくしきかんのんつくものて</rt></Ruby>",
 		romaji: "hyakusikikannnontukumonote",
 		eng: "hyakusikikannnontukumonote",
 		validInputs: [
@@ -399,14 +399,14 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "蚤弾",
+		kanji: "<Ruby>蚤弾<rt>フリーダム</rt></Ruby>",
 		romaji: "nomidan",
 		eng: "huri-damu",
 		validInputs: ["nomidan"],
 		validInputs2: ["huri-damu", "furi-damu"]
 	},
 	{
-		kanji: "死体と遊ぶな子供達",
+		kanji: "<Ruby>死体と遊ぶな子供達<rt>リビングデッドドールズ</rt></Ruby>",
 		romaji: "sitaitoasobunakodomotati",
 		eng: "ribinngudeddodo-ruzu",
 		validInputs: [
@@ -426,22 +426,28 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["ribingudeddodo-ruzu", "ribinngudeddodo-ruzu"]
 	},
 	{
-		kanji: "180分の恋奴隷",
+		kanji: "<Ruby>180分の恋奴隷<rt>インスタントラヴァー</rt></Ruby>",
 		romaji: "180hunnnokoidorei",
 		eng: "innsutantorava-",
 		validInputs: ["180hunnnokoidorei", "180hunnnocoidorei", "180funnnokoidorei", "180funnnocoidorei"],
 		validInputs2: ["insutantorava-", "innsutantorava-"]
 	},
 	{
-		kanji: "俤人",
+		kanji: "<Ruby>俤人<rt>ソウルドール</rt></Ruby>",
 		romaji: "omokagebito",
 		eng: "sourudo-ru",
 		validInputs: ["omokagebito", "omocagebito"],
 		validInputs2: ["sourudo-ru"]
 	},
-	{ kanji: "魂呼ばい", romaji: "tamayobai", eng: "tamayobai", validInputs: ["tamayobai"], validInputs2: ["tamayobai"] },
 	{
-		kanji: "人形受胎",
+		kanji: "<Ruby>魂呼ばい<rt>たまよばい</rt></Ruby>",
+		romaji: "tamayobai",
+		eng: "tamayobai",
+		validInputs: ["tamayobai"],
+		validInputs2: ["tamayobai"]
+	},
+	{
+		kanji: "<Ruby>人形受胎<rt>ドールキャッチャー</rt></Ruby>",
 		romaji: "ningyoujutai",
 		eng: "do-rukyattya-",
 		validInputs: [
@@ -455,14 +461,14 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["do-rukyattya-", "do-rukyaccha-", "do-rukyaccya-"]
 	},
 	{
-		kanji: "死亡遊戯",
+		kanji: "<Ruby>死亡遊戯<rt>ダツ デ ダーツ</rt></Ruby>",
 		romaji: "sibouyuugi",
 		eng: "datudeda-tu",
 		validInputs: ["sibouyuugi", "shibouyuugi", "cibouyuugi"],
 		validInputs2: ["datudeda-tu", "datudeda-tsu", "datsudeda-tu", "datsudeda-tsu"]
 	},
 	{
-		kanji: "百万回生きた猫",
+		kanji: "<Ruby>百万回生きた猫<rt>ねこのなまえ</rt></Ruby>",
 		romaji: "hyakumankaiikitaneko",
 		eng: "nekononamae",
 		validInputs: [
@@ -494,7 +500,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["nekononamae", "necononamae"]
 	},
 	{
-		kanji: "気狂いピエロ",
+		kanji: "<Ruby>気狂いピエロ<rt>クレイジースロット</rt></Ruby>",
 		romaji: "kiguruipiero",
 		eng: "kureiji-surotto",
 		validInputs: ["kiguruipiero"],
@@ -508,7 +514,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "死神の円舞曲",
+		kanji: "<Ruby>死神の円舞曲<rt>サイレントワルツ</rt></Ruby>",
 		romaji: "sinigaminoenbukyoku",
 		eng: "sairentowarutu",
 		validInputs: [
@@ -534,7 +540,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["sairentowarutu", "sairentowarutsu"]
 	},
 	{
-		kanji: "踊る気儘な火人形",
+		kanji: "<Ruby>踊る気儘な火人形<rt>ダンシングドール</rt></Ruby>",
 		romaji: "odorukimamanahiningyou",
 		eng: "dansingudo-ru",
 		validInputs: ["odorukimamanahiningyou", "odorukimamanahininngyou"],
@@ -554,7 +560,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "虎咬真拳",
+		kanji: "<Ruby>虎咬真拳<rt>ここうしんけん</rt></Ruby>",
 		romaji: "kokousinken",
 		eng: "kokousinken",
 		validInputs: [
@@ -611,21 +617,21 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "二人セゾン",
+		kanji: "<Ruby>二人セゾン<rt>きみがいない</rt></Ruby>",
 		romaji: "hutarisezon",
 		eng: "kimigainai",
 		validInputs: ["hutarisezon", "futarisezon"],
 		validInputs2: ["kimigainai"]
 	},
 	{
-		kanji: "蛇咬の舞",
+		kanji: "<Ruby>蛇咬の舞<rt>だこうのまい</rt></Ruby>",
 		romaji: "dakounomai",
 		eng: "dakounomai",
 		validInputs: ["dakounomai", "dacounomai"],
 		validInputs2: ["dakounomai", "dacounomai"]
 	},
 	{
-		kanji: "散弾独楽哀歌",
+		kanji: "<Ruby>散弾独楽哀歌<rt>ショットガンブルース</rt></Ruby>",
 		romaji: "sandangomaaika",
 		eng: "syottoganburu-su",
 		validInputs: [
@@ -641,7 +647,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["syottoganburu-su", "shottoganburu-su", "syottogannburu-su", "shottogannburu-su"]
 	},
 	{
-		kanji: "戦闘舞踏曲",
+		kanji: "<Ruby>戦闘舞踏曲<rt>たたかいのワルツ</rt></Ruby>",
 		romaji: "sentoubutoukyoku",
 		eng: "tatakainowarutu",
 		validInputs: [
@@ -655,14 +661,14 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["tatakainowarutu", "tatakainowarutsu", "tatacainowarutu", "tatacainowarutsu"]
 	},
 	{
-		kanji: "竜巻独楽",
+		kanji: "<Ruby>竜巻独楽<rt>たつまきごま</rt></Ruby>",
 		romaji: "tatumakigoma",
 		eng: "tatumakigoma",
 		validInputs: ["tatumakigoma", "tatsumakigoma"],
 		validInputs2: ["tatumakigoma", "tatsumakigoma"]
 	},
 	{
-		kanji: "超不協輪怨",
+		kanji: "<Ruby>超不協輪怨<rt>シークレットノイズ</rt></Ruby>",
 		romaji: "tyouhukyouwaon",
 		eng: "si-kurettonoizu",
 		validInputs: [
@@ -686,14 +692,14 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "雷掌",
+		kanji: "<Ruby>雷掌<rt>イズツシ</rt></Ruby>",
 		romaji: "raisyou",
 		eng: "izutusi",
 		validInputs: ["raisyou", "raishou"],
 		validInputs2: ["izutusi", "izutushi", "izutuci", "izutsusi", "izutsushi", "izutsuci"]
 	},
 	{
-		kanji: "神速",
+		kanji: "<Ruby>神速<rt>カンムル</rt></Ruby>",
 		romaji: "sinsoku",
 		eng: "kanmuru",
 		validInputs: [
@@ -719,21 +725,21 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["kanmuru", "canmuru", "kannmuru", "cannmuru"]
 	},
 	{
-		kanji: "落雷",
+		kanji: "<Ruby>落雷<rt>ナルカミ</rt></Ruby>",
 		romaji: "rakurai",
 		eng: "narukami",
 		validInputs: ["rakurai", "racurai", "raqurai"],
 		validInputs2: ["narukami", "narucami"]
 	},
 	{
-		kanji: "絶対時間",
+		kanji: "<Ruby>絶対時間<rt>エンペラータイム</rt></Ruby>",
 		romaji: "zettaijikan",
 		eng: "ennpera-taimu",
 		validInputs: ["zettaijikan", "zettaijican", "zettaizikan", "zettaizican"],
 		validInputs2: ["enpera-taimu", "ennpera-taimu"]
 	},
 	{
-		kanji: "律する小指の鎖",
+		kanji: "<Ruby>律する小指の鎖<rt>ジャッジメントチェーン</rt></Ruby>",
 		romaji: "rissurukoyubinokusari",
 		eng: "jajjimentotye-n",
 		validInputs: [
@@ -784,7 +790,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "奪う人差し指の鎖",
+		kanji: "<Ruby>奪う人差し指の鎖<rt>スチールチェーン</rt></Ruby>",
 		romaji: "ubauhitosasiyubinokusari",
 		eng: "suti-rutye-n",
 		validInputs: [
@@ -801,7 +807,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["suti-rutye-n", "suti-rucye-n", "suti-ruche-n", "suchi-rutye-n", "suchi-rucye-n", "suchi-ruche-n"]
 	},
 	{
-		kanji: "導く薬指の鎖",
+		kanji: "<Ruby>導く薬指の鎖<rt>ダウジングチェーン</rt></Ruby>",
 		romaji: "mitibikukusuriyubinokusari",
 		eng: "daujingutye-n",
 		validInputs: [
@@ -876,7 +882,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "束縛する中指の鎖",
+		kanji: "<Ruby>束縛する中指の鎖<rt>チェーンジェイル</rt></Ruby>",
 		romaji: "sokubakusurunakayubinokusari",
 		eng: "tye-njeiru",
 		validInputs: [
@@ -957,14 +963,14 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "癒す親指の鎖",
+		kanji: "<Ruby>癒す親指の鎖<rt>ホーリーチェーン</rt></Ruby>",
 		romaji: "iyasuoyayubinokusari",
 		eng: "ho-ri-tye-n",
 		validInputs: ["iyasuoyayubinokusari", "iyasuoyayubinocusari", "iyasuoyayubinoqusari"],
 		validInputs2: ["ho-ri-tye-n", "ho-ri-cye-n", "ho-ri-che-n"]
 	},
 	{
-		kanji: "密室遊魚",
+		kanji: "<Ruby>密室遊魚<rt>インドアフィッシュ</rt></Ruby>",
 		romaji: "missituyuugyo",
 		eng: "indoafissyu",
 		validInputs: [
@@ -978,14 +984,14 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["indoafissyu", "indoafisshu", "inndoafissyu", "inndoafisshu"]
 	},
 	{
-		kanji: "人間の証明",
+		kanji: "<Ruby>人間の証明<rt>オーダースタンプ</rt></Ruby>",
 		romaji: "ningennnosyoumei",
 		eng: "o-da-sutanpu",
 		validInputs: ["ningennnosyoumei", "ningennnoshoumei"],
 		validInputs2: ["o-da-sutanpu", "o-da-sutannpu"]
 	},
 	{
-		kanji: "転校生",
+		kanji: "<Ruby>転校生<rt>コンバートハンズ</rt></Ruby>",
 		romaji: "tenkousei",
 		eng: "konba-tohanzu",
 		validInputs: ["tenkousei", "tencousei", "tennkousei", "tenncousei"],
@@ -1001,7 +1007,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "番いの破壊者",
+		kanji: "<Ruby>番いの破壊者<rt>サンアンドムーン</rt></Ruby>",
 		romaji: "tugainohakaisya",
 		eng: "sannandomu-n",
 		validInputs: [
@@ -1017,7 +1023,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["sannandomu-n"]
 	},
 	{
-		kanji: "盗賊の極意",
+		kanji: "<Ruby>盗賊の極意<rt>スキルハンター</rt></Ruby>",
 		romaji: "touzokunogokui",
 		eng: "sukiruhanta-",
 		validInputs: [
@@ -1034,14 +1040,14 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["sukiruhanta-", "sukiruhannta-"]
 	},
 	{
-		kanji: "栞のテーマ",
+		kanji: "<Ruby>栞のテーマ<rt>ダブルフェイス</rt></Ruby>",
 		romaji: "siorinote-ma",
 		eng: "daburufeisu",
 		validInputs: ["siorinote-ma", "shiorinote-ma", "ciorinote-ma"],
 		validInputs2: ["daburufeisu"]
 	},
 	{
-		kanji: "一握りの火薬",
+		kanji: "<Ruby>一握りの火薬<rt>リトルフラワー</rt></Ruby>",
 		romaji: "hitonigirinokayaku",
 		eng: "ritorufurawa-",
 		validInputs: [
@@ -1055,7 +1061,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["ritorufurawa-", "ritoruhurawa-"]
 	},
 	{
-		kanji: "神の左手悪魔の右手",
+		kanji: "<Ruby>神の左手悪魔の右手<rt>ギャラリーフェイク</rt></Ruby>",
 		romaji: "kaminohidariteakumanomigite",
 		eng: "gyarari-feiku",
 		validInputs: [
@@ -1069,7 +1075,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["gyarari-feiku", "gyarari-feicu", "gyarari-feiqu"]
 	},
 	{
-		kanji: "黒い賢人",
+		kanji: "<Ruby>黒い賢人<rt>ブラックゴレイヌ</rt></Ruby>",
 		romaji: "kuroikenjin",
 		eng: "burakkugoreinu",
 		validInputs: [
@@ -1089,7 +1095,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["burakkugoreinu", "buraccugoreinu", "buraqqugoreinu"]
 	},
 	{
-		kanji: "白い賢人",
+		kanji: "<Ruby>白い賢人<rt>ホワイトゴレイヌ</rt></Ruby>",
 		romaji: "siroikenjin",
 		eng: "howaitogoreinu",
 		validInputs: [
@@ -1109,7 +1115,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["howaitogoreinu"]
 	},
 	{
-		kanji: "ジャジャン拳",
+		kanji: "<Ruby>ジャジャン拳<rt>ジャジャンケン</rt></Ruby>",
 		romaji: "jajanken",
 		eng: "jajanken",
 		validInputs: [
@@ -1154,14 +1160,14 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "血いさな世界",
+		kanji: "<Ruby>血いさな世界<rt>ブラッディメアリー</rt></Ruby>",
 		romaji: "tiisanasekai",
 		eng: "buraddhimeari-",
 		validInputs: ["tiisanasekai", "tiisanasecai", "chiisanasekai", "chiisanasecai"],
 		validInputs2: ["buraddhimeari-", "buraddelimeari-", "buraddeximeari-"]
 	},
 	{
-		kanji: "審美的転生注射",
+		kanji: "<Ruby>審美的転生注射<rt>クイーンショット</rt></Ruby>",
 		romaji: "sinbitekitenseityuusya",
 		eng: "kui-nsyotto",
 		validInputs: [
@@ -1254,21 +1260,21 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "遊戯王",
+		kanji: "<Ruby>遊戯王<rt>カルドセプト</rt></Ruby>",
 		romaji: "yuugiou",
 		eng: "karudoseputo",
 		validInputs: ["yuugiou"],
 		validInputs2: ["karudoseputo", "carudoseputo"]
 	},
 	{
-		kanji: "デメちゃん",
+		kanji: "<Ruby>デメちゃん<rt>でめちゃん</rt></Ruby>",
 		romaji: "demetyan",
 		eng: "demetyan",
 		validInputs: ["demetyan", "demecyan", "demechan"],
 		validInputs2: ["demetyan", "demecyan", "demechan"]
 	},
 	{
-		kanji: "大和撫子七変化",
+		kanji: "<Ruby>大和撫子七変化<rt>ライダーズハイ</rt></Ruby>",
 		romaji: "yamatonadesikositihenge",
 		eng: "raida-zuhai",
 		validInputs: [
@@ -1348,7 +1354,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["raida-zuhai"]
 	},
 	{
-		kanji: "麟粉乃愛泉",
+		kanji: "<Ruby>麟粉乃愛泉<rt>スピリチュアルメッセージ</rt></Ruby>",
 		romaji: "rinpunnnoai",
 		eng: "supirityuarumesse-ji",
 		validInputs: ["rinpunnnoai", "rinnpunnnoai"],
@@ -1362,14 +1368,14 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "蠅の王",
+		kanji: "<Ruby>蠅の王<rt>ベルゼブブ</rt></Ruby>",
 		romaji: "haenoou",
 		eng: "beruzebubu",
 		validInputs: ["haenoou"],
 		validInputs2: ["beruzebubu"]
 	},
 	{
-		kanji: "縁の下の11人",
+		kanji: "<Ruby>縁の下の11人<rt>イレブンブラックチルドレン</rt></Ruby>",
 		romaji: "ennnositano11nin",
 		eng: "irebunburakkutirudoren",
 		validInputs: ["ennnositano11nin", "ennnoshitano11nin", "ennnocitano11nin"],
@@ -1389,14 +1395,14 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "携帯する他人の運命",
+		kanji: "<Ruby>携帯する他人の運命<rt>ブラックボイス</rt></Ruby>",
 		romaji: "keitaisurutaninnnounmei",
 		eng: "burakkuboisu",
 		validInputs: ["keitaisurutaninnnounmei"],
 		validInputs2: ["burakkuboisu", "buraccuboisu", "buraqquboisu"]
 	},
 	{
-		kanji: "暗い宿",
+		kanji: "<Ruby>暗い宿<rt>ホテルラフレシア</rt></Ruby>",
 		romaji: "kuraiyado",
 		eng: "hoterurahuresia",
 		validInputs: ["kuraiyado", "curaiyado", "quraiyado"],
@@ -1410,7 +1416,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "物真似鳥",
+		kanji: "<Ruby>物真似鳥<rt>ジェイプシフター</rt></Ruby>",
 		romaji: "monomanedori",
 		eng: "jeipusihuta-",
 		validInputs: ["monomanedori"],
@@ -1436,7 +1442,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "機械に巣食う棘",
+		kanji: "<Ruby>機械に巣食う棘<rt>マシンイーター</rt></Ruby>",
 		romaji: "kikainisukuutoge",
 		eng: "masinni-ta-",
 		validInputs: [
@@ -1450,35 +1456,35 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["masinni-ta-", "mashinni-ta-", "macinni-ta-"]
 	},
 	{
-		kanji: "龍星群",
+		kanji: "<Ruby>龍星群<rt>ドラゴンダイヴ</rt></Ruby>",
 		romaji: "ryuuseigun",
 		eng: "doragondaivu",
 		validInputs: ["ryuuseigun"],
 		validInputs2: ["doragondaivu", "doragonndaivu"]
 	},
 	{
-		kanji: "龍頭戯画",
+		kanji: "<Ruby>龍頭戯画<rt>ドラゴンヘッド</rt></Ruby>",
 		romaji: "ryuutougiga",
 		eng: "doragonheddo",
 		validInputs: ["ryuutougiga"],
 		validInputs2: ["doragonheddo", "doragonnheddo"]
 	},
 	{
-		kanji: "牙突",
+		kanji: "<Ruby>牙突<rt>ドラゴンランス</rt></Ruby>",
 		romaji: "gatotu",
 		eng: "doragonransu",
 		validInputs: ["gatotu", "gatotsu"],
 		validInputs2: ["doragonransu", "doragonnransu"]
 	},
 	{
-		kanji: "蠅の仕事",
+		kanji: "<Ruby>蠅の仕事<rt>サイレントワーカー</rt></Ruby>",
 		romaji: "haenosigoto",
 		eng: "sairentowa-ka-",
 		validInputs: ["haenosigoto", "haenoshigoto", "haenocigoto"],
 		validInputs2: ["sairentowa-ka-", "sairentowa-ca-", "sairenntowa-ka-", "sairenntowa-ca-"]
 	},
 	{
-		kanji: "天上不知唯我独損",
+		kanji: "<Ruby>天上不知唯我独損<rt>ハコワレ</rt></Ruby>",
 		romaji: "tenjouhutiyuigadokuson",
 		eng: "hakoware",
 		validInputs: [
@@ -1558,7 +1564,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["hakoware", "hacoware"]
 	},
 	{
-		kanji: "天使の自動筆記",
+		kanji: "<Ruby>天使の自動筆記<rt>ラブリーゴーストライター</rt></Ruby>",
 		romaji: "tensinojidouhikki",
 		eng: "raburi-go-sutoraita-",
 		validInputs: [
@@ -1578,7 +1584,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["raburi-go-sutoraita-"]
 	},
 	{
-		kanji: "黒子無想",
+		kanji: "<Ruby>黒子無想<rt>テレプシコーラ</rt></Ruby>",
 		romaji: "kokusimusou",
 		eng: "terepusiko-ra",
 		validInputs: [
@@ -1611,7 +1617,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "玩具修理者",
+		kanji: "<Ruby>玩具修理者<rt>ドクターブライス</rt></Ruby>",
 		romaji: "gangusyuurisya",
 		eng: "dokuta-buraisu",
 		validInputs: [
@@ -1627,14 +1633,14 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["dokuta-buraisu", "docuta-buraisu", "doquta-buraisu"]
 	},
 	{
-		kanji: "窓を開く者",
+		kanji: "<Ruby>窓を開く者<rt>スクリーム</rt></Ruby>",
 		romaji: "madowohirakumono",
 		eng: "sukuri-mu",
 		validInputs: ["madowohirakumono", "madowohiracumono", "madowohiraqumono"],
 		validInputs2: ["sukuri-mu", "sucuri-mu", "suquri-mu"]
 	},
 	{
-		kanji: "四次元マンション",
+		kanji: "<Ruby>四次元マンション<rt>ハイドアンドシーク</rt></Ruby>",
 		romaji: "yojigenmansyon",
 		eng: "haidoandosi-ku",
 		validInputs: [
@@ -1677,7 +1683,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "淋しい深海魚",
+		kanji: "<Ruby>淋しい深海魚<rt>ウインクブルー</rt></Ruby>",
 		romaji: "samisiisinkaigyo",
 		eng: "uinkuburu-",
 		validInputs: [
@@ -1721,7 +1727,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["uinkuburu-", "uincuburu-", "uinquburu-", "uinnkuburu-", "uinncuburu-", "uinnquburu-"]
 	},
 	{
-		kanji: "暗黒の鬼婦神",
+		kanji: "<Ruby>暗黒の鬼婦神<rt>ブラックウィドウ</rt></Ruby>",
 		romaji: "ankokunokihujin",
 		eng: "burakkuwidou",
 		validInputs: [
@@ -1777,56 +1783,56 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["burakkuwidou", "buraccuwidou", "buraqquwidou"]
 	},
 	{
-		kanji: "愛の放射線",
+		kanji: "<Ruby>愛の放射線<rt>ラブシャワー</rt></Ruby>",
 		romaji: "ainohousyasen",
 		eng: "rabusyawa-",
 		validInputs: ["ainohousyasen", "ainohoushasen"],
 		validInputs2: ["rabusyawa-", "rabushawa-"]
 	},
 	{
-		kanji: "記憶弾",
+		kanji: "<Ruby>記憶弾<rt>メモリーボム</rt></Ruby>",
 		romaji: "kiokudan",
 		eng: "memori-bomu",
 		validInputs: ["kiokudan", "kiocudan", "kioqudan"],
 		validInputs2: ["memori-bomu"]
 	},
 	{
-		kanji: "流離の大俳人",
+		kanji: "<Ruby>流離の大俳人<rt>グレイトハイカー</rt></Ruby>",
 		romaji: "sasurainodaihaijin",
 		eng: "gureitohaika-",
 		validInputs: ["sasurainodaihaijin", "sasurainodaihaizin"],
 		validInputs2: ["gureitohaika-", "gureitohaica-"]
 	},
 	{
-		kanji: "凶器の錯乱",
+		kanji: "<Ruby>凶器の錯乱<rt>いまやりにいきます</rt></Ruby>",
 		romaji: "kyoukinosakuran",
 		eng: "imayariniikimasu",
 		validInputs: ["kyoukinosakuran", "kyoukinosacuran", "kyoukinosaquran"],
 		validInputs2: ["imayariniikimasu"]
 	},
 	{
-		kanji: "幽体離脱",
+		kanji: "<Ruby>幽体離脱<rt>ザ タッチ</rt></Ruby>",
 		romaji: "yuutairidatu",
 		eng: "zatatti",
 		validInputs: ["yuutairidatu", "yuutairidatsu"],
 		validInputs2: ["zatatti", "zatacchi"]
 	},
 	{
-		kanji: "桃色吐息",
+		kanji: "<Ruby>桃色吐息<rt>ピアノマッサージ</rt></Ruby>",
 		romaji: "momoirotoiki",
 		eng: "pianomassa-ji",
 		validInputs: ["momoirotoiki"],
 		validInputs2: ["pianomassa-ji", "pianomassa-zi"]
 	},
 	{
-		kanji: "魔法美容師",
+		kanji: "<Ruby>魔法美容師<rt>マジカルエステ</rt></Ruby>",
 		romaji: "mahoubiyousi",
 		eng: "majikaruesute",
 		validInputs: ["mahoubiyousi", "mahoubiyoushi", "mahoubiyouci"],
 		validInputs2: ["majikaruesute", "majicaruesute", "mazikaruesute", "mazicaruesute"]
 	},
 	{
-		kanji: "薄っぺらな嘘",
+		kanji: "<Ruby>薄っぺらな嘘<rt>ドッキリテクスチャー</rt></Ruby>",
 		romaji: "usupperanauso",
 		eng: "dokkiritekusutya-",
 		validInputs: ["usupperanauso"],
@@ -1843,7 +1849,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "伸縮自在の愛",
+		kanji: "<Ruby>伸縮自在の愛<rt>バンジーガム</rt></Ruby>",
 		romaji: "sinsyukujizainoai",
 		eng: "banji-gamu",
 		validInputs: [
@@ -1923,49 +1929,49 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["banji-gamu", "banzi-gamu", "bannji-gamu", "bannzi-gamu"]
 	},
 	{
-		kanji: "切り裂き美容師",
+		kanji: "<Ruby>切り裂き美容師<rt>シザーハンズ</rt></Ruby>",
 		romaji: "kirisakibiyousi",
 		eng: "siza-hanzu",
 		validInputs: ["kirisakibiyousi", "kirisakibiyoushi", "kirisakibiyouci"],
 		validInputs2: ["siza-hanzu", "shiza-hanzu", "ciza-hanzu", "siza-hannzu", "shiza-hannzu", "ciza-hannzu"]
 	},
 	{
-		kanji: "てのひらを太陽に",
+		kanji: "<Ruby>てのひらを太陽に<rt>バイオハザード</rt></Ruby>",
 		romaji: "tenohirawotaiyouni",
 		eng: "baiohaza-do",
 		validInputs: ["tenohirawotaiyouni"],
 		validInputs2: ["baiohaza-do"]
 	},
 	{
-		kanji: "廻天",
+		kanji: "<Ruby>廻天<rt>リッパーサイクロトロン</rt></Ruby>",
 		romaji: "kaiten",
 		eng: "rippa-saikurotoron",
 		validInputs: ["kaiten", "caiten"],
 		validInputs2: ["rippa-saikurotoron", "rippa-saicurotoron", "rippa-saiqurotoron"]
 	},
 	{
-		kanji: "秘密の扉",
+		kanji: "<Ruby>秘密の扉<rt>マジカルワーム</rt></Ruby>",
 		romaji: "himitunotobira",
 		eng: "majikaruwa-mu",
 		validInputs: ["himitunotobira", "himitsunotobira"],
 		validInputs2: ["majikaruwa-mu", "majicaruwa-mu", "mazikaruwa-mu", "mazicaruwa-mu"]
 	},
 	{
-		kanji: "許されざる者",
+		kanji: "<Ruby>許されざる者<rt>ペインパッカー</rt></Ruby>",
 		romaji: "yurusarezarumono",
 		eng: "peinpakka-",
 		validInputs: ["yurusarezarumono"],
 		validInputs2: ["peinpakka-", "peinpacca-", "peinnpakka-", "peinnpacca-"]
 	},
 	{
-		kanji: "太陽に灼かれて",
+		kanji: "<Ruby>太陽に灼かれて<rt>ライジングサン</rt></Ruby>",
 		romaji: "taiyouniyakarete",
 		eng: "raijingusan",
 		validInputs: ["taiyouniyakarete", "taiyouniyacarete"],
 		validInputs2: ["raijingusan", "raizingusan", "raijinngusan", "raizinngusan"]
 	},
 	{
-		kanji: "不思議で便利な大風呂敷",
+		kanji: "<Ruby>不思議で便利な大風呂敷<rt>ファンファンクロス</rt></Ruby>",
 		romaji: "husigidebenrinaooburosiki",
 		eng: "fanfankurosu",
 		validInputs: [
@@ -2022,7 +2028,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "超複眼",
+		kanji: "<Ruby>超複眼<rt>スーパーアイ</rt></Ruby>",
 		romaji: "tyouhukugan",
 		eng: "su-pa-ai",
 		validInputs: [
@@ -2048,7 +2054,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["su-pa-ai"]
 	},
 	{
-		kanji: "俺の両手は機関銃",
+		kanji: "<Ruby>俺の両手は機関銃<rt>ダブルマシンガン</rt></Ruby>",
 		romaji: "orenoryoutehakikanjuu",
 		eng: "daburumasingan",
 		validInputs: [
@@ -2075,7 +2081,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "裏窓の鳥",
+		kanji: "<Ruby>裏窓の鳥<rt>シークレットウインドウ</rt></Ruby>",
 		romaji: "uramadonotori",
 		eng: "si-kurettouindou",
 		validInputs: ["uramadonotori"],
@@ -2101,7 +2107,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "星を継ぐもの",
+		kanji: "<Ruby>星を継ぐもの<rt>ベンジャミンバトン</rt></Ruby>",
 		romaji: "hosiwotugumono",
 		eng: "benjaminbaton",
 		validInputs: [
@@ -2128,14 +2134,14 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "七色弓箭",
+		kanji: "<Ruby>七色弓箭<rt>レインボウ</rt></Ruby>",
 		romaji: "nanairokyuusen",
 		eng: "reinbou",
 		validInputs: ["nanairokyuusen"],
 		validInputs2: ["reinbou", "reinnbou"]
 	},
 	{
-		kanji: "戦闘演武曲",
+		kanji: "<Ruby>戦闘演武曲<rt>バトレカンタービレ</rt></Ruby>",
 		romaji: "sentouenbukyoku",
 		eng: "batorekanta-bire",
 		validInputs: [
@@ -2155,21 +2161,21 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["batorekanta-bire", "batorecanta-bire"]
 	},
 	{
-		kanji: "念糸縫合",
+		kanji: "<Ruby>念糸縫合<rt>ねんしほうごう</rt></Ruby>",
 		romaji: "nensihougou",
 		eng: "nensihougou",
 		validInputs: ["nensihougou", "nenshihougou", "nencihougou", "nennsihougou", "nennshihougou", "nenncihougou"],
 		validInputs2: ["nensihougou", "nenshihougou", "nencihougou", "nennsihougou", "nennshihougou", "nenncihougou"]
 	},
 	{
-		kanji: "Zombie Girl",
+		kanji: "<Ruby>Zombie Girl<rt>ラヴィアンローズ</rt></Ruby>",
 		romaji: "zonbiga-ru",
 		eng: "ravianro-zu",
 		validInputs: ["zonbiga-ru", "zonnbiga-ru"],
 		validInputs2: ["ravianro-zu", "raviannro-zu"]
 	},
 	{
-		kanji: "密室裁判",
+		kanji: "<Ruby>密室裁判<rt>クロスゲーム</rt></Ruby>",
 		romaji: "missitusaiban",
 		eng: "kurosuge-mu",
 		validInputs: [
@@ -2183,14 +2189,14 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["kurosuge-mu", "curosuge-mu", "qurosuge-mu"]
 	},
 	{
-		kanji: "神の共犯者",
+		kanji: "<Ruby>神の共犯者<rt>かみのきょうはんしゃ</rt></Ruby>",
 		romaji: "kaminokyouhansya",
 		eng: "kaminokyouhansya",
 		validInputs: ["kaminokyouhansya", "kaminokyouhansha", "caminokyouhansya", "caminokyouhansha"],
 		validInputs2: ["kaminokyouhansya", "kaminokyouhansha", "caminokyouhansya", "caminokyouhansha"]
 	},
 	{
-		kanji: "神の不在証明",
+		kanji: "<Ruby>神の不在証明<rt>パーフェクトプラン</rt></Ruby>",
 		romaji: "kaminohuzaisyoumei",
 		eng: "pa-fekutopuran",
 		validInputs: [
@@ -2206,7 +2212,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["pa-fekutopuran", "pa-fecutopuran", "pa-fequtopuran"]
 	},
 	{
-		kanji: "監獄ロック",
+		kanji: "<Ruby>監獄ロック<rt>スモーキージェイル</rt></Ruby>",
 		romaji: "kangokurokku",
 		eng: "sumo-ki-jeiru",
 		validInputs: [
@@ -2250,28 +2256,28 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["sumo-ki-jeiru", "sumo-ki-jyeiru", "sumo-ki-zyeiru"]
 	},
 	{
-		kanji: "紫煙機兵隊",
+		kanji: "<Ruby>紫煙機兵隊<rt>ディープパープル</rt></Ruby>",
 		romaji: "sienkiheitai",
 		eng: "dhi-pupa-puru",
 		validInputs: ["sienkiheitai", "shienkiheitai", "cienkiheitai", "siennkiheitai", "shiennkiheitai", "ciennkiheitai"],
 		validInputs2: ["dhi-pupa-puru", "delii-pupa-puru", "dexi-pupa-puru"]
 	},
 	{
-		kanji: "恋のエチュード",
+		kanji: "<Ruby>恋のエチュード<rt>さいきんおせん</rt></Ruby>",
 		romaji: "koinoetyu-do",
 		eng: "saikinnosen",
 		validInputs: ["koinoetyu-do", "koinoecyu-do", "koinoechu-do", "coinoetyu-do", "coinoecyu-do", "coinoechu-do"],
 		validInputs2: ["saikinnosen"]
 	},
 	{
-		kanji: "墨攻",
+		kanji: "<Ruby>墨攻<rt>lsdf</rt></Ruby>",
 		romaji: "bokukou",
 		eng: "lsdf",
 		validInputs: ["bokukou", "bokucou", "bocukou", "bocucou", "boqukou", "boqucou"],
 		validInputs2: ["lsdf"]
 	},
 	{
-		kanji: "爆発的推進力",
+		kanji: "<Ruby>爆発的推進力<rt>オーラバースト</rt></Ruby>",
 		romaji: "bakuhatutekisuisinryoku",
 		eng: "o-raba-suto",
 		validInputs: [
@@ -2387,7 +2393,7 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["o-raba-suto"]
 	},
 	{
-		kanji: "双頭の蛇の正体",
+		kanji: "<Ruby>双頭の蛇の正体<rt>サンダースネーク</rt></Ruby>",
 		romaji: "soutounohebinosyoutai",
 		eng: "sanda-sune-ku",
 		validInputs: ["soutounohebinosyoutai", "soutounohebinoshoutai"],
@@ -2401,7 +2407,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "双頭の蛇による二重唱",
+		kanji: "<Ruby>双頭の蛇による二重唱<rt>ソングオブディフェンス</rt></Ruby>",
 		romaji: "soutounohebiniyorunijuusyou",
 		eng: "songuobudhifensu",
 		validInputs: [
@@ -2422,7 +2428,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "体は全部知っている",
+		kanji: "<Ruby>体は全部知っている<rt>ボディアンドソウル</rt></Ruby>",
 		romaji: "karadahazenbusitteiru",
 		eng: "bodhiandosouru",
 		validInputs: [
@@ -2449,36 +2455,42 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "14人の悪魔",
+		kanji: "<Ruby>14人の悪魔<rt>14にんのあくま</rt></Ruby>",
 		romaji: "14ninnnoakuma",
 		eng: "14ninnnoakuma",
 		validInputs: ["14ninnnoakuma", "14ninnnoacuma", "14ninnnoaquma"],
 		validInputs2: ["14ninnnoakuma", "14ninnnoacuma", "14ninnnoaquma"]
 	},
 	{
-		kanji: "TUBE",
+		kanji: "<Ruby>TUBE<rt>イナムラ</rt></Ruby>",
 		romaji: "tyu-bu",
 		eng: "inamura",
 		validInputs: ["tyu-bu", "cyu-bu", "chu-bu"],
 		validInputs2: ["inamura"]
 	},
-	{ kanji: "渦波", romaji: "uzunami", eng: "toruneibu", validInputs: ["uzunami"], validInputs2: ["toruneibu"] },
 	{
-		kanji: "大波",
+		kanji: "<Ruby>渦波<rt>トルネイブ</rt></Ruby>",
+		romaji: "uzunami",
+		eng: "toruneibu",
+		validInputs: ["uzunami"],
+		validInputs2: ["toruneibu"]
+	},
+	{
+		kanji: "<Ruby>大波<rt>ビックウォール</rt></Ruby>",
 		romaji: "oonami",
 		eng: "bikkuwho-ru",
 		validInputs: ["oonami"],
 		validInputs2: ["bikkuwho-ru", "biccuwho-ru", "biqquwho-ru"]
 	},
 	{
-		kanji: "謝債発行機",
+		kanji: "<Ruby>謝債発行機<rt>レンタルポッド</rt></Ruby>",
 		romaji: "syasaihakkouki",
 		eng: "rentarupoddo",
 		validInputs: ["syasaihakkouki", "syasaihaccouki", "shasaihakkouki", "shasaihaccouki"],
 		validInputs2: ["rentarupoddo", "renntarupoddo"]
 	},
 	{
-		kanji: "漆黒の処刑台",
+		kanji: "<Ruby>漆黒の処刑台<rt>オンバサラ</rt></Ruby>",
 		romaji: "sikkokunosyokeidai",
 		eng: "onbasara",
 		validInputs: [
@@ -2522,14 +2534,14 @@ export const hunterWords: WordList[] = [
 		validInputs2: ["onbasara", "onnbasara"]
 	},
 	{
-		kanji: "卵男",
+		kanji: "<Ruby>卵男<rt>ミサイルマン</rt></Ruby>",
 		romaji: "tamagootoko",
 		eng: "misairuman",
 		validInputs: ["tamagootoko", "tamagootoco"],
 		validInputs2: ["misairuman"]
 	},
 	{
-		kanji: "超破壊拳",
+		kanji: "<Ruby>超破壊拳<rt>ビックバンインパクト</rt></Ruby>",
 		romaji: "tyouhakaiken",
 		eng: "bikkubanninpakuto",
 		validInputs: ["tyouhakaiken", "tyouhacaiken", "cyouhakaiken", "cyouhacaiken", "chouhakaiken", "chouhacaiken"],
@@ -2545,16 +2557,22 @@ export const hunterWords: WordList[] = [
 			"biqqubanninpaquto"
 		]
 	},
-	{ kanji: "裏窓", romaji: "uramado", eng: "ritoruai", validInputs: ["uramado"], validInputs2: ["ritoruai"] },
 	{
-		kanji: "命の音",
+		kanji: "<Ruby>裏窓<rt>リトルアイ</rt></Ruby>",
+		romaji: "uramado",
+		eng: "ritoruai",
+		validInputs: ["uramado"],
+		validInputs2: ["ritoruai"]
+	},
+	{
+		kanji: "<Ruby>命の音<rt>カウントダウン</rt></Ruby>",
 		romaji: "inotinooto",
 		eng: "kauntodaun",
 		validInputs: ["inotinooto", "inochinooto"],
 		validInputs2: ["kauntodaun", "cauntodaun", "kaunntodaun", "caunntodaun"]
 	},
 	{
-		kanji: "11人いる",
+		kanji: "<Ruby>11人いる<rt>サイレントマジョリティー</rt></Ruby>",
 		romaji: "11ninniru",
 		eng: "sairentomajorithi-",
 		validInputs: ["11ninniru"],
@@ -2586,7 +2604,7 @@ export const hunterWords: WordList[] = [
 		]
 	},
 	{
-		kanji: "damage",
+		kanji: "<Ruby>damage<rt>ダメージ</rt></Ruby>",
 		romaji: "dame-ji",
 		eng: "dame-ji",
 		validInputs: ["dame-ji", "dame-zi"],

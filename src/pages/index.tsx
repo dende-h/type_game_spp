@@ -18,16 +18,17 @@ import {
 	Flex,
 	HStack
 } from "@chakra-ui/react";
-import { magicItems, adjectives, WordList } from "../constant/typingProblems";
+import { magicItems, WordList } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
 import Link from "next/link";
 import { ColorSwitchButton } from "@/components/ColorSwitchButton";
 import { GuideOnOffSwitchButton } from "@/components/GuideOnOffSwichButton";
 import { CheckInputMode } from "@/components/CheckInputMode";
+import { spellWords } from "@/constant/typingProblemGI";
 
-const easyWords = magicItems;
-const normalWords = adjectives;
+const easyWords = spellWords;
+const normalWords = magicItems;
 const hardWords = hunterWords;
 
 //この関数は、配列をシャッフル（ランダムに並び替え）するためのヘルパー関数です。
@@ -69,9 +70,9 @@ export default function Home() {
 	const [guideOnFlag, setGuideOnFlag] = useState(true);
 
 	const Genre = {
-		EASY: "Magic Items",
-		NORMAL: "Adjective",
-		HARD: "Hunter×Hunter"
+		EASY: "GISpell Cards",
+		NORMAL: "Magic Items",
+		HARD: "Nen Ability"
 	};
 	const [genre, setGenre] = useState(Genre.EASY);
 	useEffect(() => {
@@ -101,17 +102,10 @@ export default function Home() {
 	};
 	const [mode, setMode] = useState(Mode.Roma);
 
-	const genreLabel = () => {
-		if (words === easyWords) return "Magic Items";
-		if (words === normalWords) return "Adjective";
-		if (words === hardWords) return "Hunter×Hunter";
-		return "";
-	};
-
 	const modeLabel = () => {
 		if (mode === Mode.Jap) return "Japanese";
 		if (mode === Mode.Roma) return "Roma";
-		if (mode === Mode.Eng) return genre === "Hunter×Hunter" ? "Ruby" : "English";
+		if (mode === Mode.Eng) return genre === "Magic Items" ? "English" : "Ruby";
 		if (mode === Mode.Mania) return "Mania";
 		return "";
 	};
@@ -201,7 +195,7 @@ export default function Home() {
 				}
 			}
 		} else if (mode === Mode.Eng || mode === Mode.Mania) {
-			if (genre === "Hunter×Hunter") {
+			if (genre === "Nen Ability") {
 				if ([...words[currentQuestionIndex].eng][0] !== [...value][0]) {
 					return;
 				} else {
@@ -320,7 +314,7 @@ export default function Home() {
 					　オレでなきゃ見逃しちゃうねゲーム
 				</Text>
 				<Text fontSize={textSize} fontWeight="bold">
-					Genre : {genreLabel()}
+					Genre : {genre}
 					<br />
 					Mode : {modeLabel()}
 				</Text>
@@ -373,6 +367,15 @@ export default function Home() {
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
+								onClick={() => setGenre("GISpell Cards")}
+								w={buttonWidth}
+								colorScheme={genre === "GISpell Cards" ? "teal" : "gray"}
+								mb={{ base: 1, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								G.Iスペル
+							</Button>
+							<Button
 								onClick={() => setGenre("Magic Items")}
 								w={buttonWidth}
 								colorScheme={genre === "Magic Items" ? "teal" : "gray"}
@@ -382,22 +385,13 @@ export default function Home() {
 								魔道具
 							</Button>
 							<Button
-								onClick={() => setGenre("Adjective")}
+								onClick={() => setGenre("Nen Ability")}
 								w={buttonWidth}
-								colorScheme={genre === "Adjective" ? "teal" : "gray"}
+								colorScheme={genre === "Nen Ability" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								形容詞
-							</Button>
-							<Button
-								onClick={() => setGenre("Hunter×Hunter")}
-								w={buttonWidth}
-								colorScheme={genre === "Hunter×Hunter" ? "teal" : "gray"}
-								mb={{ base: 1, md: 0 }}
-								mx={{ base: 0, md: 2 }}
-							>
-								Hunter×Hunter
+								念能力
 							</Button>
 						</Flex>
 						<Text as={"h2"} fontWeight="bold">
@@ -407,7 +401,7 @@ export default function Home() {
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
 								onClick={() => setMode(Mode.Jap)}
-								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+								w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Jap ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -416,7 +410,7 @@ export default function Home() {
 							</Button>
 							<Button
 								onClick={() => setMode(Mode.Roma)}
-								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+								w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Roma ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -424,11 +418,11 @@ export default function Home() {
 								ローマ字
 							</Button>
 
-							{genre === "Hunter×Hunter" ? (
+							{genre === "Nen Ability" ? (
 								<>
 									<Button
 										onClick={() => setMode(Mode.Eng)}
-										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+										w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
 										colorScheme={mode === Mode.Eng ? "teal" : "gray"}
 										mb={{ base: 1, md: 0 }}
 										mx={{ base: 0, md: 2 }}
@@ -437,7 +431,7 @@ export default function Home() {
 									</Button>
 									<Button
 										onClick={() => setMode(Mode.Mania)}
-										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+										w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
 										colorScheme={mode === Mode.Mania ? "teal" : "gray"}
 										mb={{ base: 1, md: 0 }}
 										mx={{ base: 0, md: 2 }}
@@ -453,7 +447,7 @@ export default function Home() {
 									mb={{ base: 1, md: 0 }}
 									mx={{ base: 0, md: 2 }}
 								>
-									English
+									{genre === "Magic Items" ? "English" : "ルビ"}
 								</Button>
 							)}
 						</Flex>
