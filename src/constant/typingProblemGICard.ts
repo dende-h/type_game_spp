@@ -1,355 +1,718 @@
 import { WordList } from "./typingProblems";
 
-//ハンターハンター
-export const spellWords: WordList[] = [
+export const cardNameWords: WordList[] = [
 	{
-		kanji: "<Ruby>盗視<rt>スティール</rt></Ruby>",
-		romaji: "tousi",
-		eng: "suthi-ru",
-		validInputs: ["tousi", "toushi", "touci"],
-		validInputs2: ["suthi-ru", "suteli-ru"]
+		kanji: "<Ruby>支配者の祝福<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>透視<rt>フルラスコピー</rt></Ruby>",
-		romaji: "tousi",
-		eng: "fururasukopi-",
-		validInputs: ["tousi", "toushi", "touci"],
-		validInputs2: ["fururasukopi-", "hururasukopi-", "fururasucopi-", "hururasucopi-"]
+		kanji: "<Ruby>一坪の密林<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>防壁<rt>ディフェンシブウォール</rt></Ruby>",
-		romaji: "bouheki",
-		eng: "dhifensibuwho-ru",
-		validInputs: ["bouheki"],
-		validInputs2: [
-			"dhifensibuwho-ru",
-			"dhifenshibuwho-ru",
-			"dhifencibuwho-ru",
-			"dhifennsibuwho-ru",
-			"dhifennshibuwho-ru",
-			"dhifenncibuwho-ru"
-		]
+		kanji: "<Ruby>一坪の海岸線<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>反射<rt>リフレクション</rt></Ruby>",
-		romaji: "hansha",
-		eng: "rifurekusyon",
-		validInputs: ["hansha", "hansya", "hannsha", "hannsya"],
-		validInputs2: [
-			"rifurekusyon",
-			"rihurekusyon",
-			"rifurecusyon",
-			"rihurecusyon",
-			"rifurequsyon",
-			"rihurequsyon",
-			"rifurekushon",
-			"rihurekushon",
-			"rifurecushon",
-			"rihurecushon",
-			"rifurequshon",
-			"rihurequshon"
-		]
+		kanji: "<Ruby>湧き水の壷<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>磁力<rt>マグネティックフォース</rt></Ruby>",
-		romaji: "jiryoku",
-		eng: "magunethikkufo-su",
-		validInputs: ["jiryoku", "ziryoku", "jiryocu", "jiryocu", "jiryoqu", "ziryoqu"],
-		validInputs2: ["magunethikkufo-su", "magunethiccufo-su", "magunethiqqufo-su"]
+		kanji: "<Ruby>美肌温泉<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>掏摸<rt>ピックポケット</rt></Ruby>",
-		romaji: "suri",
-		eng: "pikkupoketto",
-		validInputs: ["suri"],
-		validInputs2: ["pikkupoketto", "piccupoketto", "piqqupoketto"]
+		kanji: "<Ruby>神隠しの洞<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>窃盗<rt>シーフ</rt></Ruby>",
-		romaji: "settou",
-		eng: "si-fu",
-		validInputs: ["settou"],
-		validInputs2: ["si-fu", "shi-fu", "ci-fu", "si-hu", "shi-hu", "ci-hu"]
+		kanji: "<Ruby>酒生みの泉<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>交換<rt>トレード</rt></Ruby>",
-		romaji: "koukan",
-		eng: "tore-do",
-		validInputs: ["koukan", "coukan", "koucan", "coucan"],
-		validInputs2: ["tore-do"]
+		kanji: "<Ruby>身重の石<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>再来<rt>リターン</rt></Ruby>",
-		romaji: "sairai",
-		eng: "rita-n",
-		validInputs: ["sairai"],
-		validInputs2: ["rita-n"]
+		kanji: "<Ruby>不思議ヶ池<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>擬態<rt>トランスフォーム</rt></Ruby>",
-		romaji: "gitai",
-		eng: "toransufo-mu",
-		validInputs: ["gitai"],
-		validInputs2: ["toransufo-mu", "torannsufo-mu"]
+		kanji: "<Ruby>豊作の樹<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>複製<rt>クローン</rt></Ruby>",
-		romaji: "fukusei",
-		eng: "kuro-n",
-		validInputs: ["fukusei", "fucusei", "hukusei", "hucusei", "fuqusei", "huqusei"],
-		validInputs2: ["kuro-n", "curo-n", "quro-n"]
+		kanji: "<Ruby>黄金るるぶ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>左遷<rt>レルゲイト</rt></Ruby>",
-		romaji: "sasen",
-		eng: "rerugeito",
-		validInputs: ["sasen"],
-		validInputs2: ["rerugeito"]
+		kanji: "<Ruby>黄金天秤<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>初心<rt>デパーチャー</rt></Ruby>",
-		romaji: "syosin",
-		eng: "depa-cha-",
-		validInputs: ["syosin", "shosin", "syoshin", "shoshin", "syocin", "shocin"],
-		validInputs2: ["depa-cha-", "depa-cya-", "depa-tya-"]
+		kanji: "<Ruby>黄金辞典<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>離脱<rt>リーブ</rt></Ruby>",
-		romaji: "ridatu",
-		eng: "ri-bu",
-		validInputs: ["ridatu", "ridatsu"],
-		validInputs2: ["ri-bu"]
+		kanji: "<Ruby>幸福通帳<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>念視<rt>サイトビジョン</rt></Ruby>",
-		romaji: "nensi",
-		eng: "saitobijon",
-		validInputs: ["nensi", "nenshi", "nenci", "nennsi", "nennshi", "nennci"],
-		validInputs2: ["saitobijon", "saitobijyon", "saitobizyon"]
+		kanji: "<Ruby>縁切り鋏<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>漂流<rt>ドリフト</rt></Ruby>",
-		romaji: "hyouryuu",
-		eng: "dorifuto",
-		validInputs: ["hyouryuu"],
-		validInputs2: ["dorifuto", "dorihuto"]
+		kanji: "<Ruby>きまぐれ魔人<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>衝突<rt>コリジョン</rt></Ruby>",
-		romaji: "syoutotu",
-		eng: "korijon",
-		validInputs: ["syoutotu", "shoutotu", "syoutotsu", "shoutotsu"],
-		validInputs2: ["korijon", "corijon", "korijyon", "corijyon", "korizyon", "corizyon"]
+		kanji: "<Ruby>妖精王の忠告<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>徴収<rt>レヴィ</rt></Ruby>",
-		romaji: "tyousyuu",
-		eng: "revi",
-		validInputs: ["tyousyuu", "chousyuu", "cyousyuu", "tyoushuu", "choushuu", "cyoushuu"],
-		validInputs2: ["revi"]
+		kanji: "<Ruby>大天使の息吹<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>城門<rt>キャッスルゲート</rt></Ruby>",
-		romaji: "joumon",
-		eng: "kyassuruge-to",
-		validInputs: ["joumon", "jyoumon", "zyoumon"],
-		validInputs2: ["kyassuruge-to"]
+		kanji: "<Ruby>小悪魔のウインク<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>贋作<rt>フェイク</rt></Ruby>",
-		romaji: "gansaku",
-		eng: "feiku",
-		validInputs: ["gansaku", "gansacu", "gansaqu", "gannsaku", "gannsacu", "gannsaqu"],
-		validInputs2: ["feiku", "feicu", "feiqu"]
+		kanji: "<Ruby>遊魂枕<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>強奪<rt>ロブ</rt></Ruby>",
-		romaji: "goudatu",
-		eng: "robu",
-		validInputs: ["goudatu", "goudatsu"],
-		validInputs2: ["robu"]
+		kanji: "<Ruby>心度計<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>堕落<rt>コラプション</rt></Ruby>",
-		romaji: "daraku",
-		eng: "korapusyon",
-		validInputs: ["daraku", "daracu", "daraqu"],
-		validInputs2: ["korapusyon", "korapushon", "corapusyon", "corapushon"]
+		kanji: "<Ruby>スケルトンメガネ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>妥協<rt>コンプロマイズ</rt></Ruby>",
-		romaji: "dakyou",
-		eng: "konpuromaizu",
-		validInputs: ["dakyou"],
-		validInputs2: ["konpuromaizu", "conpuromaizu", "konnpuromaizu", "connpuromaizu"]
+		kanji: "<Ruby>トラエモン<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>看破<rt>ペネトレイト</rt></Ruby>",
-		romaji: "kanpa",
-		eng: "penetoreito",
-		validInputs: ["kanpa", "kannpa", "canpa", "cannpa"],
-		validInputs2: ["penetoreito"]
+		kanji: "<Ruby>アドリブブック<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>暗幕<rt>ブラックカーテン</rt></Ruby>",
-		romaji: "anmaku",
-		eng: "burakkuautoka-ten",
-		validInputs: ["anmaku", "anmacu", "anmaqu", "annmaku", "annmacu", "annmaqu"],
-		validInputs2: [
-			"burakkuautoka-ten",
-			"burakkuautoca-ten",
-			"buraccuautoka-ten",
-			"buraccuautoca-ten",
-			"buraqquautoka-ten",
-			"buraqquautoca-ten"
-		]
+		kanji: "<Ruby>もしもテレビ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>聖水<rt>ホーリーウォーター</rt></Ruby>",
-		romaji: "seisui",
-		eng: "ho-ri-who-ta-",
-		validInputs: ["seisui"],
-		validInputs2: ["ho-ri-who-ta-"]
+		kanji: "<Ruby>リスキーダイス<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>追跡<rt>トレース</rt></Ruby>",
-		romaji: "tuiseki",
-		eng: "tore-su",
-		validInputs: ["tuiseki", "tsuiseki"],
-		validInputs2: ["tore-su"]
+		kanji: "<Ruby>7人の働く小人<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>投石<rt>ストーンスロー</rt></Ruby>",
-		romaji: "touseki",
-		eng: "suto-nsuro-",
-		validInputs: ["touseki"],
-		validInputs2: ["suto-nsuro-"]
+		kanji: "<Ruby>顔パス回数券<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>凶弾<rt>ショット</rt></Ruby>",
-		romaji: "kyoudan",
-		eng: "shotto",
-		validInputs: ["kyoudan"],
-		validInputs2: ["shotto", "syotto"]
+		kanji: "<Ruby>移り気リモコン<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>道標<rt>ガイドポスト</rt></Ruby>",
-		romaji: "mitisirube",
-		eng: "gaidoposuto",
-		validInputs: ["mitisirube", "mitishirube", "miticirube", "michisirube", "michishirube", "michicirube"],
-		validInputs2: ["gaidoposuto"]
+		kanji: "<Ruby>強制予約券<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>解析<rt>アナリシス</rt></Ruby>",
-		romaji: "kaiseki",
-		eng: "anarisisu",
-		validInputs: ["kaiseki", "caiseki"],
-		validInputs2: ["anarisisu", "anarishisu", "anaricisu"]
+		kanji: "<Ruby>コネクッション<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>宝籤<rt>ロトリー</rt></Ruby>",
-		romaji: "takarakuji",
-		eng: "rotori-",
-		validInputs: [
-			"takarakuji",
-			"takarakuzi",
-			"takaracuji",
-			"takaracuzi",
-			"takaraquji",
-			"takaraquzi",
-			"tacarakuji",
-			"tacarakuzi",
-			"tacaracuji",
-			"tacaracuzi",
-			"tacaraquji",
-			"tacaraquzi"
-		],
-		validInputs2: ["rotori-"]
+		kanji: "<Ruby>死者への往復葉書<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>密着<rt>アドヒージョン</rt></Ruby>",
-		romaji: "mittyaku",
-		eng: "adohi-jon",
-		validInputs: [
-			"mittyaku",
-			"mittyacu",
-			"mittyaqu",
-			"micchaku",
-			"micchacu",
-			"micchaqu",
-			"miccyaku",
-			"miccyacu",
-			"miccyaqu"
-		],
-		validInputs2: ["adohi-jon", "adohi-jyon", "adohi-zyon"]
+		kanji: "<Ruby>ウグイスキャンディー<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>浄化<rt>ピュリファイ</rt></Ruby>",
-		romaji: "jouka",
-		eng: "pyurifai",
-		validInputs: ["jouka", "jouca", "jyouka", "jyouca", "zyouka", "zyouca"],
-		validInputs2: ["pyurifai"]
+		kanji: "<Ruby>ホルモンクッキー<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>堅牢<rt>プリズン</rt></Ruby>",
-		romaji: "kenrou",
-		eng: "purizun",
-		validInputs: ["kenrou", "kennrou"],
-		validInputs2: ["purizun"]
+		kanji: "<Ruby>なんでもアンケート<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>神眼<rt>ゴッドアイ</rt></Ruby>",
-		romaji: "singan",
-		eng: "goddoai",
-		validInputs: ["singan", "sinngan", "shingan", "shinngan", "cingan", "cinngan"],
-		validInputs2: ["goddoai"]
+		kanji: "<Ruby>カメレオンキャット<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>再生<rt>リサイクル</rt></Ruby>",
-		romaji: "saisei",
-		eng: "risaikuru",
-		validInputs: ["saisei"],
-		validInputs2: ["risaikuru", "risaicuru", "risaiquru"]
+		kanji: "<Ruby>リサイクルーム<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>名簿<rt>リスト</rt></Ruby>",
-		romaji: "meibo",
-		eng: "risuto",
-		validInputs: ["meibo"],
-		validInputs2: ["risuto"]
+		kanji: "<Ruby>超一流スポーツ選手の卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>同行<rt>アカンパニー</rt></Ruby>",
-		romaji: "doukou",
-		eng: "akanpani-",
-		validInputs: ["doukou", "doucou"],
-		validInputs2: ["akanpani-", "akannpani-", "acanpani-", "acannpani-"]
+		kanji: "<Ruby>超一流アーティストの卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>交信<rt>コンタクト</rt></Ruby>",
-		romaji: "kousin",
-		eng: "kontakuto",
-		validInputs: ["kousin", "koushin", "koucin", "cousin", "coushin", "coucin"],
-		validInputs2: [
-			"kontakuto",
-			"kontacuto",
-			"kontaquto",
-			"konntakuto",
-			"konntacuto",
-			"konntaquto",
-			"contakuto",
-			"contacuto",
-			"contaquto",
-			"conntakuto",
-			"conntacuto",
-			"conntaquto"
-		]
+		kanji: "<Ruby>大物政治家の卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	},
 	{
-		kanji: "<Ruby>排除<rt>エリミネート</rt></Ruby>",
-		romaji: "haijo",
-		eng: "erimine-to",
-		validInputs: ["haijo", "haijyo", "haizyo"],
-		validInputs2: ["erimine-to"]
+		kanji: "<Ruby>超一流ミュージシャンの卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>超一流パイロットの卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>超一流作家の卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>大ギャンブラーの卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>大俳優の卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>大社長の卵<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>金粉少女<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>睡眠少女<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>発香少女<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>手乗り人魚<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>手乗りザウルス<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>手乗りドラゴン<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>真珠蝗<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>キングホワイトオオクワガタ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>千年アゲハ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>仕返し商店<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>思い出写真館<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>隠れ家不動産<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>レンタル秘密ビデオ店<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>即席外語スクール<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>失くし物宅配便<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>コインドッグ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>クラブ王様<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>バーチャルレストラン<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>魔女の媚薬<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>魔女の若返り薬<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>魔女の痩せ薬<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>長老の背伸び薬<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>長老の精力増強薬<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>長老の毛生え薬<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>マッド博士の筋肉増強剤<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>マッド博士のフェロモン剤<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>マッド博士の整形マシーン<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>闇のヒスイ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>賢者のアクアマリン<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>奇運アレキサンドライト<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>さまようルビー<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>美を呼ぶエメラルド<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>孤独なサファイア<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>レインボーダイヤ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>浮遊石<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>ブループラネット<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>天罰のつえ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>真実の剣<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>聖騎士の首飾り<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>身代わりの鎧<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>挫折の弓<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>信念の盾<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>不死の大金槌<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>税務長の篭手<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>記憶の兜<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>プラキング<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>影武者切符<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>人生図鑑<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>盗賊の剣<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>秘密のマント<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>千里眼の蛇<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>3Dカメラ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>シルバードッグ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>メイドパンダ<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>引き換え券<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
+	},
+	{
+		kanji: "<Ruby>支配者からの招待<rt></rt></Ruby>",
+		romaji: "",
+		eng: "",
+		validInputs: [""],
+		validInputs2: [""]
 	}
 ];
