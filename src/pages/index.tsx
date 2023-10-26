@@ -18,14 +18,40 @@ import {
 	Flex,
 	HStack
 } from "@chakra-ui/react";
-import { magicItems, adjectives } from "../constant/typingProblems";
+import { WordList } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
 import Link from "next/link";
+import { ColorSwitchButton } from "@/components/ColorSwitchButton";
+import { GuideOnOffSwitchButton } from "@/components/GuideOnOffSwichButton";
+import { CheckInputMode } from "@/components/CheckInputMode";
+import { spellWords } from "@/constant/typingProblemGI";
+import { personNameWords } from "@/constant/typingProblemName";
 
-const easyWords = magicItems;
-const normalWords = adjectives;
+const easyWords = personNameWords;
+const normalWords = spellWords;
 const hardWords = hunterWords;
+
+//この関数は、配列をシャッフル（ランダムに並び替え）するためのヘルパー関数です。
+//Fisher-Yates（またはKnuth）シャッフルというアルゴリズムを使用している。
+//このアルゴリズムは、配列を効率的かつ公平にシャッフルするためのもの。
+const shuffleArray = (array: WordList[]) => {
+	let currentIndex = array.length;
+	let randomIndex;
+
+	// While there remain elements to shuffle...
+	while (currentIndex !== 0) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		// And swap it with the current element.
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+	}
+
+	return array;
+};
+
 export default function Home() {
 	const isMobileDevice = (): boolean => {
 		if (typeof window === "undefined") return false;
@@ -34,55 +60,71 @@ export default function Home() {
 		const mobileRegex = /iphone|ipod|ipad|android|blackberry|windows phone|opera mini|silk/i;
 		return mobileRegex.test(userAgent);
 	};
-	const [words, setWords] = useState(easyWords);
-	const [num, setNum] = useState(Math.floor(Math.random() * 10));
-	const [currentWord, setCurrentWord] = useState(words[num].romaji);
-	const [jaWord, setJaWord] = useState(words[num].kanji);
+	const [words, setWords] = useState(shuffleArray([...easyWords]));
+	// const [num, setNum] = useState(Math.floor(Math.random() * 80));
+
 	const [userInput, setUserInput] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [score, setScore] = useState(0);
 	const router = useRouter();
-
-	const Mode = {
-		Jap: "japanese",
-		Roma: "roma",
-		Eng: "english",
-		Mania: "mania"
-	};
-	const [mode, setMode] = useState(Mode.Roma);
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+	const [guideOnFlag, setGuideOnFlag] = useState(true);
 
 	const Genre = {
-		EASY: "Magic Items",
-		NORMAL: "Adjective",
-		HARD: "Hunter×Hunter"
+		EASY: "Character Name",
+		NORMAL: "GISpell Cards",
+		HARD: "Nen Ability"
 	};
 	const [genre, setGenre] = useState(Genre.EASY);
 	useEffect(() => {
 		setMode(Mode.Roma);
 		setDuration(durationInitial);
-		if (genre === Genre.EASY) {
-			setWords(easyWords);
-		} else if (genre === Genre.NORMAL) {
-			setWords(normalWords);
-		} else if (genre === Genre.HARD) {
-			setWords(hardWords);
-		}
+		const selectWords: WordList[] =
+			(genre === Genre.EASY && easyWords) || (genre === Genre.NORMAL && normalWords) || hardWords;
+
+		setWords(shuffleArray([...selectWords]));
 	}, [genre]);
 
-	const genreLabel = () => {
-		if (words === easyWords) return "Magic Items";
-		if (words === normalWords) return "Adjective";
-		if (words === hardWords) return "Hunter×Hunter";
-		return "";
+	//出題数が問題数を超えたら問題をリセット
+	useEffect(() => {
+		if (currentQuestionIndex >= words.length) {
+			setCurrentQuestionIndex(0);
+			setWords(() => shuffleArray([...words]));
+			setCurrentWord(words[0].romaji);
+			setJaWord(words[0].kanji);
+		}
+	}, [currentQuestionIndex]);
+
+	const Mode = {
+		Jap: "japanese",
+		Roma: "roma",
+		Ruby: "ruby",
+		Mania: "mania"
 	};
+	const [mode, setMode] = useState(Mode.Roma);
 
 	const modeLabel = () => {
 		if (mode === Mode.Jap) return "Japanese";
 		if (mode === Mode.Roma) return "Roma";
-		if (mode === Mode.Eng) return genre === "Hunter×Hunter" ? "Ruby" : "English";
+		if (mode === Mode.Ruby) return genre === "Character Name" || "Ruby";
 		if (mode === Mode.Mania) return "Mania";
 		return "";
 	};
+
+	useEffect(() => {
+		if (currentQuestionIndex < words.length) {
+			const updatedQuestion = words[currentQuestionIndex];
+			setCurrentWord(
+				mode === Mode.Jap ? updatedQuestion.kanji : mode === Mode.Roma ? updatedQuestion.romaji : updatedQuestion.eng
+			);
+			setJaWord(updatedQuestion.kanji);
+		}
+	}, [currentQuestionIndex]);
+
+	const [currentWord, setCurrentWord] = useState(
+		currentQuestionIndex < words.length ? words[currentQuestionIndex].romaji : ""
+	);
+	const [jaWord, setJaWord] = useState(currentQuestionIndex < words.length ? words[currentQuestionIndex].kanji : "");
 
 	const durationInitial = genre === Genre.EASY ? 60 : mode === Mode.Mania ? 120 : 90;
 	const [duration, setDuration] = useState(durationInitial);
@@ -104,6 +146,7 @@ export default function Home() {
 			if (event.key === "Enter" && userInputRef.current === currentWord) {
 				setScore(score + 1);
 				setUserInput("");
+				setCurrentQuestionIndex((prev) => prev + 1);
 				toast({
 					title: "Correct!",
 					status: "success",
@@ -114,62 +157,66 @@ export default function Home() {
 				if (score !== 0 && score % 5 === 0) {
 					incrementTime(5);
 					toast({
-						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
+						title: mode === Mode.Mania ? words[currentQuestionIndex].kanji : "+5 Seconds Bonus",
 						status: "success",
 						duration: 1000,
 						isClosable: true,
 						position: "top"
 					});
 				}
-				const newNum = Math.floor(Math.random() * words.length);
-				setCurrentWord(
-					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
-				);
-				setJaWord(words[newNum].kanji);
-				setNum(newNum);
+				// const newNum = Math.floor(Math.random() * words.length);
+				// setCurrentWord(
+				// 	mode === Mode.Jap ? words[currentQuestionIndex].kanji : mode === Mode.Roma ? words[currentQuestionIndex].romaji : words[currentQuestionIndex].eng
+				// );
+				// setJaWord(words[currentQuestionIndex].kanji);
+				// setNum(newNum);
 			}
 		}
 	};
 
 	const handleInputChange = (value: string) => {
 		if (mode === Mode.Roma) {
-			if ([...words[num].romaji][0] !== [...value][0]) {
+			if ([...words[currentQuestionIndex].romaji][0] !== [...value][0]) {
 				return;
 			} else {
-				if ([...value].length > 1 && [...words[num].romaji][1] !== [...value][1]) {
+				if ([...value].length > 1 && [...words[currentQuestionIndex].romaji][1] !== [...value][1]) {
 					return;
 				} else {
-					if (words[num].validInputs.some((validInput) => validInput.includes(value))) {
-						const findIndex = words[num].validInputs.findIndex((validInput) => validInput.includes(value));
-						if (currentWord.includes(words[num].validInputs[findIndex])) {
+					if (words[currentQuestionIndex].validInputs.some((validInput) => validInput.includes(value))) {
+						const findIndex = words[currentQuestionIndex].validInputs.findIndex((validInput) =>
+							validInput.includes(value)
+						);
+						if (currentWord.includes(words[currentQuestionIndex].validInputs[findIndex])) {
 							setUserInput(value);
 						} else {
-							setCurrentWord(words[num].validInputs[findIndex]);
+							setCurrentWord(words[currentQuestionIndex].validInputs[findIndex]);
 							setUserInput(value);
 						}
 					}
 				}
 			}
-		} else if (mode === Mode.Eng || mode === Mode.Mania) {
-			if (genre === "Hunter×Hunter") {
-				if ([...words[num].eng][0] !== [...value][0]) {
+		} else if (mode === Mode.Ruby || mode === Mode.Mania) {
+			if (genre === "Nen Ability") {
+				if ([...words[currentQuestionIndex].eng][0] !== [...value][0]) {
 					return;
 				} else {
-					if ([...value].length > 1 && [...words[num].eng][1] !== [...value][1]) {
+					if ([...value].length > 1 && [...words[currentQuestionIndex].eng][1] !== [...value][1]) {
 						return;
 					} else {
-						if (words[num].validInputs2.some((validInput) => validInput.includes(value))) {
-							const findIndex = words[num].validInputs2.findIndex((validInput) => validInput.includes(value));
-							if (currentWord.includes(words[num].validInputs2[findIndex])) {
+						if (words[currentQuestionIndex].validInputs2.some((validInput) => validInput.includes(value))) {
+							const findIndex = words[currentQuestionIndex].validInputs2.findIndex((validInput) =>
+								validInput.includes(value)
+							);
+							if (currentWord.includes(words[currentQuestionIndex].validInputs2[findIndex])) {
 								setUserInput(value);
 							} else {
-								setCurrentWord(words[num].validInputs2[findIndex]);
+								setCurrentWord(words[currentQuestionIndex].validInputs2[findIndex]);
 								setUserInput(value);
 							}
 						}
 					}
 				}
-			} else if (words[num].eng.includes(value)) {
+			} else if (words[currentQuestionIndex].eng.includes(value)) {
 				setUserInput(value);
 			}
 		} else {
@@ -183,6 +230,7 @@ export default function Home() {
 			if (value === currentWord) {
 				setScore(score + 1);
 				setUserInput("");
+				setCurrentQuestionIndex((prev) => prev + 1);
 				toast({
 					title: "Correct!",
 					status: "success",
@@ -193,19 +241,19 @@ export default function Home() {
 				if (score !== 0 && score % 3 === 0) {
 					incrementTime(5);
 					toast({
-						title: mode === Mode.Mania ? words[num].kanji : "+5 Seconds Bonus",
+						title: mode === Mode.Mania ? words[currentQuestionIndex].kanji : "+5 Seconds Bonus",
 						status: "success",
 						duration: 1000,
 						isClosable: true,
 						position: "top"
 					});
 				}
-				const newNum = Math.floor(Math.random() * words.length);
-				setCurrentWord(
-					mode === Mode.Jap ? words[newNum].kanji : mode === Mode.Roma ? words[newNum].romaji : words[newNum].eng
-				);
-				setJaWord(words[newNum].kanji);
-				setNum(newNum);
+				// const newNum = Math.floor(Math.random() * words.length);
+				// setCurrentWord(
+				// 	mode === Mode.Jap ? words[currentQuestionIndex].kanji : mode === Mode.Roma ? words[currentQuestionIndex].romaji : words[currentQuestionIndex].eng
+				// );
+				// setJaWord(words[currentQuestionIndex].kanji);
+				// setNum(newNum);
 			}
 		}
 	};
@@ -214,13 +262,17 @@ export default function Home() {
 		setIsActive(true);
 		setScore(0);
 		setUserInput("");
-		setCurrentWord(mode === Mode.Jap ? words[num].kanji : mode === Mode.Roma ? words[num].romaji : words[num].eng);
-		setJaWord(words[num].kanji);
+		setCurrentWord(
+			(mode === Mode.Jap && words[currentQuestionIndex].kanji) ||
+				(mode === Mode.Roma && words[currentQuestionIndex].romaji) ||
+				words[currentQuestionIndex].eng
+		);
+		setJaWord(words[currentQuestionIndex].kanji);
 	};
 
 	const onTimeUp = () => {
 		setUserInput("");
-		setNum(0);
+		// setNum(0);
 		setTimeout(() => {
 			router.push({ pathname: "/result", query: { score, mode, genre } });
 		}, 2000);
@@ -263,7 +315,7 @@ export default function Home() {
 					　オレでなきゃ見逃しちゃうねゲーム
 				</Text>
 				<Text fontSize={textSize} fontWeight="bold">
-					Genre : {genreLabel()}
+					Genre : {genre}
 					<br />
 					Mode : {modeLabel()}
 				</Text>
@@ -275,70 +327,82 @@ export default function Home() {
 						timeLeft={timeLeft}
 						setTimeLeft={setTimeLeft}
 					/>
-					{isActive && <WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} />}
 					{isActive && (
-						<TypingInput
-							value={userInput}
-							onChange={handleInputChange}
-							disabled={!isActive}
-							inputRef={inputRef}
-							onKeyPress={handleKeyPress}
-						/>
+						<>
+							<WordToType word={currentWord} jaWord={jaWord} userInput={userInput} mode={mode} guideOn={guideOnFlag} />
+							<TypingInput
+								value={userInput}
+								onChange={handleInputChange}
+								disabled={!isActive}
+								inputRef={inputRef}
+								onKeyPress={handleKeyPress}
+							/>
+							<Button
+								fontSize={textSize}
+								w={buttonWidth}
+								colorScheme="red"
+								onClick={() => {
+									onTimeUp();
+								}}
+							>
+								Stop the game
+							</Button>
+						</>
 					)}
 				</Box>
 
 				{!isActive ? (
 					<VStack spacing={{ base: 0, md: 4 }} my={{ base: 0, md: 4 }} minH={"50%"}>
-						<Button
-							onClick={startGameAndFocusInput}
+						<CheckInputMode
+							onclickStart={startGameAndFocusInput}
 							disabled={isActive}
 							fontSize={textSize}
 							w={buttonWidth}
 							colorScheme="blue"
-						>
-							Start Game
-						</Button>
-						<Text as={"h4"}>
+							genre={genre}
+							mode={mode}
+						/>
+						<Text as={"h2"} fontWeight="bold">
 							<br />
-							ジャンル
+							ジャンル選択
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
-								onClick={() => setGenre("Magic Items")}
+								onClick={() => setGenre("Character Name")}
 								w={buttonWidth}
-								colorScheme={genre === "Magic Items" ? "teal" : "gray"}
+								colorScheme={genre === "Character Name" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								魔道具
+								人名
 							</Button>
 							<Button
-								onClick={() => setGenre("Adjective")}
+								onClick={() => setGenre("GISpell Cards")}
 								w={buttonWidth}
-								colorScheme={genre === "Adjective" ? "teal" : "gray"}
+								colorScheme={genre === "GISpell Cards" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								形容詞
+								G.Iスペル
 							</Button>
 							<Button
-								onClick={() => setGenre("Hunter×Hunter")}
+								onClick={() => setGenre("Nen Ability")}
 								w={buttonWidth}
-								colorScheme={genre === "Hunter×Hunter" ? "teal" : "gray"}
+								colorScheme={genre === "Nen Ability" ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
 							>
-								Hunter×Hunter
+								念能力
 							</Button>
 						</Flex>
-						<Text as={"h4"}>
+						<Text as={"h2"} fontWeight="bold">
 							<br />
 							モード選択
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
 								onClick={() => setMode(Mode.Jap)}
-								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+								w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Jap ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -347,7 +411,7 @@ export default function Home() {
 							</Button>
 							<Button
 								onClick={() => setMode(Mode.Roma)}
-								w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+								w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
 								colorScheme={mode === Mode.Roma ? "teal" : "gray"}
 								mb={{ base: 1, md: 0 }}
 								mx={{ base: 0, md: 2 }}
@@ -355,12 +419,12 @@ export default function Home() {
 								ローマ字
 							</Button>
 
-							{genre === "Hunter×Hunter" ? (
+							{genre === "Nen Ability" ? (
 								<>
 									<Button
-										onClick={() => setMode(Mode.Eng)}
-										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
-										colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+										onClick={() => setMode(Mode.Ruby)}
+										w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
+										colorScheme={mode === Mode.Ruby ? "teal" : "gray"}
 										mb={{ base: 1, md: 0 }}
 										mx={{ base: 0, md: 2 }}
 									>
@@ -368,7 +432,7 @@ export default function Home() {
 									</Button>
 									<Button
 										onClick={() => setMode(Mode.Mania)}
-										w={{ base: buttonWidth, md: genre === "Hunter×Hunter" ? "115px" : buttonWidth }}
+										w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
 										colorScheme={mode === Mode.Mania ? "teal" : "gray"}
 										mb={{ base: 1, md: 0 }}
 										mx={{ base: 0, md: 2 }}
@@ -378,15 +442,35 @@ export default function Home() {
 								</>
 							) : (
 								<Button
-									onClick={() => setMode(Mode.Eng)}
+									onClick={() => setMode(Mode.Ruby)}
 									w={buttonWidth}
-									colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+									colorScheme={mode === Mode.Ruby ? "teal" : "gray"}
 									mb={{ base: 1, md: 0 }}
 									mx={{ base: 0, md: 2 }}
+									isDisabled={genre === "Character Name"}
 								>
-									English
+									{genre === "GISpell Cards" ? "ルビ" : "none"}
 								</Button>
 							)}
+						</Flex>
+						<Text as={"h3"} fontWeight="bold">
+							<br />
+							Config
+						</Text>
+						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
+							<ColorSwitchButton
+								aria-label={"colorMode switch"}
+								w={buttonWidth}
+								mb={{ base: 1, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							/>
+							<GuideOnOffSwitchButton
+								onClickButton={setGuideOnFlag}
+								guideOnFlag={guideOnFlag}
+								w={buttonWidth}
+								mb={{ base: 1, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							/>
 						</Flex>
 					</VStack>
 				) : (
@@ -403,7 +487,7 @@ export default function Home() {
 					</Link>
 				</HStack>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.2.0.22
+					ver.2.2
 				</Text>
 			</Container>
 		</>
