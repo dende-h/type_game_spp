@@ -18,7 +18,7 @@ import {
 	Flex,
 	HStack
 } from "@chakra-ui/react";
-import { magicItems, WordList } from "../constant/typingProblems";
+import { WordList } from "../constant/typingProblems";
 import Seo from "../components/Seo";
 import { hunterWords } from "@/constant/typingProblemHunterHunter";
 import Link from "next/link";
@@ -26,9 +26,10 @@ import { ColorSwitchButton } from "@/components/ColorSwitchButton";
 import { GuideOnOffSwitchButton } from "@/components/GuideOnOffSwichButton";
 import { CheckInputMode } from "@/components/CheckInputMode";
 import { spellWords } from "@/constant/typingProblemGI";
+import { personNameWords } from "@/constant/typingProblemName";
 
-const easyWords = spellWords;
-const normalWords = magicItems;
+const easyWords = personNameWords;
+const normalWords = spellWords;
 const hardWords = hunterWords;
 
 //この関数は、配列をシャッフル（ランダムに並び替え）するためのヘルパー関数です。
@@ -70,8 +71,8 @@ export default function Home() {
 	const [guideOnFlag, setGuideOnFlag] = useState(true);
 
 	const Genre = {
-		EASY: "GISpell Cards",
-		NORMAL: "Magic Items",
+		EASY: "Character Name",
+		NORMAL: "GISpell Cards",
 		HARD: "Nen Ability"
 	};
 	const [genre, setGenre] = useState(Genre.EASY);
@@ -97,7 +98,7 @@ export default function Home() {
 	const Mode = {
 		Jap: "japanese",
 		Roma: "roma",
-		Eng: "english",
+		Ruby: "ruby",
 		Mania: "mania"
 	};
 	const [mode, setMode] = useState(Mode.Roma);
@@ -105,7 +106,7 @@ export default function Home() {
 	const modeLabel = () => {
 		if (mode === Mode.Jap) return "Japanese";
 		if (mode === Mode.Roma) return "Roma";
-		if (mode === Mode.Eng) return genre === "Magic Items" ? "English" : "Ruby";
+		if (mode === Mode.Ruby) return genre === "Character Name" || "Ruby";
 		if (mode === Mode.Mania) return "Mania";
 		return "";
 	};
@@ -194,7 +195,7 @@ export default function Home() {
 					}
 				}
 			}
-		} else if (mode === Mode.Eng || mode === Mode.Mania) {
+		} else if (mode === Mode.Ruby || mode === Mode.Mania) {
 			if (genre === "Nen Ability") {
 				if ([...words[currentQuestionIndex].eng][0] !== [...value][0]) {
 					return;
@@ -367,6 +368,15 @@ export default function Home() {
 						</Text>
 						<Flex direction={flexDirection} justifyContent="space-between" w="100%">
 							<Button
+								onClick={() => setGenre("Character Name")}
+								w={buttonWidth}
+								colorScheme={genre === "Character Name" ? "teal" : "gray"}
+								mb={{ base: 1, md: 0 }}
+								mx={{ base: 0, md: 2 }}
+							>
+								人名
+							</Button>
+							<Button
 								onClick={() => setGenre("GISpell Cards")}
 								w={buttonWidth}
 								colorScheme={genre === "GISpell Cards" ? "teal" : "gray"}
@@ -374,15 +384,6 @@ export default function Home() {
 								mx={{ base: 0, md: 2 }}
 							>
 								G.Iスペル
-							</Button>
-							<Button
-								onClick={() => setGenre("Magic Items")}
-								w={buttonWidth}
-								colorScheme={genre === "Magic Items" ? "teal" : "gray"}
-								mb={{ base: 1, md: 0 }}
-								mx={{ base: 0, md: 2 }}
-							>
-								魔道具
 							</Button>
 							<Button
 								onClick={() => setGenre("Nen Ability")}
@@ -421,9 +422,9 @@ export default function Home() {
 							{genre === "Nen Ability" ? (
 								<>
 									<Button
-										onClick={() => setMode(Mode.Eng)}
+										onClick={() => setMode(Mode.Ruby)}
 										w={{ base: buttonWidth, md: genre === "Nen Ability" ? "115px" : buttonWidth }}
-										colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+										colorScheme={mode === Mode.Ruby ? "teal" : "gray"}
 										mb={{ base: 1, md: 0 }}
 										mx={{ base: 0, md: 2 }}
 									>
@@ -441,13 +442,14 @@ export default function Home() {
 								</>
 							) : (
 								<Button
-									onClick={() => setMode(Mode.Eng)}
+									onClick={() => setMode(Mode.Ruby)}
 									w={buttonWidth}
-									colorScheme={mode === Mode.Eng ? "teal" : "gray"}
+									colorScheme={mode === Mode.Ruby ? "teal" : "gray"}
 									mb={{ base: 1, md: 0 }}
 									mx={{ base: 0, md: 2 }}
+									isDisabled={genre === "Character Name"}
 								>
-									{genre === "Magic Items" ? "English" : "ルビ"}
+									{genre === "GISpell Cards" ? "ルビ" : "none"}
 								</Button>
 							)}
 						</Flex>
@@ -485,7 +487,7 @@ export default function Home() {
 					</Link>
 				</HStack>
 				<Text fontSize={"xl"} color={headingColor} mb={6}>
-					ver.2.1.1
+					ver.2.2
 				</Text>
 			</Container>
 		</>
