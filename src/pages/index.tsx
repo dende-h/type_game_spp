@@ -126,7 +126,23 @@ export default function Home() {
 	);
 	const [jaWord, setJaWord] = useState(currentQuestionIndex < words.length ? words[currentQuestionIndex].kanji : "");
 
-	const durationInitial = genre === Genre.EASY ? 60 : mode === Mode.Mania ? 120 : 90;
+	let durationInitial: number;
+
+	switch (true) {
+		case genre === Genre.EASY:
+			durationInitial = 60;
+			break;
+		case genre === Genre.NORMAL:
+			durationInitial = 90;
+			break;
+		case genre === Genre.HARD:
+			durationInitial = 120;
+			break;
+		default:
+			durationInitial = 120;
+			break;
+	}
+
 	const [duration, setDuration] = useState(durationInitial);
 	const [timeLeft, setTimeLeft] = useState(duration);
 
